@@ -1,46 +1,20 @@
-# Next.js 全栈项目模板
+# Discourse Connect
 
-这是一个基于 [Next.js](https://nextjs.org/) 的全栈项目模板，集成了 [shadcn/ui](https://ui.shadcn.com/)、[Auth.js](https://authjs.dev/) 和 [Prisma](https://www.prisma.io/)。
+这是一个基于 [Next.js](https://nextjs.org/) 的项目，实现了使用 Discourse SSO (Single Sign-On) 用户系统的 OAuth 认证功能。
 
-## 特性
+## 项目概述
 
-- **Next.js**: React 框架，用于构建现代化的 Web 应用
-- **shadcn/ui**: 可定制的 UI 组件库
-- **Auth.js**: 灵活的身份验证解决方案
-- **Prisma**: 下一代 ORM，用于数据库操作
+本项目提供了一个 OAuth 认证系统，允许其他应用程序使用 Discourse 论坛的用户账号进行身份验证。这样可以让用户使用他们已有的 Discourse 账号登录到您的应用程序，无需创建新的账号。
 
-## 快速开始
+主要特性:
 
-### 创建你自己的项目
+- 基于 Discourse SSO 的用户认证
+- OAuth 2.0 协议支持
+- 使用 Next.js 框架构建，提供良好的性能和开发体验
 
-1. 使用这个模板创建新项目：
+## 开始使用
 
-```bash
-npx create-next-app@latest -e https://github.com/Tuluobo/next-shadcn-auth-template --use-pnpm your-project-name
-```
-
-2. 进入项目目录：
-
-```bash
-cd your-project-name
-```
-
-3. 安装依赖：
-
-```bash
-pnpm install
-```
-
-4. 设置环境变量：
-   复制 `.env.example` 文件并重命名为 `.env`，然后填写必要的环境变量。
-
-5. 初始化数据库：
-
-```bash
-pnpm exec prisma db push
-```
-
-### 运行开发服务器
+首先，运行开发服务器:
 
 ```bash
 pnpm dev
@@ -50,58 +24,130 @@ pnpm turbo
 
 在浏览器中打开 [http://localhost:3000](http://localhost:3000) 查看结果。
 
-你可以通过修改 `src/app/page.tsx` 来开始编辑页面。当你编辑文件时，页面会自动更新。
+您可以通过修改 `app/page.tsx` 来开始编辑页面。当您编辑文件时，页面会自动更新。
+
+## 配置
+
+要使用此 OAuth 系统，您需要进行以下配置:
+
+1. 在您的 Discourse 论坛中启用 SSO 功能。
+2. 设置环境变量:
+   - `NEXT_PUBLIC_HOST_URL`: 应用程序的主机 URL（不要在末尾添加 "/"）
+   - `DATABASE_URL`: 数据库连接字符串
+   - `AUTH_SECRET`: Next Auth 的密钥
+   - `DISCOURSE_HOST`: 您的 Discourse 论坛 URL
+   - `DISCOURSE_SECRET`: 在 Discourse 中设置的 SSO secret
 
 ## 部署
 
-### Vercel 部署
+### 使用 Docker 部署
 
-这个项目可以很容易地部署到 Vercel 平台。
+本项目支持使用 Docker 进行部署。以下是使用 Docker Compose 部署的步骤：
 
-1. 在 GitHub 上 fork 这个仓库。
-2. 在 Vercel 上创建一个新项目，并选择你 fork 的仓库。
-3. 在部署设置中，确保环境变量已正确设置。
-4. 点击 "Deploy" 按钮。
+1. 确保您的系统已安装 Docker 和 Docker Compose。
 
-Vercel 会自动检测这是一个 Next.js 项目，并为你配置构建设置。
+2. 在项目根目录下，运行以下命令启动服务：
 
-### Docker Compose 部署
+   ```bash
+   docker-compose up -d
+   ```
 
-你可以使用 Docker Compose 来部署这个项目。
+   这将构建并启动 Web 应用和 PostgreSQL 数据库服务。
 
-1. 项目中已经创建了 `docker-compose.yml` 文件，你可以根据自己的情况调整 `docker-compose.yml` 文件。
+3. 应用将在 http://localhost:3000 上运行。
 
-2. 构建并启动容器：
+4. 要停止服务，运行：
 
-```bash
-docker compose up -d
+   ```bash
+   docker-compose down
+   ```
+
+### 使用 Vercel 部署
+
+另一种部署 Next.js 应用程序的简单方法是使用 [Vercel 平台](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)。
+
+查看我们的 [Next.js 部署文档](https://nextjs.org/docs/deployment) 了解更多详情。
+
+## OAuth 2.0 接口
+
+本项目实现了基于 OAuth 2.0 协议的认证系统。以下是主要的 OAuth 接口及其使用说明：
+
+### 1. 授权请求
+
+**端点：** `/oauth/authorize`
+
+**方法：** GET
+
+**参数：**
+
+- `response_type`: 必须为 "code"
+- `client_id`: 您的客户端 ID
+- `redirect_uri`: 授权后重定向的 URI
+- `scope`: （可选）请求的权限范围
+
+**示例：**
+
+```
+/oauth/authorize?response_type=code&client_id=your_client_id&redirect_uri=https://your-app.com/callback
 ```
 
-现在，你可以在 `http://localhost:3000` 访问你的应用。
+### 2. 获取访问令牌
 
-## 学习更多
+**端点：** `/api/oauth/access_token`
 
-要了解更多关于 Next.js 的信息，请查看以下资源：
+**方法：** POST
 
-- [Next.js 文档](https://nextjs.org/docs) - 了解 Next.js 的特性和 API。
-- [学习 Next.js](https://nextjs.org/learn) - 一个交互式的 Next.js 教程。
+**参数：**
 
-你可以查看 [Next.js GitHub 仓库](https://github.com/vercel/next.js/) - 欢迎您的反馈和贡献！
+- `code`: 从授权请求中获得的授权码
+- `redirect_uri`: 必须与授权请求中的 redirect_uri 相同
+
+**响应：**
+
+```json
+{
+  "access_token": "at_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "expires_in": 604800,
+  "token_type": "bearer"
+}
+```
+
+### 3. 获取用户信息
+
+**端点：** `/api/oauth/user`
+
+**方法：** GET
+
+**请求头：**
+
+- `Authorization: Bearer {access_token}`
+
+**响应：**
+
+```json
+{
+  "id": "user_id",
+  "email": "user@example.com",
+  "username": "username",
+  "admin": false,
+  "avatar_url": "https://example.com/avatar.jpg",
+  "name": "User Name"
+}
+```
+
+### 使用流程
+
+1. 将用户重定向到授权页面（`/oauth/authorize`）。
+2. 用户授权后，您的应用将收到一个授权码。
+3. 使用授权码请求访问令牌（`/api/oauth/access_token`）。
+4. 使用访问令牌获取用户信息（`/api/oauth/user`）。
+
+注意：确保在生产环境中使用 HTTPS 来保护所有的 OAuth 请求和响应。
 
 ## 贡献
 
-我们欢迎所有形式的贡献，无论是新功能、bug 修复还是文档改进。请遵循以下步骤：
-
-1. Fork 这个仓库
-2. 创建你的特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交你的更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 开启一个 Pull Request
-
-## 问题反馈
-
-如果你遇到任何问题或有改进建议，请在 GitHub 仓库中开启一个 issue。
+欢迎贡献代码、报告问题或提出改进建议。
 
 ## 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+本项目采用 MIT 许可证。详情请见 [LICENSE](LICENSE) 文件。
