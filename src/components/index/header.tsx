@@ -15,6 +15,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
 import DynamicLogo from "../shared/dynamic-logo";
 import { Icons } from "../shared/icons";
+import { ProfileDropdown } from "../shared/profile-dropdown";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -127,39 +128,7 @@ export function Header({
             transition={{ duration: 0.3, delay: 0.5 }}
           >
             {user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="overflow-hidden rounded-full"
-                  >
-                    <Image
-                      src={user.avatarUrl as string}
-                      width={36}
-                      height={36}
-                      alt="Avatar"
-                      className="overflow-hidden rounded-full"
-                    />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Hello, {user.username}</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    onClick={() => {
-                      router.push("/dashboard");
-                    }}
-                  >
-                    Dashboard
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => signOut()}>
-                    Logout
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <ProfileDropdown user={user} />
             ) : (
               <Link href="/sign-in" prefetch>
                 <Button className="cursor-pointer rounded-full font-medium transition-transform hover:scale-105">
