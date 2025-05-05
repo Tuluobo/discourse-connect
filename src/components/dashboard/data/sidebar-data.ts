@@ -20,8 +20,8 @@ export const sidebarData: SidebarData = {
           icon: LayoutDashboardIcon,
         },
         {
-          title: "Apps",
-          url: "/apps",
+          title: "Applications",
+          url: "/applications",
           icon: PackageSearchIcon,
         },
       ],
