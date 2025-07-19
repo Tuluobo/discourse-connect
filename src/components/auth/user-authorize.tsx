@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { signIn } from "@/actions/sign-in";
 
 interface UserAuthorizeProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -14,6 +15,7 @@ export function UserAuthorize({
 }: UserAuthorizeProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | unknown>(null);
+  const router = useRouter();
 
   const signInCallback = useCallback(async () => {
     if (isLoading) {
@@ -21,8 +23,13 @@ export function UserAuthorize({
     }
     setIsLoading(true);
     try {
-      await signIn({ ...data, redirectTo: "/dashboard" });
+      const redirectTo = await signIn({
+        ...data,
+        redirectTo: "/dashboard",
+        redirect: false,
+      });
       setIsLoading(false);
+      router.push(redirectTo);
     } catch (error) {
       setError(error);
       setIsLoading(false);
