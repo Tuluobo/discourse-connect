@@ -9,7 +9,7 @@ const hostUrl = process.env.NEXT_PUBLIC_HOST_URL as string;
 const discourseHost = process.env.DISCOURSE_HOST as string;
 const clientSecret = process.env.DISCOURSE_SECRET as string;
 
-export async function POST(_req: Request) {
+export async function POST() {
   const nonce = WordArray.random(16).toString();
   const return_url = `${hostUrl}/authorize`;
   const sso = btoa(`nonce=${nonce}&return_sso_url=${return_url}`);

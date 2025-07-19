@@ -18,7 +18,7 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">0</div>
-            <p className="text-xs text-muted-foreground">创建了 0 个应用</p>
+            <p className="text-muted-foreground text-xs">创建了 0 个应用</p>
           </CardContent>
         </Card>
       </div>

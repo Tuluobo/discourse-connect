@@ -6,15 +6,15 @@ import { Button } from "@/components/ui/button";
 
 export function CTA() {
   return (
-    <section className="relative isolate w-full overflow-hidden bg-gradient-to-br from-primary to-primary/80 py-20 text-primary-foreground md:py-32">
+    <section className="from-primary to-primary/80 text-primary-foreground relative isolate w-full overflow-hidden bg-gradient-to-br py-20 md:py-32">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(from_var(--primary-foreground)_r_g_b_/_0.075)_1px,transparent_1px),linear-gradient(to_bottom,rgba(from_var(--primary-foreground)_r_g_b_/_0.075)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
-      <div className="absolute -left-24 -top-24 h-64 w-64 animate-pulse rounded-full bg-foreground/15 blur-3xl"></div>
+      <div className="bg-foreground/15 absolute -top-24 -left-24 h-64 w-64 animate-pulse rounded-full blur-3xl"></div>
       <div
-        className="absolute -bottom-24 -right-24 h-64 w-64 animate-pulse rounded-full bg-foreground/15 blur-3xl"
+        className="bg-foreground/15 absolute -right-24 -bottom-24 h-64 w-64 animate-pulse rounded-full blur-3xl"
         style={{ animationDelay: "1.5s" }}
       ></div>
 
-      <div className="container relative mx-auto px-4 md:px-6">
+      <div className="relative container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ export function CTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mx-auto max-w-[700px] text-primary-foreground/80 md:text-xl"
+            className="text-primary-foreground/80 mx-auto max-w-[700px] md:text-xl"
           >
             立即开始使用数字牧民
             Connect，为您的应用提供安全、便捷的身份验证服务。
@@ -72,7 +72,7 @@ export function CTA() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-4 text-sm text-primary-foreground/80"
+            className="text-primary-foreground/80 mt-4 text-sm"
           >
             使用数字牧民账号。简单集成。开源项目。
           </motion.p>

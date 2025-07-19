@@ -11,7 +11,8 @@ export const getAllApplications = async () => {
   try {
     const applications = await prisma.application.findMany();
     return applications;
-  } catch {
+  } catch (error) {
+    console.log(`getAllApplications error: ${error}`);
     return null;
   }
 };
@@ -25,6 +26,7 @@ export const createApplication = async (
     });
     return application;
   } catch (error) {
+    console.log(`createApplication error: ${error}`);
     return null;
   }
 };

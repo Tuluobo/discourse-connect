@@ -56,7 +56,7 @@ export function CommandMenu() {
                       }}
                     >
                       <div className="mr-2 flex h-4 w-4 items-center justify-center">
-                        <ArrowBigRightDashIcon className="size-2 text-muted-foreground/80" />
+                        <ArrowBigRightDashIcon className="text-muted-foreground/80 size-2" />
                       </div>
                       {navItem.title}
                     </CommandItem>
@@ -71,7 +71,7 @@ export function CommandMenu() {
                     }}
                   >
                     <div className="mr-2 flex h-4 w-4 items-center justify-center">
-                      <ArrowBigRightDashIcon className="size-2 text-muted-foreground/80" />
+                      <ArrowBigRightDashIcon className="text-muted-foreground/80 size-2" />
                     </div>
                     {subItem.title}
                   </CommandItem>

@@ -81,12 +81,12 @@ export function Features() {
             className="rounded-full px-4 py-1.5 text-sm font-medium shadow-sm"
             variant="secondary"
           >
-            <span className="mr-1 text-primary">✦</span> 特性
+            <span className="text-primary mr-1">✦</span> 特性
           </Badge>
-          <h2 className="bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
+          <h2 className="from-foreground to-foreground/80 bg-gradient-to-r bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
             强大的 OAuth 2.0 认证工具
           </h2>
-          <p className="max-w-[800px] text-muted-foreground md:text-lg">
+          <p className="text-muted-foreground max-w-[800px] md:text-lg">
             数字牧民 Connect
             提供了所有您需要的工具，让用户使用数字牧民账号进行身份验证，简化登录流程。
           </p>
@@ -105,9 +105,9 @@ export function Features() {
               variants={item}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
-              <Card className="group h-full overflow-hidden border-border/40 bg-gradient-to-b from-card to-card/50 backdrop-blur transition-all hover:border-primary/20 hover:shadow-lg">
+              <Card className="group border-border/40 from-card to-card/50 hover:border-primary/20 h-full overflow-hidden bg-gradient-to-b backdrop-blur transition-all hover:shadow-lg">
                 <CardContent className="flex h-full flex-col p-6">
-                  <div className="mb-4 flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/20">
+                  <div className="bg-primary/10 text-primary group-hover:bg-primary/20 mb-4 flex size-12 items-center justify-center rounded-full transition-colors duration-300">
                     {feature.icon}
                   </div>
                   <h3 className="mb-2 text-xl font-bold">{feature.title}</h3>

@@ -36,7 +36,6 @@ export default function ApplicationsProvider({ children }: Props) {
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useApplications = () => {
   const context = React.useContext(ApplicationsContext);
 

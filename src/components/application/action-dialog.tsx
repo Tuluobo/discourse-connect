@@ -128,7 +128,7 @@ export function ApplicationsActionDialog({
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
-                  <FormItem className="grid grid-cols-6 items-center gap-x-4 gap-y-1 space-y-0">
+                  <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
                     <FormLabel className="col-span-2 text-right">
                       First Name
                     </FormLabel>
@@ -148,7 +148,7 @@ export function ApplicationsActionDialog({
                 control={form.control}
                 name="lastName"
                 render={({ field }) => (
-                  <FormItem className="grid grid-cols-6 items-center gap-x-4 gap-y-1 space-y-0">
+                  <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
                     <FormLabel className="col-span-2 text-right">
                       Last Name
                     </FormLabel>
@@ -168,7 +168,7 @@ export function ApplicationsActionDialog({
                 control={form.control}
                 name="username"
                 render={({ field }) => (
-                  <FormItem className="grid grid-cols-6 items-center gap-x-4 gap-y-1 space-y-0">
+                  <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
                     <FormLabel className="col-span-2 text-right">
                       Username
                     </FormLabel>
@@ -187,7 +187,7 @@ export function ApplicationsActionDialog({
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem className="grid grid-cols-6 items-center gap-x-4 gap-y-1 space-y-0">
+                  <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
                     <FormLabel className="col-span-2 text-right">
                       Email
                     </FormLabel>
@@ -206,7 +206,7 @@ export function ApplicationsActionDialog({
                 control={form.control}
                 name="phoneNumber"
                 render={({ field }) => (
-                  <FormItem className="grid grid-cols-6 items-center gap-x-4 gap-y-1 space-y-0">
+                  <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
                     <FormLabel className="col-span-2 text-right">
                       Phone Number
                     </FormLabel>

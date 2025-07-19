@@ -16,7 +16,7 @@ export async function discourseCallbackVerify(sso: string, sig: string) {
   }
   // 校验 nonce
   const cookieStore = await cookies();
-  let searchParams = new URLSearchParams(atob(sso as string));
+  const searchParams = new URLSearchParams(atob(sso as string));
   const nonce = searchParams.get("nonce");
   if (!cookieStore.has(AUTH_NONCE) || !nonce) {
     throw new Error("Request params is invalid (code: -1002).");

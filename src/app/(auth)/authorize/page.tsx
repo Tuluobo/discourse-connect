@@ -1,18 +1,10 @@
-import { console } from "inspector";
-
 import { Suspense } from "react";
 import Link from "next/link";
 import { MessageCircleCode } from "lucide-react";
 
 import { UserAuthorize } from "@/components/auth/user-authorize";
 
-type Props = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
-export default async function AuthorizePage({ searchParams }: Props) {
-  const params = await searchParams;
-  console.log(`params: `, params);
+export default async function AuthorizePage() {
   return (
     <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
       <div className="flex flex-col space-y-2 text-center">
@@ -24,10 +16,10 @@ export default async function AuthorizePage({ searchParams }: Props) {
       </div>
       <div>
         <Suspense>
-          <UserAuthorize data={params} />
+          <UserAuthorize />
         </Suspense>
       </div>
-      <p className="px-8 text-center text-sm text-muted-foreground">
+      <p className="text-muted-foreground px-8 text-center text-sm">
         By clicking continue, you agree to our{" "}
         <Link
           href="/terms"

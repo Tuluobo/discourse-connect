@@ -1,4 +1,5 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
+import { UserRole } from "@prisma/client";
 import NextAuth from "next-auth";
 
 import authConfig from "./auth.config";
@@ -21,7 +22,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session.user.id = token.sub;
       }
       if (token.username) {
-        session.user.username = token.username;
+        session.user.username = token.username as string;
       }
       if (token.email) {
         session.user.email = token.email;
@@ -30,7 +31,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session.user.avatarUrl = token.picture;
       }
       if (token.role) {
-        session.user.role = token.role;
+        session.user.role = token.role as UserRole;
       }
 
       session.user.name = token.name;

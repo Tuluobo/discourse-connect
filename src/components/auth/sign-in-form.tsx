@@ -3,9 +3,9 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, MessageCircleCode } from "lucide-react";
+import { toast } from "sonner";
 
 import { cn } from "@/lib/utils";
-import { useToast } from "@/hooks/use-toast";
 import { buttonVariants } from "@/components/ui/button";
 
 interface DiscourseData {
@@ -18,20 +18,17 @@ export function SignInForm({
 }: React.HTMLAttributes<HTMLDivElement>) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const router = useRouter();
-  const { toast } = useToast();
 
   const signIn = () => {
     React.startTransition(async () => {
       const response = await fetch("/api/auth/discourse", { method: "POST" });
       if (!response.ok || response.status !== 200) {
         setIsLoading(false);
-        toast({
-          variant: "destructive",
-          title: "内部服务异常",
+        toast.error("内部服务异常", {
           description: response.statusText,
         });
       } else {
-        let data: DiscourseData = await response.json();
+        const data: DiscourseData = await response.json();
         router.push(data.sso_url);
       }
     });

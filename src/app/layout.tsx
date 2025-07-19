@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 
+import { Toaster } from "@/components/ui/sonner";
+
 import "@/styles/globals.css";
 
 import { Suspense } from "react";
@@ -33,6 +35,7 @@ export default function RootLayout({
         <Suspense>
           <Providers>{children}</Providers>
         </Suspense>
+        <Toaster />
       </body>
     </html>
   );

@@ -27,7 +27,7 @@ export default function IndexLayout({
   }, []);
 
   return (
-    <div className="flex min-h-[100dvh] flex-col items-center justify-items-center bg-background text-foreground">
+    <div className="bg-background text-foreground flex min-h-[100dvh] flex-col items-center justify-items-center">
       <Header
         isScrolled={isScrolled}
         mobileMenuOpen={mobileMenuOpen}

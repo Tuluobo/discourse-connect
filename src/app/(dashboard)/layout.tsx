@@ -21,7 +21,7 @@ export default async function DashboardLayout({
   return (
     <SearchProvider>
       <SidebarProvider>
-        <AppSidebar user={user} />
+        <AppSidebar />
         <div
           id="content"
           className={cn(

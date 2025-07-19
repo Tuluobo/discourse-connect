@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { formatCompactNumber } from "@/utils/format";
 import { ChevronRight, Menu, X } from "lucide-react";
 import { motion } from "motion/react";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 import { cn } from "@/lib/utils";
 import { useGithubStars } from "@/hooks/use-github-stars";
@@ -16,14 +14,6 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import DynamicLogo from "../shared/dynamic-logo";
 import { Icons } from "../shared/icons";
 import { ProfileDropdown } from "../shared/profile-dropdown";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
 
 interface HeaderProps {
   isScrolled: boolean;
@@ -45,7 +35,6 @@ export function Header({
   const { data: session } = useSession();
   const user = session?.user;
   const { stargazersCount } = useGithubStars("tuluobo", "discourse-connect");
-  const router = useRouter();
 
   const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -69,7 +58,7 @@ export function Header({
       className={cn(
         "sticky top-0 z-50 w-full backdrop-blur-lg",
         isScrolled
-          ? "shadow-xs border-b border-border/20 bg-background/90"
+          ? "border-border/20 bg-background/90 border-b shadow-xs"
           : "bg-transparent",
       )}
     >
@@ -89,10 +78,10 @@ export function Header({
               transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
               href={item.href}
               onClick={handleScrollToSection}
-              className="group relative text-xs font-medium text-muted-foreground transition-colors hover:text-foreground lg:text-sm"
+              className="group text-muted-foreground hover:text-foreground relative text-xs font-medium transition-colors lg:text-sm"
             >
               {item.label}
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+              <span className="bg-primary absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"></span>
             </motion.a>
           ))}
         </nav>
@@ -161,7 +150,7 @@ export function Header({
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="absolute inset-x-0 top-16 border-b bg-background/95 backdrop-blur-lg md:hidden"
+          className="bg-background/95 absolute inset-x-0 top-16 border-b backdrop-blur-lg md:hidden"
         >
           <div className="container mx-auto flex flex-col gap-4 px-4 py-4">
             {navItems.map((item, i) => (
@@ -178,14 +167,14 @@ export function Header({
                 className="group relative overflow-hidden py-2 text-sm font-medium"
               >
                 <span className="relative z-10">{item.label}</span>
-                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span className="bg-primary absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
             ))}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.3 }}
-              className="mt-2 border-t border-border/30 pt-2"
+              className="border-border/30 mt-2 border-t pt-2"
             >
               <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full rounded-full">

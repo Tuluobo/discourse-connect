@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { useTheme } from "next-themes";
 
-export interface DynamicLogoProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
-
-export default function DynamicLogo({ className, ...props }: DynamicLogoProps) {
+export default function DynamicLogo({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   const { resolvedTheme } = useTheme();
 
   const logoSrc = resolvedTheme === "dark" ? "/logo-dark.png" : "/logo.png";

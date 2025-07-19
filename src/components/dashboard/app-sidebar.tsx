@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 
-import { ExtendedUser } from "@/types/next-auth";
 import { cn } from "@/lib/utils";
 import {
   Sidebar,
@@ -20,11 +19,7 @@ import { NavGroup } from "@/components/dashboard/nav-group";
 import DynamicLogo from "../shared/dynamic-logo";
 import { sidebarData } from "./data/sidebar-data";
 
-interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
-  user: ExtendedUser;
-}
-
-export function AppSidebar({ user, ...props }: AppSidebarProps) {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { open } = useSidebar();
 
   return (
@@ -36,7 +31,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+              <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                 <DynamicLogo className="size-4" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
@@ -55,7 +50,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
       <SidebarFooter className="">
         <p
           className={cn(
-            "mt-auto truncate pb-3 pt-6 font-mono text-xs text-muted-foreground/70",
+            "text-muted-foreground/70 mt-auto truncate pt-6 pb-3 font-mono text-xs",
             open ? "mx-3" : "",
           )}
         >
@@ -67,7 +62,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
               href="https://shuzimumin.com"
               target="_blank"
               rel="noreferrer"
-              className="font-medium text-primary underline underline-offset-2"
+              className="text-primary font-medium underline underline-offset-2"
             >
               数字牧民社区
             </Link>
