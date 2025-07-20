@@ -4,9 +4,9 @@ import { useState } from "react";
 import {
   AlignHorizontalJustifyCenterIcon,
   PackageCheckIcon,
+  PackagePlusIcon,
   SortAscIcon,
   SortDescIcon,
-  UserPlusIcon,
 } from "lucide-react";
 
 import { Application } from "@/lib/dto/application";
@@ -43,7 +43,7 @@ function CreateApplicationButton() {
           setOpen("create");
         }}
       >
-        <span>Create Application</span> <UserPlusIcon size={18} />
+        <PackagePlusIcon size={18} /> <span>Create Application</span>
       </Button>
     </div>
   );
@@ -54,16 +54,16 @@ function ApplicationEmpty() {
   return (
     <div
       className={cn(
-        "shadow-xs absolute inset-0 left-full z-50 hidden h-full w-full flex-1 flex-col justify-center rounded-md border transition-all duration-200 sm:static sm:z-auto sm:flex",
+        "absolute inset-0 left-full z-50 hidden h-full w-full flex-1 flex-col justify-center rounded-md border shadow-xs transition-all duration-200 sm:static sm:z-auto sm:flex",
       )}
     >
       <div className="flex flex-col items-center space-y-6">
-        <div className="flex size-16 items-center justify-center rounded-full border-2 border-border">
+        <div className="border-border flex size-16 items-center justify-center rounded-full border-2">
           <PackageCheckIcon className="size-8" />
         </div>
         <div className="space-y-2 text-center">
           <h1 className="text-xl font-semibold">Your applications</h1>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Create an application to start.
           </p>
         </div>

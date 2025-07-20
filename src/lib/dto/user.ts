@@ -7,7 +7,8 @@ export const getUserById = async (id: string) => {
     const user = await prisma.user.findUnique({ where: { id } });
 
     return user;
-  } catch {
+  } catch (error) {
+    console.log(`getUserById error: ${error}`);
     return null;
   }
 };
@@ -25,6 +26,7 @@ export const updateUser = async (
     });
     return session;
   } catch (error) {
+    console.log(`updateUser error: ${error}`);
     return null;
   }
 };
@@ -36,6 +38,7 @@ export const createUser = async (data: PrismaType.UserCreateInput) => {
     });
     return session;
   } catch (error) {
+    console.log(`createUser error: ${error}`);
     return null;
   }
 };

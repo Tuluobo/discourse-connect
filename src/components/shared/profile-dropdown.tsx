@@ -44,7 +44,7 @@ export function ProfileDropdown({ user }: { user: ExtendedUser }) {
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-medium">{user.username}</span>
-              <span className="truncate text-xs text-muted-foreground">
+              <span className="text-muted-foreground truncate text-xs">
                 {user.email}
               </span>
             </div>

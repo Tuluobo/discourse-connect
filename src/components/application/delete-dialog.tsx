@@ -37,7 +37,7 @@ export function ApplicationsDeleteDialog({
       title={
         <span className="text-destructive">
           <AlertTriangleIcon
-            className="mr-1 inline-block stroke-destructive"
+            className="stroke-destructive mr-1 inline-block"
             size={18}
           />{" "}
           Delete User

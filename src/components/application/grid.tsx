@@ -5,12 +5,12 @@ import { Button } from "../ui/button";
 
 export default function ApplicationGrid({ data }: { data: Application[] }) {
   return (
-    <ul className="faded-bottom no-scrollbar grid gap-4 overflow-auto pb-16 pt-4 md:grid-cols-2 lg:grid-cols-3">
+    <ul className="faded-bottom no-scrollbar grid gap-4 overflow-auto pt-4 pb-16 md:grid-cols-2 lg:grid-cols-3">
       {data.map((app) => (
         <li key={app.name} className="rounded-lg border p-4 hover:shadow-md">
           <div className="mb-8 flex items-center justify-between">
             <div
-              className={`flex size-10 items-center justify-center rounded-lg bg-muted p-2`}
+              className={`bg-muted flex size-10 items-center justify-center rounded-lg p-2`}
             >
               {app.logoUri && (
                 <Avatar className="h-8 w-8 rounded-lg">

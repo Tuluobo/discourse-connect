@@ -27,7 +27,7 @@ export default async function AuthorizePage({ searchParams }: Props) {
           <UserAuthorize data={params} />
         </Suspense>
       </div>
-      <p className="px-8 text-center text-sm text-muted-foreground">
+      <p className="text-muted-foreground px-8 text-center text-sm">
         By clicking continue, you agree to our{" "}
         <Link
           href="/terms"

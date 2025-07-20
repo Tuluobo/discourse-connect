@@ -31,7 +31,7 @@ export function SignInForm({
           description: response.statusText,
         });
       } else {
-        let data: DiscourseData = await response.json();
+        const data: DiscourseData = await response.json();
         router.push(data.sso_url);
       }
     });
