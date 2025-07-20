@@ -1,6 +1,6 @@
 import ComingSoon from "@/components/shared/coming-soon";
 
-export default function ProfilePage() {
+export default function AuthorizationPage() {
   return (
     <div>
       <ComingSoon />

@@ -34,7 +34,7 @@ import {
 import { NavCollapsible, NavItem, NavLink, type NavGroup } from "./types";
 
 export function NavGroup({ title, items }: NavGroup) {
-  const { state } = useSidebar();
+  const { state, isMobile } = useSidebar();
   const pathname = usePathname();
 
   return (
@@ -47,7 +47,7 @@ export function NavGroup({ title, items }: NavGroup) {
           if (!item.items)
             return <SidebarMenuLink key={key} item={item} href={pathname} />;
 
-          if (state === "collapsed")
+          if (state === "collapsed" && !isMobile)
             return (
               <SidebarMenuCollapsedDropdown
                 key={key}

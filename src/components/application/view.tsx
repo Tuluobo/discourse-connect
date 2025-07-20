@@ -4,9 +4,9 @@ import { useState } from "react";
 import {
   AlignHorizontalJustifyCenterIcon,
   PackageCheckIcon,
+  PackagePlusIcon,
   SortAscIcon,
   SortDescIcon,
-  UserPlusIcon,
 } from "lucide-react";
 
 import { Application } from "@/lib/dto/application";
@@ -43,7 +43,7 @@ function CreateApplicationButton() {
           setOpen("create");
         }}
       >
-        <span>Create Application</span> <UserPlusIcon size={18} />
+        <PackagePlusIcon size={18} /> <span>Create Application</span>
       </Button>
     </div>
   );

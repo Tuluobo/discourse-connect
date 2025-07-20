@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { deleteApplicationAction } from "@/actions/application";
 import { AlertTriangleIcon } from "lucide-react";
+import { toast } from "sonner";
 
 import { Application } from "@/lib/dto/application";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -21,36 +23,70 @@ export function ApplicationsDeleteDialog({
   currentApplication,
 }: Props) {
   const [value, setValue] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  const handleDelete = () => {
-    if (value.trim() !== currentApplication.id) return;
+  const handleDelete = async () => {
+    if (value.trim() !== currentApplication.name) return;
+    setIsDeleting(true);
+    try {
+      const result = await deleteApplicationAction({
+        id: currentApplication.id,
+        confirmName: value.trim(),
+      });
 
-    onOpenChange(false);
+      if (result.error) {
+        toast.error("删除失败", {
+          description: result.error,
+        });
+        return;
+      }
+
+      toast.success("删除成功", {
+        description: "应用已成功删除",
+      });
+    } catch {
+      toast.error("删除失败", {
+        description: "删除应用时发生未知错误",
+      });
+    } finally {
+      setValue("");
+      setIsDeleting(false);
+      onOpenChange(false);
+    }
   };
 
   return (
     <ConfirmDialog
       open={open}
-      onOpenChange={onOpenChange}
+      onOpenChange={(open) => {
+        if (!isDeleting) {
+          setValue("");
+          onOpenChange(open);
+        }
+      }}
       handleConfirm={handleDelete}
-      disabled={value.trim() !== currentApplication.id}
+      disabled={value.trim() !== currentApplication.name || isDeleting}
       title={
         <span className="text-destructive">
           <AlertTriangleIcon
             className="stroke-destructive mr-1 inline-block"
             size={18}
           />{" "}
-          Delete User
+          删除应用
         </span>
       }
       desc={
         <div className="space-y-4">
-          <p className="mb-2">
+          <p className="mb-2 leading-relaxed break-all">
             Are you sure you want to delete{" "}
-            <span className="font-bold">{currentApplication.id}</span>?
-            <br />
+            <code className="bg-muted relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold break-all">
+              {currentApplication.name}
+            </code>
+            ?
+          </p>
+          <p className="mb-2 leading-relaxed break-all">
             This action will permanently remove the application with the name of{" "}
-            <span className="font-bold">
+            <span className="inline-block max-w-full font-bold break-all">
               {currentApplication.name.toUpperCase()}
             </span>{" "}
             from the system. This cannot be undone.
@@ -73,7 +109,7 @@ export function ApplicationsDeleteDialog({
           </Alert>
         </div>
       }
-      confirmText="Delete"
+      confirmText={isDeleting ? "删除中..." : "确认删除"}
       destructive
     />
   );

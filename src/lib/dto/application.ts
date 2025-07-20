@@ -30,3 +30,15 @@ export const createApplication = async (
     return null;
   }
 };
+
+export const getUserApplicationCount = async (userId: string) => {
+  try {
+    const count = await prisma.application.count({
+      where: { userId },
+    });
+    return count;
+  } catch (error) {
+    console.log(`getUserApplicationCount error: ${error}`);
+    return 0;
+  }
+};
