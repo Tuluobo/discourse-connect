@@ -36,7 +36,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+              <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                 <DynamicLogo className="size-4" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
@@ -55,7 +55,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
       <SidebarFooter className="">
         <p
           className={cn(
-            "mt-auto truncate pb-3 pt-6 font-mono text-xs text-muted-foreground/70",
+            "text-muted-foreground/70 mt-auto truncate pt-6 pb-3 font-mono text-xs",
             open ? "mx-3" : "",
           )}
         >
@@ -67,7 +67,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
               href="https://shuzimumin.com"
               target="_blank"
               rel="noreferrer"
-              className="font-medium text-primary underline underline-offset-2"
+              className="text-primary font-medium underline underline-offset-2"
             >
               数字牧民社区
             </Link>

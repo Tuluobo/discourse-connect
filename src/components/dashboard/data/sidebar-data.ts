@@ -1,6 +1,7 @@
 import {
   EarthIcon,
   HelpCircleIcon,
+  KeySquareIcon,
   LayoutDashboardIcon,
   PackageSearchIcon,
   SettingsIcon,
@@ -23,6 +24,11 @@ export const sidebarData: SidebarData = {
           title: "Applications",
           url: "/applications",
           icon: PackageSearchIcon,
+        },
+        {
+          title: "Authorization",
+          url: "/authorization",
+          icon: KeySquareIcon,
         },
       ],
     },

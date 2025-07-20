@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronLeft, MessageCircleCode } from "lucide-react";
 
@@ -14,7 +13,7 @@ export default function SigninPage() {
         href="/"
         className={cn(
           buttonVariants({ variant: "outline", size: "sm" }),
-          "absolute left-4 top-4 md:left-8 md:top-8",
+          "absolute top-4 left-4 md:top-8 md:left-8",
         )}
       >
         <>
@@ -35,7 +34,7 @@ export default function SigninPage() {
         <Suspense>
           <SignInForm />
         </Suspense>
-        <p className="px-8 text-center text-sm text-muted-foreground">
+        <p className="text-muted-foreground px-8 text-center text-sm">
           By clicking continue, you agree to our{" "}
           <Link
             href="/terms"

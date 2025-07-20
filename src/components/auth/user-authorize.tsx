@@ -17,6 +17,7 @@ export function UserAuthorize({
   const [error, setError] = useState<Error | unknown>(null);
   const router = useRouter();
 
+  // eslint-disable-next-line
   const signInCallback = useCallback(async () => {
     if (isLoading) {
       return;
@@ -41,7 +42,7 @@ export function UserAuthorize({
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [signInCallback]);
 
   return (
     <>
