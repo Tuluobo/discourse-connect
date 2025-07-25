@@ -20,18 +20,40 @@ export function UserAuthorize() {
     }
     setIsLoading(true);
     try {
-      const redirectTo = await signIn({
+      // 检查是否是 OAuth 重定向
+      const oauthRedirect = searchParams.get("oauth_redirect");
+      const oauthParams = searchParams.get("oauth_params");
+
+      let redirectTo = "/dashboard";
+
+      if (oauthRedirect === "1" && oauthParams) {
+        // 解析 OAuth 参数并重定向到 OAuth 授权流程
+        try {
+          const params = JSON.parse(decodeURIComponent(oauthParams));
+          const oauthUrl = new URL("/oauth/authorize", window.location.origin);
+          Object.keys(params).forEach((key) => {
+            oauthUrl.searchParams.set(key, params[key]);
+          });
+          redirectTo = oauthUrl.toString();
+        } catch (e) {
+          console.error("Failed to parse OAuth params:", e);
+          redirectTo = "/dashboard";
+        }
+      }
+
+      await signIn({
         ...searchParamsRecord,
-        redirectTo: "/dashboard",
+        redirectTo,
         redirect: false,
       });
+
       setIsLoading(false);
       router.push(redirectTo);
     } catch (error) {
       setError(error);
       setIsLoading(false);
     }
-  }, []);
+  }, [searchParams, router, isLoading, searchParamsRecord]);
 
   useEffect(() => {
     const timer = setTimeout(signInCallback, 5);
