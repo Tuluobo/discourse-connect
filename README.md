@@ -93,7 +93,7 @@ pnpm turbo
 
 ### 2. 获取访问令牌
 
-**端点：** `/api/oauth/access_token`
+**端点：** `/oauth/access_token`
 
 **方法：** POST
 
@@ -114,7 +114,7 @@ pnpm turbo
 
 ### 3. 获取用户信息
 
-**端点：** `/api/oauth/user`
+**端点：** `/oauth/userinfo`
 
 **方法：** GET
 
@@ -139,8 +139,8 @@ pnpm turbo
 
 1. 将用户重定向到授权页面（`/oauth/authorize`）。
 2. 用户授权后，您的应用将收到一个授权码。
-3. 使用授权码请求访问令牌（`/api/oauth/access_token`）。
-4. 使用访问令牌获取用户信息（`/api/oauth/user`）。
+3. 使用授权码请求访问令牌（`/oauth/access_token`）。
+4. 使用访问令牌获取用户信息（`/oauth/userinfo`）。
 
 注意：确保在生产环境中使用 HTTPS 来保护所有的 OAuth 请求和响应。
 

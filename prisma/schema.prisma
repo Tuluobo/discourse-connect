@@ -65,6 +65,10 @@ model Code {
   id        String   @id @default(cuid())
   code      String   @unique
   expiresAt DateTime
+  
+  // PKCE parameters
+  codeChallenge       String?
+  codeChallengeMethod String?
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
