@@ -3,7 +3,7 @@ CREATE TABLE "applications" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "home" TEXT NOT NULL,
-    "logoUri" TEXT NOT NULL,
+    "logoUri" TEXT,
     "description" TEXT,
     "clientId" TEXT NOT NULL,
     "clientSecret" TEXT NOT NULL,
@@ -23,6 +23,11 @@ CREATE TABLE "codes" (
     "id" TEXT NOT NULL,
     "code" TEXT NOT NULL,
     "expiresAt" TIMESTAMP(3) NOT NULL,
+    "redirectUri" TEXT NOT NULL,
+    "state" TEXT,
+    "scopes" TEXT[],
+    "challenge" TEXT,
+    "challengeMethod" TEXT,
     "userId" TEXT NOT NULL,
     "applicationId" TEXT NOT NULL,
 
@@ -33,11 +38,14 @@ CREATE TABLE "codes" (
 CREATE TABLE "access_tokens" (
     "id" TEXT NOT NULL,
     "token" TEXT NOT NULL,
+    "tokenType" TEXT NOT NULL DEFAULT 'bearer',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "expiresAt" TIMESTAMP(3) NOT NULL,
     "refreshToken" TEXT,
     "refreshTokenExpiresAt" TIMESTAMP(3),
     "scopes" TEXT[],
+    "isRevoked" BOOLEAN NOT NULL DEFAULT false,
+    "revokedAt" TIMESTAMP(3),
     "userId" TEXT NOT NULL,
     "applicationId" TEXT NOT NULL,
     "authorizationId" TEXT NOT NULL,
@@ -48,6 +56,7 @@ CREATE TABLE "access_tokens" (
 -- CreateTable
 CREATE TABLE "authorizations" (
     "id" TEXT NOT NULL,
+    "scopes" TEXT[],
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "deletedAt" TIMESTAMP(3),
@@ -64,10 +73,25 @@ CREATE UNIQUE INDEX "applications_clientId_key" ON "applications"("clientId");
 CREATE UNIQUE INDEX "codes_code_key" ON "codes"("code");
 
 -- CreateIndex
+CREATE INDEX "codes_expiresAt_idx" ON "codes"("expiresAt");
+
+-- CreateIndex
+CREATE INDEX "codes_userId_applicationId_idx" ON "codes"("userId", "applicationId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "access_tokens_token_key" ON "access_tokens"("token");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "access_tokens_refreshToken_key" ON "access_tokens"("refreshToken");
+
+-- CreateIndex
+CREATE INDEX "access_tokens_expiresAt_idx" ON "access_tokens"("expiresAt");
+
+-- CreateIndex
+CREATE INDEX "access_tokens_userId_applicationId_idx" ON "access_tokens"("userId", "applicationId");
+
+-- CreateIndex
+CREATE INDEX "access_tokens_isRevoked_idx" ON "access_tokens"("isRevoked");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "authorizations_userId_applicationId_key" ON "authorizations"("userId", "applicationId");

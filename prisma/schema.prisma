@@ -38,7 +38,7 @@ model Application {
   id          String  @id @default(cuid())
   name        String
   home        String
-  logoUri     String
+  logoUri     String?
   description String?
 
   clientId     String   @unique
@@ -66,24 +66,40 @@ model Code {
   code      String   @unique
   expiresAt DateTime
 
+  // OAuth parameters
+  redirectUri String   // 授权时使用的 redirect_uri，token 交换时需验证
+  state       String?  // CSRF 保护参数
+  scopes      String[] // 授权的权限范围
+
+  // PKCE parameters (RFC 7636)
+  challenge       String?
+  challengeMethod String?
+
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   applicationId String
   application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
 
+  @@index([expiresAt]) // 用于清理过期 code
+  @@index([userId, applicationId]) // 用于查询用户的授权码
   @@map("codes")
 }
 
 model AccessToken {
   id        String   @id @default(cuid())
   token     String   @unique
+  tokenType String   @default("bearer") // RFC 6749: bearer, mac, etc.
   createdAt DateTime @default(now())
   expiresAt DateTime
 
   refreshToken          String?   @unique
   refreshTokenExpiresAt DateTime?
   scopes                String[]
+
+  // Token 状态管理
+  isRevoked Boolean @default(false) // 是否已撤销
+  revokedAt DateTime?               // 撤销时间
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -94,14 +110,18 @@ model AccessToken {
   authorizationId String
   authorization   Authorization @relation(fields: [authorizationId], references: [id], onDelete: Cascade)
 
+  @@index([expiresAt]) // 用于清理过期 token
+  @@index([userId, applicationId]) // 用于查询用户的 token
+  @@index([isRevoked]) // 用于过滤已撤销的 token
   @@map("access_tokens")
 }
 
 model Authorization {
   id        String    @id @default(cuid())
+  scopes    String[]  // 用户授权的权限范围
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+  deletedAt DateTime? // 软删除：用户撤销授权
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)

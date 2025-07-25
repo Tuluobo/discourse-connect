@@ -13,6 +13,7 @@ const createApplicationSchema = z.object({
   home: z.string().url("请输入有效的 URL"),
   logoUri: z
     .string()
+    .optional()
     .refine((val) => !val || z.string().url().safeParse(val).success, {
       message: "请输入有效的 Logo URL",
     }),
@@ -70,6 +71,7 @@ const updateApplicationSchema = z.object({
   home: z.string().url("请输入有效的 URL"),
   logoUri: z
     .string()
+    .optional()
     .refine((val) => !val || z.string().url().safeParse(val).success, {
       message: "请输入有效的 Logo URL",
     }),

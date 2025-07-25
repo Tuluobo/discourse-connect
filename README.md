@@ -24,8 +24,6 @@ pnpm turbo
 
 在浏览器中打开 [http://localhost:3000](http://localhost:3000) 查看结果。
 
-您可以通过修改 `app/page.tsx` 来开始编辑页面。当您编辑文件时，页面会自动更新。
-
 ## 配置
 
 要使用此 OAuth 系统，您需要进行以下配置:
@@ -34,6 +32,7 @@ pnpm turbo
 2. 设置环境变量:
    - `NEXT_PUBLIC_HOST_URL`: 应用程序的主机 URL（不要在末尾添加 "/"）
    - `DATABASE_URL`: 数据库连接字符串
+   - `NEXTAUTH_URL`: 自定义时需要指定完整的 API 端点路由
    - `AUTH_SECRET`: Next Auth 的密钥
    - `DISCOURSE_HOST`: 您的 Discourse 论坛 URL
    - `DISCOURSE_SECRET`: 在 Discourse 中设置的 SSO secret
@@ -88,33 +87,84 @@ pnpm turbo
 **示例：**
 
 ```
-/oauth/authorize?response_type=code&client_id=your_client_id&redirect_uri=https://your-app.com/callback
+/oauth/authorize?response_type=code&client_id=your_client_id&redirect_uri=https://your-app.com/callback&scope=read:user
 ```
 
 ### 2. 获取访问令牌
 
-**端点：** `/api/oauth/access_token`
+**端点：** `/oauth/token`
 
 **方法：** POST
 
 **参数：**
 
-- `code`: 从授权请求中获得的授权码
-- `redirect_uri`: 必须与授权请求中的 redirect_uri 相同
+| 参数          | 必需 | 说明                                                       |
+| ------------- | ---- | ---------------------------------------------------------- |
+| grant_type    | 是   | 授权类型，`authorization_code` 或 `refresh_token`          |
+| code          | 否   | 授权码，grant_type=authorization_code 时必需               |
+| redirect_uri  | 否   | 重定向 URI，grant_type=authorization_code 时必需           |
+| refresh_token | 否   | 刷新令牌，grant_type=refresh_token 时必需                  |
+| client_id     | 是   | 客户端 ID                                                  |
+| client_secret | 否   | 客户端密钥（如为 confidential client 必需）                |
+| scope         | 否   | 权限范围，空则与授权时一致，refresh_token 模式可为授权子集 |
 
 **响应：**
 
 ```json
 {
   "access_token": "at_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "expires_in": 604800,
-  "token_type": "bearer"
+  "token_type": "bearer",
+  "expires_in": 3600,
+  "refresh_token": "rt_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "scope": "read:user"
 }
 ```
 
-### 3. 获取用户信息
+- `access_token`：访问令牌
+- `token_type`：类型，固定为 `bearer`
+- `expires_in`：有效期（秒）
+- `refresh_token`：刷新令牌（如支持）
+- `scope`：实际授予的权限范围
 
-**端点：** `/api/oauth/user`
+**注意：**
+
+- refresh token 有效期通常为 30 天，access token 有效期为 1 小时
+- 使用 refresh token 获取新 access token 时，旧的 access token 会被撤销
+- scope 参数如不传递，则默认与原授权一致，如传递则必须为原授权 scope 的子集
+
+### 3. 撤销令牌
+
+**端点：** `/oauth/revoke`
+
+**方法：** POST
+
+**参数：**
+
+- `token`: 需要撤销的 access token 或 refresh token
+- `token_type_hint`: （可选）`access_token` 或 `refresh_token`
+- `client_id`: 客户端 ID
+- `client_secret`: 客户端密钥（如为 confidential client 必需）
+
+**请求示例（application/x-www-form-urlencoded）：**
+
+```
+token=rt_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&token_type_hint=refresh_token&client_id=your_client_id&client_secret=your_client_secret
+```
+
+**响应：**
+
+- 成功时返回 HTTP 200，无内容
+- 参数错误时返回 JSON 错误信息
+
+**注意：**
+
+- 撤销 refresh token 会同时撤销对应的 access token
+- 撤销 access token 也会撤销其关联的 refresh token
+- 若 token 不存在，依然返回 200（符合 RFC 7009）
+
+### 4. 获取用户信息
+
+**端点：** `/api/user/profile`
 
 **方法：** GET
 
@@ -129,20 +179,29 @@ pnpm turbo
   "id": "user_id",
   "email": "user@example.com",
   "username": "username",
-  "admin": false,
   "avatar_url": "https://example.com/avatar.jpg",
   "name": "User Name"
 }
 ```
 
-### 使用流程
+## Scope 权限说明
 
-1. 将用户重定向到授权页面（`/oauth/authorize`）。
-2. 用户授权后，您的应用将收到一个授权码。
-3. 使用授权码请求访问令牌（`/api/oauth/access_token`）。
-4. 使用访问令牌获取用户信息（`/api/oauth/user`）。
+- **格式：** scope 参数为以空格分隔的字符串，例如：`read:user`
+- **支持的 scope：**
+  - `read:user`：读取用户基本信息
+- **校验规则：**
+  - 仅允许已注册的 scope，非法 scope 会返回错误
+  - scope token 仅允许字母、数字、下划线、短横线
+  - 若 scope 为空，则使用默认权限
 
-注意：确保在生产环境中使用 HTTPS 来保护所有的 OAuth 请求和响应。
+## 使用流程
+
+1. 将用户重定向到授权页面（`/oauth/authorize`）
+2. 用户授权后，您的应用将收到一个授权码
+3. 使用授权码请求访问令牌（`/oauth/token`）
+4. 使用访问令牌获取用户信息（`/api/user/profile`）
+
+**注意：** 确保在生产环境中使用 HTTPS 来保护所有的 OAuth 请求和响应。
 
 ## 贡献
 

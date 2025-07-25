@@ -39,6 +39,7 @@ const formSchema = z.object({
   home: z.string().url({ message: "请输入有效的网站 URL" }),
   logoUri: z
     .string()
+    .optional()
     .refine((val) => !val || z.string().url().safeParse(val).success, {
       message: "请输入有效的 Logo URL",
     }),
@@ -75,7 +76,7 @@ export function ApplicationsActionDialog({
       ? {
           name: currentApplication.name,
           home: currentApplication.home,
-          logoUri: currentApplication.logoUri,
+          logoUri: currentApplication.logoUri || "",
           description: currentApplication.description || "",
           redirectUris: currentApplication.redirectUris.map((uri) => ({
             url: uri,
@@ -85,10 +86,9 @@ export function ApplicationsActionDialog({
       : {
           name: "",
           home: "",
-          logoUri: "",
           description: "",
           redirectUris: [{ url: "" }],
-          scopes: "read",
+          scopes: "read:user",
         },
   });
 
@@ -257,7 +257,7 @@ export function ApplicationsActionDialog({
                 render={({ field }) => (
                   <FormItem className="grid grid-cols-6 items-start space-y-0 gap-x-4 gap-y-1">
                     <FormLabel className="col-span-2 pt-2 text-right">
-                      Logo URL <span className="text-red-500">*</span>
+                      Logo URL
                     </FormLabel>
                     <FormControl>
                       <Input
