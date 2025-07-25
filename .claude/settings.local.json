@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm build:*)",
+      "Bash(npm run lint)",
+      "Bash(rm:*)"
+    ],
+    "deny": []
+  }
+}

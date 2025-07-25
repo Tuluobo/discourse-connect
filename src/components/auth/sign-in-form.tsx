@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2, MessageCircleCode } from "lucide-react";
 import { toast } from "sonner";
 
@@ -18,10 +18,29 @@ export function SignInForm({
 }: React.HTMLAttributes<HTMLDivElement>) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const signIn = () => {
     React.startTransition(async () => {
-      const response = await fetch("/api/auth/discourse", { method: "POST" });
+      // 检查是否有 OAuth 参数
+      const oauthParams = searchParams.get("oauth_params");
+
+      const requestBody: Record<string, string> = {};
+      if (oauthParams) {
+        requestBody.oauth_params = oauthParams;
+      }
+
+      const response = await fetch("/api/auth/discourse", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body:
+          Object.keys(requestBody).length > 0
+            ? JSON.stringify(requestBody)
+            : undefined,
+      });
+
       if (!response.ok || response.status !== 200) {
         setIsLoading(false);
         toast.error("内部服务异常", {
