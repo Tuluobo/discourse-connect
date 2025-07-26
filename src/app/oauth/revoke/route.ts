@@ -46,14 +46,13 @@ export async function POST(request: NextRequest) {
 
       revokeRequest = {
         token: body.get("token") as string,
-        token_type_hint: (body.get("token_type_hint") as string) || undefined,
+        token_type_hint: body.get("token_type_hint") as string,
         // Client credentials from Basic Auth take precedence
         client_id:
           clientCredentials.client_id || (body.get("client_id") as string),
         client_secret:
           clientCredentials.client_secret ||
-          (body.get("client_secret") as string) ||
-          undefined,
+          (body.get("client_secret") as string),
       };
     } else if (contentType.includes("application/json")) {
       logger.debug("Parsing revoke request as JSON");
@@ -73,13 +72,12 @@ export async function POST(request: NextRequest) {
 
       revokeRequest = {
         token: body.get("token") as string,
-        token_type_hint: (body.get("token_type_hint") as string) || undefined,
+        token_type_hint: body.get("token_type_hint") as string,
         client_id:
           clientCredentials.client_id || (body.get("client_id") as string),
         client_secret:
           clientCredentials.client_secret ||
-          (body.get("client_secret") as string) ||
-          undefined,
+          (body.get("client_secret") as string),
       };
     }
 

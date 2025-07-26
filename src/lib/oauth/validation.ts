@@ -2,10 +2,11 @@ import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma";
 
 import {
+  CodeChallengeMethod,
   OAUTH_ERRORS,
   OAuthAuthorizationRequest,
   OAuthError,
-  SUPPORTED_SCOPES,
+  SCOPE_VALUES,
   SupportedScope,
 } from "./types";
 
@@ -22,7 +23,9 @@ export async function validateAuthorizationRequest(
   const scope = params.get("scope");
   const state = params.get("state");
   const code_challenge = params.get("code_challenge");
-  const code_challenge_method = params.get("code_challenge_method");
+  const code_challenge_method = params.get(
+    "code_challenge_method",
+  ) as CodeChallengeMethod;
 
   // Validate required parameters
   if (!response_type) {
@@ -151,7 +154,7 @@ export async function validateAuthorizationRequest(
   if (scope) {
     const requestedScopes = scope.split(" ");
     const invalidScopes = requestedScopes.filter(
-      (s) => !SUPPORTED_SCOPES.includes(s as SupportedScope),
+      (s) => !SCOPE_VALUES.includes(s as SupportedScope),
     );
 
     if (invalidScopes.length > 0) {

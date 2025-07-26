@@ -2,28 +2,20 @@ import { User } from "@prisma/client";
 
 import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma";
+import { Result } from "./types";
 
 export interface UserInfoResponse {
   id: string;
-  name?: string | null;
-  preferred_username?: string | null;
-  email?: string;
-  email_verified?: boolean;
-  picture?: string;
-  // Additional standard claims
-  profile?: string;
-  website?: string;
-  updated_at?: number;
+  username: string;
+  email: string;
+  name: string | null;
+  picture: string | null;
+  groups: string[]
 }
 
-export interface TokenValidationResult {
-  valid: boolean;
-  userId?: string;
-  scopes?: string[];
-  error?: {
-    error: string;
-    error_description?: string;
-  };
+export interface TokenValidationPayload {
+  userId: string;
+  scopes: string[];
 }
 
 export const USERINFO_ERRORS = {
@@ -34,13 +26,12 @@ export const USERINFO_ERRORS = {
 
 export async function validateBearerToken(
   authHeader: string | null,
-): Promise<TokenValidationResult> {
+): Promise<Result<TokenValidationPayload>> {
   logger.debug("Starting userinfo token validation");
 
   if (!authHeader) {
     logger.warn("No Authorization header provided");
     return {
-      valid: false,
       error: {
         error: USERINFO_ERRORS.INVALID_REQUEST,
         error_description: "Missing Authorization header",
@@ -52,7 +43,6 @@ export async function validateBearerToken(
   if (!authHeader.startsWith("Bearer ")) {
     logger.warn("Invalid Authorization header format");
     return {
-      valid: false,
       error: {
         error: USERINFO_ERRORS.INVALID_REQUEST,
         error_description:

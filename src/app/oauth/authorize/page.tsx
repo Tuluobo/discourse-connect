@@ -2,10 +2,11 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 
 import { createAuthorizationCode } from "@/lib/oauth/code";
-import { SUPPORTED_SCOPES, SupportedScope } from "@/lib/oauth/types";
+import { SCOPE_VALUES, SupportedScope } from "@/lib/oauth/types";
 import { validateAuthorizationRequest } from "@/lib/oauth/validation";
 import { prisma } from "@/lib/prisma";
 import { AuthorizeForm } from "@/components/oauth/authorize-form";
+import { logger } from "@/lib/logger";
 
 interface AuthorizePageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -92,8 +93,9 @@ export default async function AuthorizePage({
 
   // Parse requested scopes, default to 'read' if none specified
   const requestedScopes = request.scope ? request.scope.split(" ") : ["read"];
+  logger.debug(`requestedScopes: ${requestedScopes}`)
   const validScopes = requestedScopes.filter((scope: string) =>
-    SUPPORTED_SCOPES.includes(scope as SupportedScope),
+    SCOPE_VALUES.includes(scope as SupportedScope),
   );
 
   const handleAuthorize = async () => {

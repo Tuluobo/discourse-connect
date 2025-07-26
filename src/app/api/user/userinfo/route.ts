@@ -8,13 +8,14 @@ import {
   validateBearerToken,
 } from "@/lib/oauth/userinfo";
 import { prisma } from "@/lib/prisma";
+import { SCOPE_VALUES } from "@/lib/oauth/types";
 
 export async function GET(request: NextRequest) {
-  try {
-    logger.debug("Userinfo endpoint request started", {
-      url: request.url,
-    });
+  logger.debug("Userinfo endpoint request started", {
+    url: request.url,
+  });
 
+  try {
     // Validate Bearer token
     const authHeader = request.headers.get("authorization");
     const tokenValidation = await validateBearerToken(authHeader);
@@ -38,10 +39,7 @@ export async function GET(request: NextRequest) {
 
     const { userId, scopes } = tokenValidation;
 
-    // Check if token has required scopes for userinfo
-    // At minimum, need 'openid', 'profile', 'email', or 'read' scope
-    const validScopes = ["openid", "profile", "email", "read"];
-    if (!checkScopeAccess(scopes!, validScopes)) {
+    if (!checkScopeAccess(scopes!, SCOPE_VALUES)) {
       logger.warn("Insufficient scope for userinfo access", { scopes });
       return Response.json(
         {

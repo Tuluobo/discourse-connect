@@ -9,6 +9,7 @@ import {
   validateAuthorizationCodeGrant,
   validateRefreshTokenGrant,
 } from "@/lib/oauth/token";
+import { GrantType } from "@/lib/oauth/types";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
@@ -42,19 +43,18 @@ export async function POST(request: NextRequest) {
       const body = await request.formData();
 
       tokenRequest = {
-        grant_type: body.get("grant_type") as string,
-        code: (body.get("code") as string) || undefined,
-        redirect_uri: (body.get("redirect_uri") as string) || undefined,
+        grant_type: body.get("grant_type") as GrantType,
+        code: body.get("code") as string,
+        redirect_uri: body.get("redirect_uri") as string,
         // Client credentials from Basic Auth take precedence over form data
         client_id:
           clientCredentials.client_id || (body.get("client_id") as string),
         client_secret:
           clientCredentials.client_secret ||
-          (body.get("client_secret") as string) ||
-          undefined,
-        code_verifier: (body.get("code_verifier") as string) || undefined,
-        refresh_token: (body.get("refresh_token") as string) || undefined,
-        scope: (body.get("scope") as string) || undefined,
+          (body.get("client_secret") as string),
+        code_verifier: body.get("code_verifier") as string,
+        refresh_token: body.get("refresh_token") as string,
+        scope: body.get("scope") as string,
       };
     } else if (contentType.includes("application/json")) {
       logger.debug("Parsing as JSON");
@@ -79,19 +79,18 @@ export async function POST(request: NextRequest) {
       const body = await request.formData();
 
       tokenRequest = {
-        grant_type: body.get("grant_type") as string,
-        code: (body.get("code") as string) || undefined,
-        redirect_uri: (body.get("redirect_uri") as string) || undefined,
+        grant_type: body.get("grant_type") as GrantType,
+        code: body.get("code") as string,
+        redirect_uri: body.get("redirect_uri") as string,
         // Client credentials from Basic Auth take precedence over form data
         client_id:
           clientCredentials.client_id || (body.get("client_id") as string),
         client_secret:
           clientCredentials.client_secret ||
-          (body.get("client_secret") as string) ||
-          undefined,
-        code_verifier: (body.get("code_verifier") as string) || undefined,
-        refresh_token: (body.get("refresh_token") as string) || undefined,
-        scope: (body.get("scope") as string) || undefined,
+          (body.get("client_secret") as string),
+        code_verifier: body.get("code_verifier") as string,
+        refresh_token: body.get("refresh_token") as string,
+        scope: body.get("scope") as string,
       };
     }
 
@@ -119,12 +118,25 @@ export async function POST(request: NextRequest) {
       case "authorization_code": {
         logger.debug("Processing authorization_code grant");
         const validation = await validateAuthorizationCodeGrant(tokenRequest);
+        logger.debug(`validation: ${JSON.stringify(validation)}`)
 
         if (!validation.valid) {
           logger.warn("Authorization code validation failed", validation.error);
           const statusCode =
-            validation.error.error === TOKEN_ERRORS.INVALID_CLIENT ? 401 : 400;
+            validation.error?.error === TOKEN_ERRORS.INVALID_CLIENT ? 401 : 400;
           return Response.json(validation.error, { status: statusCode });
+        }
+
+        // Type guard to ensure required fields are present
+        if (!validation.userId || !validation.applicationId) {
+          logger.error("Validation succeeded but missing required fields");
+          return Response.json(
+            {
+              error: TOKEN_ERRORS.SERVER_ERROR,
+              error_description: "Internal server error",
+            },
+            { status: 500 },
+          );
         }
 
         // Get or create authorization record
@@ -149,7 +161,7 @@ export async function POST(request: NextRequest) {
           validation.userId,
           validation.applicationId,
           authorization.id,
-          validation.scopes,
+          validation.scopes || ["read"],
         );
 
         logger.info("Access token created successfully");
@@ -163,8 +175,24 @@ export async function POST(request: NextRequest) {
         if (!validation.valid) {
           logger.warn("Refresh token validation failed", validation.error);
           const statusCode =
-            validation.error.error === TOKEN_ERRORS.INVALID_CLIENT ? 401 : 400;
+            validation.error?.error === TOKEN_ERRORS.INVALID_CLIENT ? 401 : 400;
           return Response.json(validation.error, { status: statusCode });
+        }
+
+        // Type guard to ensure required fields are present
+        if (
+          !validation.userId ||
+          !validation.applicationId ||
+          !validation.authorizationId
+        ) {
+          logger.error("Validation succeeded but missing required fields");
+          return Response.json(
+            {
+              error: TOKEN_ERRORS.SERVER_ERROR,
+              error_description: "Internal server error",
+            },
+            { status: 500 },
+          );
         }
 
         // Revoke the old access token
@@ -179,7 +207,7 @@ export async function POST(request: NextRequest) {
           validation.userId,
           validation.applicationId,
           validation.authorizationId,
-          validation.scopes,
+          validation.scopes || ["read"],
         );
 
         logger.info("Refresh token processed successfully");

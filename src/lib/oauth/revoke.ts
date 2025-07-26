@@ -3,14 +3,14 @@ import { prisma } from "@/lib/prisma";
 
 export interface RevokeRequest {
   token: string;
-  token_type_hint?: string;
+  token_type_hint?: string | null;
   client_id: string;
-  client_secret?: string;
+  client_secret?: string | null;
 }
 
 export interface RevokeError {
   error: string;
-  error_description?: string;
+  error_description?: string | null;
 }
 
 export const REVOKE_ERRORS = {
@@ -22,9 +22,9 @@ export const REVOKE_ERRORS = {
 
 export async function validateRevokeRequest(
   token: string,
-  tokenTypeHint: string | undefined,
+  tokenTypeHint: string | undefined | null,
   clientId: string,
-  clientSecret: string | undefined,
+  clientSecret: string | undefined | null,
 ): Promise<{ valid: true } | { valid: false; error: RevokeError }> {
   logger.debug("Starting token revocation validation", {
     tokenTypeHint,
@@ -73,9 +73,9 @@ export async function validateRevokeRequest(
 
 export async function revokeToken(
   token: string,
-  tokenTypeHint: string | undefined,
+  tokenTypeHint: string | undefined | null,
   clientId: string,
-  clientSecret: string | undefined,
+  clientSecret: string | undefined | null,
 ): Promise<{ success: true } | { success: false; error: RevokeError }> {
   logger.debug("Starting token revocation process");
 
