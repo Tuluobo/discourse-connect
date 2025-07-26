@@ -177,3 +177,58 @@ export const findAuthorizationsByApplication = async (
     return [];
   }
 };
+
+export const getUserAuthorizationCount = async (
+  userId: string,
+): Promise<number> => {
+  try {
+    const count = await prisma.authorization.count({
+      where: {
+        userId,
+        deletedAt: null,
+      },
+    });
+    return count;
+  } catch (error) {
+    logger.error("getUserAuthorizationCount error", error);
+    return 0;
+  }
+};
+
+export const getApplicationAuthorizationStats = async (
+  applicationIds: string[],
+): Promise<Array<{ applicationId: string; count: number; name: string }>> => {
+  try {
+    if (applicationIds.length === 0) return [];
+
+    const stats = await prisma.authorization.groupBy({
+      by: ["applicationId"],
+      where: {
+        applicationId: { in: applicationIds },
+        deletedAt: null,
+      },
+      _count: {
+        id: true,
+      },
+    });
+
+    // Get application names
+    const applications = await prisma.application.findMany({
+      where: { id: { in: applicationIds } },
+      select: { id: true, name: true },
+    });
+
+    const applicationMap = new Map(
+      applications.map((app) => [app.id, app.name]),
+    );
+
+    return stats.map((stat) => ({
+      applicationId: stat.applicationId,
+      count: stat._count.id,
+      name: applicationMap.get(stat.applicationId) || "Unknown App",
+    }));
+  } catch (error) {
+    logger.error("getApplicationAuthorizationStats error", error);
+    return [];
+  }
+};

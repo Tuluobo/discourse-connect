@@ -14,6 +14,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+
 interface AuthorizeFormProps {
   application: Application;
   scopes: string[];
@@ -53,13 +55,12 @@ export function AuthorizeForm({
         <CardHeader className="text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-gray-200">
             {application.logoUri ? (
-              <Image
-                className="rounded-lg object-cover"
-                src={application.logoUri}
-                alt={application.name}
-                width={48}
-                height={48}
-              />
+              <Avatar className="h-12 w-12 rounded-lg">
+                <AvatarImage src={application.logoUri} alt={application.name} />
+                <AvatarFallback className="rounded-lg">
+                  {application.name.charAt(0).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
             ) : (
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-500 font-semibold text-white">
                 {application.name.charAt(0).toUpperCase()}

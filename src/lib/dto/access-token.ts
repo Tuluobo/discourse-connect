@@ -183,3 +183,23 @@ export const cleanupExpiredTokens = async (): Promise<number> => {
     return 0;
   }
 };
+
+export const getUserActiveTokenCount = async (
+  userId: string,
+): Promise<number> => {
+  try {
+    const count = await prisma.accessToken.count({
+      where: {
+        userId,
+        isRevoked: false,
+        expiresAt: {
+          gt: new Date(),
+        },
+      },
+    });
+    return count;
+  } catch (error) {
+    logger.error("getUserActiveTokenCount error", error);
+    return 0;
+  }
+};
