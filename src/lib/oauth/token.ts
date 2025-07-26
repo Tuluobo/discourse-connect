@@ -3,38 +3,32 @@ import { randomBytes } from "crypto";
 import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma";
 
-export interface TokenRequest {
-  grant_type: string;
-  code?: string;
-  redirect_uri?: string;
-  client_id: string;
-  client_secret?: string;
-  code_verifier?: string;
-  refresh_token?: string;
-  scope?: string;
-}
+import {
+  OAUTH_ERRORS,
+  SCOPE_VALUES,
+  TOKEN_TYPES,
+  type TokenRequest,
+  type TokenResponse,
+  type TokenValidationResult,
+} from "./types";
+import {
+  validateAuthorizationCode,
+  validateClientId,
+  validateClientSecret,
+  validateCodeVerifier,
+  validateGrantType,
+  validateRedirectUri,
+  validateRefreshToken,
+  validateScope,
+} from "./validation-utils";
 
-export interface TokenResponse {
-  access_token: string;
-  token_type: "bearer";
-  expires_in: number;
-  refresh_token?: string;
-  scope?: string;
-}
-
-export interface TokenError {
-  error: string;
-  error_description?: string;
-}
-
-export const TOKEN_ERRORS = {
-  INVALID_REQUEST: "invalid_request",
-  INVALID_CLIENT: "invalid_client",
-  INVALID_GRANT: "invalid_grant",
-  UNAUTHORIZED_CLIENT: "unauthorized_client",
-  UNSUPPORTED_GRANT_TYPE: "unsupported_grant_type",
-  INVALID_SCOPE: "invalid_scope",
-} as const;
+// Re-export types for backwards compatibility
+export type {
+  TokenRequest,
+  TokenResponse,
+  OAuthError as TokenError,
+} from "./types";
+export { OAUTH_ERRORS as TOKEN_ERRORS } from "./types";
 
 export function generateAccessToken(): string {
   return randomBytes(32).toString("base64url");
@@ -46,40 +40,49 @@ export function generateRefreshToken(): string {
 
 export async function validateAuthorizationCodeGrant(
   request: TokenRequest,
-): Promise<
-  | { valid: true; userId: string; applicationId: string; scopes: string[] }
-  | { valid: false; error: TokenError }
-> {
-  const { code, redirect_uri, client_id, client_secret, code_verifier } =
-    request;
-
+): Promise<TokenValidationResult> {
   logger.debug("Validating authorization code grant", {
-    has_code_verifier: !!code_verifier,
+    grant_type: request.grant_type,
+    client_id: request.client_id,
+    has_code: !!request.code,
+    has_code_verifier: !!request.code_verifier,
   });
 
-  if (!code) {
-    return {
-      valid: false,
-      error: {
-        error: TOKEN_ERRORS.INVALID_REQUEST,
-        error_description: "Missing authorization code",
-      },
-    };
+  // Validate grant_type
+  const grantTypeResult = validateGrantType(request.grant_type);
+  if (!grantTypeResult.valid) {
+    return { valid: false, error: grantTypeResult.error };
   }
 
-  if (!redirect_uri) {
-    return {
-      valid: false,
-      error: {
-        error: TOKEN_ERRORS.INVALID_REQUEST,
-        error_description: "Missing redirect_uri",
-      },
-    };
+  // Validate client_id
+  const clientIdResult = validateClientId(request.client_id);
+  if (!clientIdResult.valid) {
+    return { valid: false, error: clientIdResult.error };
+  }
+
+  // Validate authorization code
+  const codeResult = validateAuthorizationCode(request.code || "");
+  if (!codeResult.valid) {
+    return { valid: false, error: codeResult.error };
+  }
+
+  // Validate redirect_uri
+  const redirectUriResult = validateRedirectUri(request.redirect_uri || "");
+  if (!redirectUriResult.valid) {
+    return { valid: false, error: redirectUriResult.error };
+  }
+
+  // Validate client_secret if provided
+  if (request.client_secret) {
+    const clientSecretResult = validateClientSecret(request.client_secret);
+    if (!clientSecretResult.valid) {
+      return { valid: false, error: clientSecretResult.error };
+    }
   }
 
   // Find and validate the authorization code
   const codeRecord = await prisma.code.findUnique({
-    where: { code },
+    where: { code: codeResult.data },
     include: {
       application: true,
       user: true,
@@ -90,7 +93,7 @@ export async function validateAuthorizationCodeGrant(
     return {
       valid: false,
       error: {
-        error: TOKEN_ERRORS.INVALID_GRANT,
+        error: OAUTH_ERRORS.INVALID_GRANT,
         error_description: "Invalid authorization code",
       },
     };
@@ -103,22 +106,22 @@ export async function validateAuthorizationCodeGrant(
 
   // Check if code has expired
   if (codeRecord.expiresAt < new Date()) {
-    await prisma.code.delete({ where: { code } });
+    await prisma.code.delete({ where: { code: codeResult.data } });
     return {
       valid: false,
       error: {
-        error: TOKEN_ERRORS.INVALID_GRANT,
+        error: OAUTH_ERRORS.INVALID_GRANT,
         error_description: "Authorization code expired",
       },
     };
   }
 
-  // Validate client_id
-  if (codeRecord.application.clientId !== client_id) {
+  // Verify client_id matches
+  if (codeRecord.application.clientId !== clientIdResult.data) {
     return {
       valid: false,
       error: {
-        error: TOKEN_ERRORS.INVALID_CLIENT,
+        error: OAUTH_ERRORS.INVALID_CLIENT,
         error_description: "Invalid client_id",
       },
     };
@@ -128,20 +131,17 @@ export async function validateAuthorizationCodeGrant(
   if (codeRecord.codeChallenge) {
     logger.debug("PKCE validation required");
 
-    // If code_challenge was provided in auth request, code_verifier is required
-    if (!code_verifier) {
-      return {
-        valid: false,
-        error: {
-          error: TOKEN_ERRORS.INVALID_REQUEST,
-          error_description: "Missing code_verifier for PKCE",
-        },
-      };
+    // Validate code_verifier
+    const codeVerifierResult = validateCodeVerifier(
+      request.code_verifier || "",
+    );
+    if (!codeVerifierResult.valid) {
+      return { valid: false, error: codeVerifierResult.error };
     }
 
     // Validate code_verifier against code_challenge
-    const isValidPKCE = await validateCodeVerifier(
-      code_verifier,
+    const isValidPKCE = await validateCodeVerifierAgainstChallenge(
+      codeVerifierResult.data!,
       codeRecord.codeChallenge,
       codeRecord.codeChallengeMethod || "S256",
     );
@@ -150,42 +150,41 @@ export async function validateAuthorizationCodeGrant(
       return {
         valid: false,
         error: {
-          error: TOKEN_ERRORS.INVALID_GRANT,
+          error: OAUTH_ERRORS.INVALID_GRANT,
           error_description: "Invalid code_verifier",
         },
       };
     }
 
     logger.debug("PKCE validation successful");
-  } else if (code_verifier) {
+  } else if (request.code_verifier) {
     // Code verifier provided but no challenge was stored - this is suspicious
     return {
       valid: false,
       error: {
-        error: TOKEN_ERRORS.INVALID_REQUEST,
+        error: OAUTH_ERRORS.INVALID_REQUEST,
         error_description: "Unexpected code_verifier",
       },
     };
   }
 
   // For confidential clients (those with client_secret), validate it
-  // Note: PKCE can be used by both public and confidential clients
   if (codeRecord.application.clientSecret) {
-    if (!client_secret) {
+    if (!request.client_secret) {
       return {
         valid: false,
         error: {
-          error: TOKEN_ERRORS.INVALID_CLIENT,
+          error: OAUTH_ERRORS.INVALID_CLIENT,
           error_description: "Missing client_secret for confidential client",
         },
       };
     }
 
-    if (codeRecord.application.clientSecret !== client_secret) {
+    if (codeRecord.application.clientSecret !== request.client_secret) {
       return {
         valid: false,
         error: {
-          error: TOKEN_ERRORS.INVALID_CLIENT,
+          error: OAUTH_ERRORS.INVALID_CLIENT,
           error_description: "Invalid client_secret",
         },
       };
@@ -193,21 +192,21 @@ export async function validateAuthorizationCodeGrant(
   }
 
   // Validate redirect_uri matches the one used in authorization request
-  if (!codeRecord.application.redirectUris.includes(redirect_uri)) {
+  if (!codeRecord.application.redirectUris.includes(redirectUriResult.data!)) {
     return {
       valid: false,
       error: {
-        error: TOKEN_ERRORS.INVALID_GRANT,
+        error: OAUTH_ERRORS.INVALID_GRANT,
         error_description: "Invalid redirect_uri",
       },
     };
   }
 
   // Delete the code after successful validation (one-time use)
-  await prisma.code.delete({ where: { code } });
+  await prisma.code.delete({ where: { code: codeResult.data } });
 
   // Default scopes for backward compatibility
-  const scopes = ["read"];
+  const scopes = ["read", "email"]; // Use 'read' as default
 
   return {
     valid: true,
@@ -218,7 +217,7 @@ export async function validateAuthorizationCodeGrant(
 }
 
 // RFC 7636: Code verifier validation function
-async function validateCodeVerifier(
+async function validateCodeVerifierAgainstChallenge(
   codeVerifier: string,
   codeChallenge: string,
   codeChallengeMethod: string,
@@ -229,21 +228,6 @@ async function validateCodeVerifier(
       verifier_length: codeVerifier.length,
     });
 
-    // RFC 7636: code_verifier must be between 43 and 128 characters
-    if (codeVerifier.length < 43 || codeVerifier.length > 128) {
-      logger.warn("Invalid code_verifier length", {
-        length: codeVerifier.length,
-      });
-      return false;
-    }
-
-    // RFC 7636: code_verifier must match [A-Z] / [a-z] / [0-9] / "-" / "." / "_" / "~"
-    const codeVerifierRegex = /^[A-Za-z0-9\-._~]+$/;
-    if (!codeVerifierRegex.test(codeVerifier)) {
-      logger.warn("Invalid code_verifier format");
-      return false;
-    }
-
     let computedChallenge: string;
 
     if (codeChallengeMethod === "S256") {
@@ -251,9 +235,6 @@ async function validateCodeVerifier(
       const crypto = await import("crypto");
       const hash = crypto.createHash("sha256").update(codeVerifier).digest();
       computedChallenge = hash.toString("base64url");
-    } else if (codeChallengeMethod === "plain") {
-      // Plain text (not recommended but allowed by spec)
-      computedChallenge = codeVerifier;
     } else {
       logger.warn("Unsupported code_challenge_method", { codeChallengeMethod });
       return false;
@@ -269,31 +250,44 @@ async function validateCodeVerifier(
   }
 }
 
-export async function validateRefreshTokenGrant(request: TokenRequest): Promise<
-  | {
-      valid: true;
-      userId: string;
-      applicationId: string;
-      authorizationId: string;
-      scopes: string[];
-    }
-  | { valid: false; error: TokenError }
-> {
-  const { refresh_token, client_id, client_secret, scope } = request;
+export async function validateRefreshTokenGrant(
+  request: TokenRequest,
+): Promise<TokenValidationResult> {
+  logger.debug("Validating refresh token grant", {
+    client_id: request.client_id,
+    has_refresh_token: !!request.refresh_token,
+    has_scope: !!request.scope,
+  });
 
-  if (!refresh_token) {
-    return {
-      valid: false,
-      error: {
-        error: TOKEN_ERRORS.INVALID_REQUEST,
-        error_description: "Missing refresh_token",
-      },
-    };
+  // Validate grant_type
+  const grantTypeResult = validateGrantType(request.grant_type);
+  if (!grantTypeResult.valid) {
+    return { valid: false, error: grantTypeResult.error };
+  }
+
+  // Validate client_id
+  const clientIdResult = validateClientId(request.client_id);
+  if (!clientIdResult.valid) {
+    return { valid: false, error: clientIdResult.error };
+  }
+
+  // Validate refresh_token
+  const refreshTokenResult = validateRefreshToken(request.refresh_token || "");
+  if (!refreshTokenResult.valid) {
+    return { valid: false, error: refreshTokenResult.error };
+  }
+
+  // Validate client_secret if provided
+  if (request.client_secret) {
+    const clientSecretResult = validateClientSecret(request.client_secret);
+    if (!clientSecretResult.valid) {
+      return { valid: false, error: clientSecretResult.error };
+    }
   }
 
   // Find the refresh token
   const tokenRecord = await prisma.accessToken.findUnique({
-    where: { refreshToken: refresh_token },
+    where: { refreshToken: refreshTokenResult.data },
     include: {
       application: true,
       user: true,
@@ -305,7 +299,7 @@ export async function validateRefreshTokenGrant(request: TokenRequest): Promise<
     return {
       valid: false,
       error: {
-        error: TOKEN_ERRORS.INVALID_GRANT,
+        error: OAUTH_ERRORS.INVALID_GRANT,
         error_description: "Invalid refresh_token",
       },
     };
@@ -319,18 +313,18 @@ export async function validateRefreshTokenGrant(request: TokenRequest): Promise<
     return {
       valid: false,
       error: {
-        error: TOKEN_ERRORS.INVALID_GRANT,
+        error: OAUTH_ERRORS.INVALID_GRANT,
         error_description: "Refresh token expired",
       },
     };
   }
 
   // Validate client_id
-  if (tokenRecord.application.clientId !== client_id) {
+  if (tokenRecord.application.clientId !== clientIdResult.data) {
     return {
       valid: false,
       error: {
-        error: TOKEN_ERRORS.INVALID_CLIENT,
+        error: OAUTH_ERRORS.INVALID_CLIENT,
         error_description: "Invalid client_id",
       },
     };
@@ -339,12 +333,12 @@ export async function validateRefreshTokenGrant(request: TokenRequest): Promise<
   // Validate client_secret for confidential clients
   if (
     tokenRecord.application.clientSecret &&
-    tokenRecord.application.clientSecret !== client_secret
+    tokenRecord.application.clientSecret !== request.client_secret
   ) {
     return {
       valid: false,
       error: {
-        error: TOKEN_ERRORS.INVALID_CLIENT,
+        error: OAUTH_ERRORS.INVALID_CLIENT,
         error_description: "Invalid client_secret",
       },
     };
@@ -352,8 +346,13 @@ export async function validateRefreshTokenGrant(request: TokenRequest): Promise<
 
   // Validate scope (if provided, must be subset of original scopes)
   let validatedScopes = tokenRecord.scopes;
-  if (scope) {
-    const requestedScopes = scope.split(" ");
+  if (request.scope) {
+    const scopeResult = validateScope(request.scope);
+    if (!scopeResult.valid) {
+      return { valid: false, error: scopeResult.error };
+    }
+
+    const requestedScopes = scopeResult.data!;
     const invalidScopes = requestedScopes.filter(
       (s) => !tokenRecord.scopes.includes(s),
     );
@@ -362,7 +361,7 @@ export async function validateRefreshTokenGrant(request: TokenRequest): Promise<
       return {
         valid: false,
         error: {
-          error: TOKEN_ERRORS.INVALID_SCOPE,
+          error: OAUTH_ERRORS.INVALID_SCOPE,
           error_description: `Requested scopes exceed original grant: ${invalidScopes.join(", ")}`,
         },
       };
@@ -414,7 +413,7 @@ export async function createAccessToken(
 
   const response: TokenResponse = {
     access_token: accessToken,
-    token_type: "bearer",
+    token_type: TOKEN_TYPES.BEARER,
     expires_in: expiresIn,
   };
 
