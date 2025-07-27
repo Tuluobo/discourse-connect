@@ -18,13 +18,13 @@ services:
 
   db:
     image: postgres:15-alpine
+    restart: always
     environment:
       POSTGRES_DB: discourse_connect
       POSTGRES_USER: discourse_connect
       POSTGRES_PASSWORD: discourse_connect
     volumes:
       - discourse-connect-db-data:/var/lib/postgresql/data
-    restart: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s

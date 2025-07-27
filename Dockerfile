@@ -1,9 +1,18 @@
-FROM node:18-alpine AS base
+# Use multi-arch base image
+FROM node:20-slim AS base
+
+# Accept build arguments for metadata
+ARG BUILDTIME
+ARG VERSION
+ARG REVISION
+
+# Set build-time labels
+LABEL org.opencontainers.image.created=${BUILDTIME}
+LABEL org.opencontainers.image.version=${VERSION}
+LABEL org.opencontainers.image.revision=${REVISION}
 
 # Install dependencies only when needed
 FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY prisma package.json pnpm-lock.yaml ./
 
@@ -20,10 +29,10 @@ COPY . .
 RUN corepack enable pnpm && pnpm build-docker
 
 # Production image, copy all the files and run next
-FROM base AS runner
+FROM node:20-alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -47,8 +56,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-ENV HOSTNAME 0.0.0.0
-ENV PORT 3000
+ENV HOSTNAME≈0.0.0.0
+ENV PORT=3000
 
 EXPOSE $PORT
 
