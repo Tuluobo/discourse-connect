@@ -4,6 +4,9 @@ import { getCurrentUser } from "@/actions/user";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ProfileView } from "@/components/profile/profile-view";
 
+// Force dynamic rendering to avoid static generation issues with auth
+export const dynamic = "force-dynamic";
+
 function ProfileSkeleton() {
   return (
     <div className="space-y-6">

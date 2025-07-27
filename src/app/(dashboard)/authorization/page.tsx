@@ -4,6 +4,9 @@ import { getUserAuthorizations } from "@/actions/authorization";
 import { Skeleton } from "@/components/ui/skeleton";
 import { AuthorizationView } from "@/components/authorization/authorization-view";
 
+// Force dynamic rendering to avoid static generation issues with auth
+export const dynamic = "force-dynamic";
+
 function AuthorizationSkeleton() {
   return (
     <div className="space-y-6">

@@ -73,7 +73,7 @@ pnpm turbo
 
 ### 1. 授权请求
 
-**端点：** `/oauth/authorize`
+**端点：** `/oauth2/authorize`
 
 **方法：** GET
 
@@ -87,12 +87,12 @@ pnpm turbo
 **示例：**
 
 ```
-/oauth/authorize?response_type=code&client_id=your_client_id&redirect_uri=https://your-app.com/callback&scope=read:user
+/oauth2/authorize?response_type=code&client_id=your_client_id&redirect_uri=https://your-app.com/callback&scope=read:user
 ```
 
 ### 2. 获取访问令牌
 
-**端点：** `/oauth/token`
+**端点：** `/oauth2/token`
 
 **方法：** POST
 
@@ -134,7 +134,7 @@ pnpm turbo
 
 ### 3. 撤销令牌
 
-**端点：** `/oauth/revoke`
+**端点：** `/oauth2/revoke`
 
 **方法：** POST
 
@@ -196,9 +196,9 @@ token=rt_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&token_type_hint=refresh_token&client_i
 
 ## 使用流程
 
-1. 将用户重定向到授权页面（`/oauth/authorize`）
+1. 将用户重定向到授权页面（`/oauth2/authorize`）
 2. 用户授权后，您的应用将收到一个授权码
-3. 使用授权码请求访问令牌（`/oauth/token`）
+3. 使用授权码请求访问令牌（`/oauth2/token`）
 4. 使用访问令牌获取用户信息（`/api/user/profile`）
 
 **注意：** 确保在生产环境中使用 HTTPS 来保护所有的 OAuth 请求和响应。

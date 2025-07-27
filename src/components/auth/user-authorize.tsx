@@ -31,6 +31,7 @@ export function UserAuthorize() {
       setError(error);
       setIsLoading(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

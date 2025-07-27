@@ -8,7 +8,6 @@ import {
   CrownIcon,
   MailIcon,
   ShieldIcon,
-  TagIcon,
   TrashIcon,
   UserIcon,
   UsersIcon,

@@ -7,6 +7,8 @@ import {
   findCodeByCode,
 } from "@/lib/dto/code";
 
+import { logger } from "../logger";
+
 export function generateAuthorizationCode(): string {
   return randomBytes(32).toString("base64url");
 }
@@ -63,6 +65,7 @@ export async function validateAuthorizationCode(
 
   // Note: PKCE validation will be handled in token endpoint
   // This simplified version focuses on basic code validation
+  logger.security(`codeVerifier: ${codeVerifier}`);
 
   // Delete the code after successful validation (one-time use)
   await deleteCode(code);

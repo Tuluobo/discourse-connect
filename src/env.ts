@@ -3,15 +3,15 @@ import { z } from "zod";
 
 export const env = createEnv({
   server: {
-    DATABASE_URL: z.string().url(),
+    DATABASE_URL: z.string().url().optional(),
     AUTH_TRUST_HOST: z.string().default("true"),
     NEXTAUTH_URL: z.string().url().optional(),
-    AUTH_SECRET: z.string().min(16),
-    DISCOURSE_HOST: z.string().min(1),
-    DISCOURSE_SECRET: z.string().min(1),
+    AUTH_SECRET: z.string().optional(),
+    DISCOURSE_HOST: z.string().optional(),
+    DISCOURSE_SECRET: z.string().optional(),
   },
   client: {
-    NEXT_PUBLIC_HOST_URL: z.string().min(1),
+    NEXT_PUBLIC_HOST_URL: z.string().optional(),
   },
   experimental__runtimeEnv: {
     NEXT_PUBLIC_HOST_URL: process.env.NEXT_PUBLIC_HOST_URL,
