@@ -1,4 +1,14 @@
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
+
+# Accept build arguments for metadata
+ARG BUILDTIME
+ARG VERSION
+ARG REVISION
+
+# Set build-time labels
+LABEL org.opencontainers.image.created=${BUILDTIME}
+LABEL org.opencontainers.image.version=${VERSION}
+LABEL org.opencontainers.image.revision=${REVISION}
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -23,7 +33,7 @@ RUN corepack enable pnpm && pnpm build-docker
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -31,7 +41,8 @@ RUN adduser --system --uid 1001 nextjs
 RUN set -x \
     && apk add --no-cache curl \
     && corepack enable pnpm \
-    && pnpm add prisma
+    && pnpm add prisma \
+    && chown -R nextjs:nodejs ./node_modules
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=builder /app/next.config.mjs .
@@ -47,8 +58,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-ENV HOSTNAME 0.0.0.0
-ENV PORT 3000
+ENV HOSTNAME=0.0.0.0
+ENV PORT=3000
 
 EXPOSE $PORT
 

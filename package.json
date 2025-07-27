@@ -1,7 +1,10 @@
 {
   "name": "discourse-connect",
   "version": "0.1.0",
-  "private": true,
+  "author": {
+    "name": "Tuluobo",
+    "url": "https://github.com/Tuluobo"
+  },
   "scripts": {
     "dev": "next dev",
     "turbo": "next dev --turbo",
