@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
 
             <p className="mb-4 leading-relaxed text-gray-700">
               <strong>数字牧民社区运营方</strong>
-              （"我们"、"运营方"、"数据控制者"）以个人实体身份在新加坡运营本服务，深知个人信息对您的重要性，并会尽力保护您的个人信息安全可靠。本隐私政策详细说明了我们在您使用数字牧民连接平台（"本服务"）时如何收集、使用、存储、共享和保护您的个人信息，以及您享有的权利。
+              （&ldquo;我们&rdquo;、&ldquo;运营方&rdquo;、&ldquo;数据控制者&rdquo;）以个人实体身份在新加坡运营本服务，深知个人信息对您的重要性，并会尽力保护您的个人信息安全可靠。本隐私政策详细说明了我们在您使用数字牧民连接平台（&ldquo;本服务&rdquo;）时如何收集、使用、存储、共享和保护您的个人信息，以及您享有的权利。
             </p>
             <div className="mb-4 rounded-r-lg border-l-4 border-amber-400 bg-amber-50 p-4">
               <h3 className="mb-2 font-bold text-amber-800">重要提示</h3>
@@ -154,7 +154,7 @@ export default function PrivacyPolicyPage() {
                         关联方（Affiliate）
                       </strong>
                       ：
-                      指控制、被控制或与某一方处于共同控制下的实体，其中"控制"是指拥有50%或以上的股份、股权或其他有权选举董事或其他管理权威的证券。
+                      指控制、被控制或与某一方处于共同控制下的实体，其中&ldquo;控制&rdquo;是指拥有50%或以上的股份、股权或其他有权选举董事或其他管理权威的证券。
                     </p>
                   </div>
 
@@ -164,7 +164,7 @@ export default function PrivacyPolicyPage() {
                         数据控制者（Data Controller）
                       </strong>
                       ：
-                      （在本协议中称为"我们"、"运营方"或"数据控制者"）指数字牧民社区运营方，以个人实体身份在新加坡运营。
+                      （在本协议中称为&ldquo;我们&rdquo;、&ldquo;运营方&rdquo;或&ldquo;数据控制者&rdquo;）指数字牧民社区运营方，以个人实体身份在新加坡运营。
                     </p>
                   </div>
 
@@ -467,7 +467,7 @@ export default function PrivacyPolicyPage() {
 
               <div className="mt-6 rounded-lg border border-orange-200 bg-white p-4">
                 <p className="mb-3 leading-relaxed text-orange-800">
-                  Cookie可以是"持久"或"会话"Cookie。持久Cookie在您离线时仍保留在您的个人计算机或移动设备上，而会话Cookie在您关闭网络浏览器后立即被删除。
+                  Cookie可以是&ldquo;持久&rdquo;或&ldquo;会话&rdquo;Cookie。持久Cookie在您离线时仍保留在您的个人计算机或移动设备上，而会话Cookie在您关闭网络浏览器后立即被删除。
                 </p>
                 <p className="mb-4 leading-relaxed text-orange-800">
                   我们出于以下目的使用会话和持久Cookie：

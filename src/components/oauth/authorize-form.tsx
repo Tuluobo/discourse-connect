@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { Application } from "@prisma/client";
 
 import { Badge } from "@/components/ui/badge";

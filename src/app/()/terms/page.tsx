@@ -20,7 +20,7 @@ export default function TermsPage() {
               <p className="text-sm text-blue-700">最后更新：2025年7月27日</p>
             </div>
             <p className="mb-4 leading-relaxed text-gray-700">
-              欢迎使用数字牧民连接平台（"服务"、"平台"）。本服务由数字牧民社区运营方（"我们"、"运营方"、"服务提供方"）以个人名义在新加坡运营，网址为{" "}
+              欢迎使用数字牧民连接平台（&ldquo;服务&rdquo;、&ldquo;平台&rdquo;）。本服务由数字牧民社区运营方（&ldquo;我们&rdquo;、&ldquo;运营方&rdquo;、&ldquo;服务提供方&rdquo;）以个人名义在新加坡运营，网址为{" "}
               <a
                 href="https://connect.shuzimumin.com"
                 className="text-blue-600 underline decoration-blue-300 transition-colors hover:text-blue-800 hover:decoration-blue-500"

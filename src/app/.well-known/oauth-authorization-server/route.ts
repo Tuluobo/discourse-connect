@@ -5,13 +5,13 @@ export async function GET() {
 
   const metadata = {
     issuer: baseUrl,
-    authorization_endpoint: `${baseUrl}/oauth/authorize`,
-    token_endpoint: `${baseUrl}/oauth/token`,
+    authorization_endpoint: `${baseUrl}/oauth2/authorize`,
+    token_endpoint: `${baseUrl}/oauth2/token`,
     scopes_supported: ["read:user"],
     response_types_supported: ["code"],
     token_endpoint_auth_methods_supported: ["client_secret_post"],
     grant_types_supported: ["authorization_code", "refresh_token"],
-    revocation_endpoint: `${baseUrl}/oauth/revoke`,
+    revocation_endpoint: `${baseUrl}/oauth2/revoke`,
     code_challenge_methods_supported: ["S256", "plain"],
   };
 
