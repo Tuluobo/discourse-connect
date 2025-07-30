@@ -27,13 +27,19 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+ENV NEXT_TELEMETRY_DISABLED=1
+
 RUN corepack enable pnpm && pnpm build-docker
 
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
 
+ARG NODE_OPTIONS
+
 ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_OPTIONS=$NODE_OPTIONS
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -41,13 +47,12 @@ RUN adduser --system --uid 1001 nextjs
 RUN set -x \
     && apk add --no-cache curl \
     && corepack enable pnpm \
-    && pnpm add prisma \
-    && chown -R nextjs:nodejs ./node_modules
+    && pnpm add prisma
 
-# You only need to copy next.config.js if you are NOT using the default configuration
-COPY --from=builder /app/next.config.mjs .
+# Permissions for prisma
+RUN chown -R nextjs:nodejs node_modules/.pnpm/
+
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/scripts ./scripts
 
@@ -58,9 +63,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
+EXPOSE 3000
+
 ENV HOSTNAME=0.0.0.0
 ENV PORT=3000
 
-EXPOSE $PORT
-
-CMD ["pnpm", "start-docker"]
+ENTRYPOINT ["./scripts/entrypoint.sh"]

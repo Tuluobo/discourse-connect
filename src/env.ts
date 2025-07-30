@@ -12,8 +12,14 @@ export const env = createEnv({
   },
   client: {
     NEXT_PUBLIC_HOST_URL: z.string().optional(),
+    NEXT_PUBLIC_GA_ID: z.string().optional(),
+    NEXT_PUBLIC_UMAMI_SCRIPT: z.string().optional(),
+    NEXT_PUBLIC_UMAMI_WEBSITE_ID: z.string().optional(),
   },
   experimental__runtimeEnv: {
     NEXT_PUBLIC_HOST_URL: process.env.NEXT_PUBLIC_HOST_URL,
+    NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID,
+    NEXT_PUBLIC_UMAMI_SCRIPT: process.env.NEXT_PUBLIC_UMAMI_SCRIPT,
+    NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
   },
 });

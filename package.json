@@ -12,7 +12,7 @@
     "start": "next start",
     "postinstall": "prisma generate",
     "build-docker": "next build",
-    "start-docker": "pnpm run db:migrate && node server.js",
+    "start-docker": "pnpm db:migrate && node server.js",
     "db:migrate": "node scripts/db-migrate.js",
     "update-db": "prisma migrate deploy",
     "lint": "next lint",

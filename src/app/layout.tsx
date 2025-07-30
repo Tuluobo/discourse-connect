@@ -7,6 +7,9 @@ import "@/styles/globals.css";
 
 import { Suspense } from "react";
 
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+import { UmamiAnalytics } from "@/components/analytics/umami-analytics";
+
 import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -36,6 +39,9 @@ export default function RootLayout({
           <Providers>{children}</Providers>
         </Suspense>
         <Toaster />
+        <GoogleAnalytics />
+        <UmamiAnalytics />
+        <script async src="/env.js" />
       </body>
     </html>
   );

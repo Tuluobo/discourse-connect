@@ -2,11 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
-import { generateRandomKey, generateSecretWords } from "@/utils/format";
 import { z } from "zod";
 
 import { createApplication } from "@/lib/dto/application";
 import { prisma } from "@/lib/prisma";
+import { generateRandomKey, generateSecretWords } from "@/lib/utils";
 
 const createApplicationSchema = z.object({
   name: z.string().min(1, "应用名称是必填项"),
@@ -37,7 +37,7 @@ export async function createApplicationAction(data: CreateApplicationInput) {
     const validatedData = createApplicationSchema.parse(data);
 
     // Generate client credentials
-    const clientId = `ak_${generateRandomKey()}`;
+    const clientId = `app_${generateRandomKey()}`;
     const clientSecret = `sk_${generateSecretWords()}`;
 
     const application = await createApplication({

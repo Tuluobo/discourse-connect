@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { formatCompactNumber } from "@/utils/format";
 import { ChevronRight, Menu, X } from "lucide-react";
 import { motion } from "motion/react";
 import { useSession } from "next-auth/react";
 
-import { cn } from "@/lib/utils";
+import { cn, formatCompactNumber } from "@/lib/utils";
 import { useGithubStars } from "@/hooks/use-github-stars";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
