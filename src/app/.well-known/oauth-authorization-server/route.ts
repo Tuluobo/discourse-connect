@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 
+import { env } from "@/env";
+
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000";
+  const baseUrl = env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000";
 
   const metadata = {
     issuer: baseUrl,

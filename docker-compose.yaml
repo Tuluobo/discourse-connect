@@ -16,6 +16,11 @@ services:
       AUTH_SECRET: ${AUTH_SECRET}
       DISCOURSE_HOST: ${DISCOURSE_HOST}
       DISCOURSE_SECRET: ${DISCOURSE_SECRET}
+      # Umami
+      NEXT_PUBLIC_UMAMI_SCRIPT: ${NEXT_PUBLIC_UMAMI_SCRIPT}
+      NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+      # Google Analytics
+      NEXT_PUBLIC_GA_ID: ${NEXT_PUBLIC_GA_ID}
     depends_on:
       db:
         condition: service_healthy
