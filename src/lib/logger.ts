@@ -28,6 +28,10 @@ export const logger = {
     }
   },
 
+  trace: (message: string, ...args: any[]) => {
+    console.log(`[Trace] ${message}`, ...args);
+  },
+
   // Security-sensitive logging - sanitize data
   security: (message: string, data?: Record<string, any>) => {
     if (isDebugEnabled && data) {
