@@ -1,5 +1,6 @@
 import { getCurrentUser } from "@/actions/user";
 import { auth } from "@/auth";
+import { Link } from "@/i18n/navigation";
 import {
   CalendarIcon,
   KeyIcon,
@@ -138,18 +139,18 @@ export default async function DashboardPage() {
             managing your authorized apps.
           </p>
           <div className="flex flex-wrap gap-2">
-            <a
+            <Link
               href="/applications"
               className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors"
             >
               Create Application
-            </a>
-            <a
+            </Link>
+            <Link
               href="/authorization"
               className="border-border bg-background hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium transition-colors"
             >
               Manage Authorizations
-            </a>
+            </Link>
           </div>
         </div>
       </div>
