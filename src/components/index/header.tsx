@@ -12,6 +12,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
 import DynamicLogo from "../shared/dynamic-logo";
 import { Icons } from "../shared/icons";
+import LocaleSwitcher from "../shared/locale-switcher";
 import { ProfileDropdown } from "../shared/profile-dropdown";
 
 interface HeaderProps {
@@ -108,6 +109,7 @@ export function Header({
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: 0.4 }}
           >
+            <LocaleSwitcher />
             <ThemeToggle />
           </motion.div>
           <motion.div
@@ -128,6 +130,7 @@ export function Header({
           </motion.div>
         </div>
         <div className="flex items-center gap-4 md:hidden">
+          <LocaleSwitcher />
           <ThemeToggle />
           <Button
             variant="ghost"
