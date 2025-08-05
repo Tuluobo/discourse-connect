@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { revokeUserAuthorization } from "@/actions/authorization";
 import { CalendarIcon, ExternalLinkIcon, ShieldIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { type AuthorizationWithRelations } from "@/lib/dto/authorization";
+import { formatTimeAgo } from "@/lib/time";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,25 +18,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ConfirmDialog } from "@/components/shared/confirm-dialog";
-
-// Simple time ago formatter
-function formatTimeAgo(date: Date): string {
-  const now = new Date();
-  const diffInMs = now.getTime() - date.getTime();
-  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-  const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
-  const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
-
-  if (diffInDays > 0) {
-    return `${diffInDays} day${diffInDays > 1 ? "s" : ""} ago`;
-  } else if (diffInHours > 0) {
-    return `${diffInHours} hour${diffInHours > 1 ? "s" : ""} ago`;
-  } else if (diffInMinutes > 0) {
-    return `${diffInMinutes} minute${diffInMinutes > 1 ? "s" : ""} ago`;
-  } else {
-    return "Just now";
-  }
-}
 
 interface AuthorizationCardProps {
   authorization: AuthorizationWithRelations;
@@ -47,16 +30,17 @@ export function AuthorizationCard({
 }: AuthorizationCardProps) {
   const [isRevoking, setIsRevoking] = useState(false);
   const [showRevokeDialog, setShowRevokeDialog] = useState(false);
+  const t = useTranslations("authorization.card");
 
   const handleRevoke = async () => {
     setIsRevoking(true);
     try {
       await revokeUserAuthorization(authorization.applicationId);
-      toast.success("Authorization revoked successfully");
+      toast.success(t("toast.revokeSuccess"));
       onRevoke?.(authorization.id);
       setShowRevokeDialog(false);
     } catch (error) {
-      toast.error("Failed to revoke authorization");
+      toast.error(t("toast.revokeFailed"));
       console.error("Error revoking authorization:", error);
     } finally {
       setIsRevoking(false);
@@ -95,8 +79,7 @@ export function AuthorizationCard({
                   )}
                 </CardTitle>
                 <CardDescription className="text-muted-foreground line-clamp-2 text-sm">
-                  {authorization.application.description ||
-                    "No description provided"}
+                  {authorization.application.description || t("noDescription")}
                 </CardDescription>
               </div>
             </div>
@@ -106,7 +89,7 @@ export function AuthorizationCard({
               onClick={() => setShowRevokeDialog(true)}
               className="border-destructive/30 text-destructive hover:bg-destructive hover:text-destructive-foreground ml-3 shrink-0 transition-all duration-200"
             >
-              Revoke
+              {t("revoke")}
             </Button>
           </div>
         </CardHeader>
@@ -119,7 +102,7 @@ export function AuthorizationCard({
                 <div className="mb-2 flex items-center gap-2">
                   <div className="bg-primary h-1.5 w-1.5 rounded-full" />
                   <h4 className="text-foreground/80 text-xs font-medium tracking-wide uppercase">
-                    Permissions
+                    {t("permissions")}
                   </h4>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
@@ -141,12 +124,22 @@ export function AuthorizationCard({
               <div className="flex items-center gap-1.5">
                 <CalendarIcon className="h-3 w-3" />
                 <span>
-                  Authorized {formatTimeAgo(new Date(authorization.createdAt))}
+                  {t("authorized", {
+                    timeAgo: formatTimeAgo(
+                      new Date(authorization.createdAt),
+                      t,
+                    ),
+                  })}
                 </span>
               </div>
               {authorization.updatedAt !== authorization.createdAt && (
                 <span>
-                  Updated {formatTimeAgo(new Date(authorization.updatedAt))}
+                  {t("updated", {
+                    timeAgo: formatTimeAgo(
+                      new Date(authorization.updatedAt),
+                      t,
+                    ),
+                  })}
                 </span>
               )}
             </div>
@@ -157,10 +150,12 @@ export function AuthorizationCard({
       <ConfirmDialog
         open={showRevokeDialog}
         onOpenChange={setShowRevokeDialog}
-        title="Revoke Authorization"
-        desc={`Are you sure you want to revoke access for "${authorization.application.name}"? This will remove all permissions and the application will no longer be able to access your account.`}
-        confirmText="Revoke Access"
-        cancelBtnText="Cancel"
+        title={t("revokeDialog.title")}
+        desc={t("revokeDialog.description", {
+          appName: authorization.application.name,
+        })}
+        confirmText={t("revokeDialog.confirmText")}
+        cancelBtnText={t("revokeDialog.cancelText")}
         handleConfirm={handleRevoke}
         isLoading={isRevoking}
         destructive={true}

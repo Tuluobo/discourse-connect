@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { deleteApplicationAction } from "@/actions/application";
 import { AlertTriangleIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { Application } from "@/lib/dto/application";
@@ -24,6 +25,7 @@ export function ApplicationsDeleteDialog({
 }: Props) {
   const [value, setValue] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const t = useTranslations("application.deleteDialog");
 
   const handleDelete = async () => {
     if (value.trim() !== currentApplication.name) return;
@@ -35,18 +37,18 @@ export function ApplicationsDeleteDialog({
       });
 
       if (result.error) {
-        toast.error("删除失败", {
+        toast.error(t("toast.deleteFailed"), {
           description: result.error,
         });
         return;
       }
 
-      toast.success("删除成功", {
-        description: "应用已成功删除",
+      toast.success(t("toast.deleteSuccess"), {
+        description: t("toast.deleteSuccessDesc"),
       });
     } catch {
-      toast.error("删除失败", {
-        description: "删除应用时发生未知错误",
+      toast.error(t("toast.deleteFailed"), {
+        description: t("toast.unknownError"),
       });
     } finally {
       setValue("");
@@ -72,44 +74,44 @@ export function ApplicationsDeleteDialog({
             className="stroke-destructive mr-1 inline-block"
             size={18}
           />{" "}
-          删除应用
+          {t("title")}
         </span>
       }
       desc={
         <div className="space-y-4">
           <p className="mb-2 leading-relaxed break-all">
-            Are you sure you want to delete{" "}
+            {t("description.confirm")}{" "}
             <code className="bg-muted relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold break-all">
               {currentApplication.name}
             </code>
             ?
           </p>
           <p className="mb-2 leading-relaxed break-all">
-            This action will permanently remove the application with the name of{" "}
+            {t("description.warning")}{" "}
             <span className="inline-block max-w-full font-bold break-all">
               {currentApplication.name.toUpperCase()}
             </span>{" "}
-            from the system. This cannot be undone.
+            {t("description.cannotUndo")}
           </p>
 
           <Label className="my-2">
-            Name:
+            {t("nameLabel")}:
             <Input
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              placeholder="Enter name to confirm deletion."
+              placeholder={t("namePlaceholder")}
             />
           </Label>
 
           <Alert variant="destructive">
-            <AlertTitle>Warning!</AlertTitle>
-            <AlertDescription>
-              Please be carefull, this operation can not be rolled back.
-            </AlertDescription>
+            <AlertTitle>{t("warning.title")}</AlertTitle>
+            <AlertDescription>{t("warning.description")}</AlertDescription>
           </Alert>
         </div>
       }
-      confirmText={isDeleting ? "删除中..." : "确认删除"}
+      confirmText={
+        isDeleting ? t("buttons.deleting") : t("buttons.confirmDelete")
+      }
       destructive
     />
   );

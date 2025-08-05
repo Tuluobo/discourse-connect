@@ -1,0 +1,350 @@
+{
+  "header": {
+    "brand": "数字牧民 Connect",
+    "nav": {
+      "features": "特性",
+      "howItWorks": "使用流程",
+      "community": "数字牧民社区"
+    },
+    "signIn": "立即登录",
+    "toggleMenu": "切换菜单"
+  },
+  "hero": {
+    "badge": "身份认证",
+    "title": {
+      "main": "基于 Discourse SSO 的",
+      "highlight": "OAuth 2.0",
+      "suffix": "认证平台"
+    },
+    "description": "让用户使用已有的数字牧民账号登录到您的应用程序，无需创建新账号，提供安全、便捷的身份验证服务。",
+    "buttons": {
+      "getStarted": "开始使用",
+      "visitCommunity": "访问数字牧民社区"
+    },
+    "features": {
+      "discourseSSO": "基于 Discourse SSO",
+      "oauth2": "OAuth 2.0 协议",
+      "secure": "安全可靠"
+    }
+  },
+  "cta": {
+    "title": "准备好使用数字牧民账号登录了吗？",
+    "description": "立即开始使用数字牧民 Connect，为您的应用提供安全、便捷的身份验证服务。",
+    "buttons": {
+      "tryNow": "立即体验",
+      "viewGitHub": "查看 GitHub"
+    },
+    "tagline": "使用数字牧民账号。简单集成。开源项目。"
+  },
+  "footer": {
+    "brand": "数字牧民 Connect",
+    "description": "数字牧民 Connect 是一个基于 Discourse SSO (Single Sign-On) 用户系统的 OAuth 认证平台。 通过数字牧民 Connect，您可以让用户使用已有的数字牧民账号登录到您的应用程序，无需创建新账号。",
+    "social": {
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "community": "社区"
+    },
+    "sections": {
+      "products": "产品",
+      "resources": "资源"
+    },
+    "links": {
+      "community": "数字牧民社区",
+      "lianTo": "LIAN.TO",
+      "github": "GitHub",
+      "contact": "联系我们"
+    },
+    "copyright": "数字牧民社区. All rights reserved.",
+    "privacyPolicy": "隐私政策"
+  },
+  "howItWorks": {
+    "badge": "使用流程",
+    "title": "简单流程，快速集成",
+    "description": "只需几个简单步骤，即可将数字牧民社区账号认证集成到您的应用中。",
+    "steps": {
+      "register": {
+        "title": "注册应用",
+        "description": "在数字牧民 Connect 平台注册您的应用，获取客户端 ID 和密钥。"
+      },
+      "integrate": {
+        "title": "集成 OAuth 2.0",
+        "description": "使用我们提供的 API 并按照文档说明集成 OAuth 2.0 认证流程到您的应用中。"
+      },
+      "authorize": {
+        "title": "用户授权",
+        "description": "用户通过数字牧民账号授权登录，无需创建新账号，简化用户体验。"
+      }
+    }
+  },
+  "features": {
+    "badge": "特性",
+    "title": "强大的 OAuth 2.0 认证工具",
+    "description": "数字牧民 Connect 提供了所有您需要的工具，让用户使用数字牧民账号进行身份验证，简化登录流程。",
+    "items": {
+      "oauth2": {
+        "title": "OAuth 2.0 协议",
+        "description": "基于标准 OAuth 2.0 协议实现，支持授权码模式，确保安全可靠的身份验证流程。"
+      },
+      "sso": {
+        "title": "数字牧民 SSO 集成",
+        "description": "无缝集成数字牧民社区单点登录系统，让用户使用已有的数字牧民账号进行身份验证。"
+      },
+      "sync": {
+        "title": "用户信息同步",
+        "description": "自动同步用户的基本信息、头像、角色和权限，保持数据的一致性和实时性。"
+      },
+      "multiApp": {
+        "title": "多应用支持",
+        "description": "支持多个客户端应用接入，统一管理用户认证，简化系统架构和维护成本。"
+      },
+      "secure": {
+        "title": "安全可靠",
+        "description": "采用加密传输和签名验证机制，确保认证过程的安全性，防止伪造和篡改。"
+      },
+      "easy": {
+        "title": "简单易用",
+        "description": "提供简洁明了的接口和文档，开发者可以快速集成到自己的应用中，降低开发成本。"
+      }
+    }
+  },
+  "application": {
+    "view": {
+      "title": "应用管理",
+      "subtitle": "在这里管理您的应用程序及其配置。",
+      "createButton": "创建应用",
+      "filterPlaceholder": "筛选应用...",
+      "filter": {
+        "allApps": "所有应用",
+        "activated": "已激活",
+        "notActivated": "未激活"
+      },
+      "sort": {
+        "ascending": "升序",
+        "descending": "降序"
+      },
+      "empty": {
+        "title": "您的应用",
+        "description": "创建一个应用开始使用。",
+        "createButton": "创建应用"
+      }
+    },
+    "dialog": {
+      "title": {
+        "create": "创建新应用",
+        "edit": "编辑应用"
+      },
+      "description": {
+        "create": "创建一个新的 OAuth 应用",
+        "edit": "修改应用信息"
+      },
+      "fields": {
+        "name": {
+          "label": "应用名称",
+          "placeholder": "我的应用"
+        },
+        "description": {
+          "label": "应用描述",
+          "placeholder": "应用的详细描述（可选）"
+        },
+        "websiteUrl": {
+          "label": "网站 URL",
+          "placeholder": "https://example.com"
+        },
+        "logoUrl": {
+          "label": "Logo URL",
+          "placeholder": "https://example.com/logo.png"
+        },
+        "redirectUrls": {
+          "label": "重定向 URL",
+          "placeholder": "https://example.com/callback",
+          "addButton": "添加重定向 URL",
+          "description": "应用授权后用户重定向的地址"
+        },
+        "scopes": {
+          "label": "权限范围",
+          "placeholder": "read, write, admin",
+          "description": "用逗号分隔多个权限"
+        }
+      },
+      "validation": {
+        "nameRequired": "应用名称是必填项",
+        "validWebsiteUrl": "请输入有效的网站 URL",
+        "validLogoUrl": "请输入有效的 Logo URL",
+        "validRedirectUrl": "请输入有效的重定向 URL",
+        "redirectUrlRequired": "至少需要一个重定向 URL",
+        "scopesRequired": "权限范围是必填项"
+      },
+      "buttons": {
+        "create": "创建应用",
+        "update": "更新应用",
+        "creating": "创建中...",
+        "updating": "更新中..."
+      },
+      "toast": {
+        "createSuccess": "创建成功",
+        "createSuccessDesc": "应用已成功创建",
+        "createFailed": "创建失败",
+        "updateSuccess": "更新成功",
+        "updateSuccessDesc": "应用信息已成功更新",
+        "updateFailed": "更新失败",
+        "unknownError": "操作时发生未知错误"
+      }
+    },
+    "cardActions": {
+      "openMenu": "打开菜单",
+      "edit": "编辑",
+      "delete": "删除"
+    },
+    "deleteDialog": {
+      "title": "删除应用",
+      "description": {
+        "confirm": "您确定要删除",
+        "warning": "此操作将永久删除名为",
+        "cannotUndo": "的应用。此操作无法撤销。"
+      },
+      "nameLabel": "名称",
+      "namePlaceholder": "输入名称以确认删除。",
+      "warning": {
+        "title": "警告！",
+        "description": "请谨慎操作，此操作无法回滚。"
+      },
+      "buttons": {
+        "confirmDelete": "确认删除",
+        "deleting": "删除中..."
+      },
+      "toast": {
+        "deleteSuccess": "删除成功",
+        "deleteSuccessDesc": "应用已成功删除",
+        "deleteFailed": "删除失败",
+        "unknownError": "删除应用时发生未知错误"
+      }
+    },
+    "grid": {
+      "status": {
+        "activated": "已激活",
+        "notActivated": "未激活"
+      },
+      "clientId": "Client ID",
+      "clientSecret": "Client Secret",
+      "visitWebsite": "访问网站",
+      "copySuccess": "{label} 已复制到剪贴板",
+      "copyFailed": "复制失败"
+    }
+  },
+  "authorization": {
+    "card": {
+      "noDescription": "未提供描述",
+      "permissions": "权限",
+      "revoke": "撤销",
+      "authorized": "已授权 {timeAgo}",
+      "updated": "更新于 {timeAgo}",
+      "timeAgo": {
+        "justNow": "刚刚",
+        "minutesAgo": "{count, plural, =1 {1 分钟前} other {# 分钟前}}",
+        "hoursAgo": "{count, plural, =1 {1 小时前} other {# 小时前}}",
+        "daysAgo": "{count, plural, =1 {1 天前} other {# 天前}}"
+      },
+      "revokeDialog": {
+        "title": "撤销授权",
+        "description": "您确定要撤销对 \"{appName}\" 的访问权限吗？这将删除所有权限，应用将无法再访问您的账户。",
+        "confirmText": "撤销访问",
+        "cancelText": "取消"
+      },
+      "toast": {
+        "revokeSuccess": "授权已成功撤销",
+        "revokeFailed": "撤销授权失败"
+      }
+    },
+    "view": {
+      "title": "已授权应用",
+      "subtitle": "管理有权访问您账户的应用程序",
+      "stats": {
+        "totalAuthorized": "授权总数",
+        "recentAuthorization": "最近授权",
+        "none": "无"
+      },
+      "search": {
+        "placeholder": "搜索应用程序...",
+        "results": "显示 {filtered} 个，共 {total} 个应用程序"
+      },
+      "empty": {
+        "title": "没有已授权的应用",
+        "description": "您还没有授权任何应用程序。当您授权应用访问权限时，它们将在这里显示，您可以管理它们的权限。"
+      },
+      "noResults": {
+        "message": "没有应用程序符合您的搜索条件。",
+        "clearButton": "清除搜索"
+      }
+    }
+  },
+  "dashboard": {
+    "title": "仪表板",
+    "welcome": "欢迎回来，{name}！",
+    "signInPrompt": "请登录以查看您的仪表板。",
+    "stats": {
+      "myApplications": "我的应用",
+      "authorizedApps": "已授权应用",
+      "activeTokens": "活跃令牌",
+      "memberSince": "注册时间",
+      "accountCreated": "账户创建"
+    },
+    "counts": {
+      "applications": {
+        "none": "尚未创建应用",
+        "single": "已创建 1 个应用",
+        "multiple": "已创建 {count} 个应用"
+      },
+      "authorizations": {
+        "none": "无已授权应用",
+        "single": "已授权 1 个应用",
+        "multiple": "已授权 {count} 个应用"
+      },
+      "tokens": {
+        "none": "无活跃令牌",
+        "single": "1 个令牌活跃",
+        "multiple": "{count} 个令牌活跃"
+      },
+      "memberTime": {
+        "days": "{count} 天",
+        "months": "{count} 个月",
+        "years": "{count} 年"
+      }
+    },
+    "quickStart": {
+      "title": "快速开始",
+      "description": "通过创建第一个应用程序或管理已授权应用来开始使用 OAuth 2.0。",
+      "createApp": "创建应用",
+      "manageAuth": "管理授权"
+    }
+  },
+  "signIn": {
+    "page": {
+      "back": "返回",
+      "welcomeTo": "欢迎来到",
+      "brandName": "数字牧民 Connect",
+      "agreement": "点击继续即表示您同意我们的",
+      "termsOfService": "服务条款",
+      "and": "和",
+      "privacyPolicy": "隐私政策"
+    },
+    "form": {
+      "buttonText": "使用 数字牧民 登录",
+      "errorTitle": "内部服务异常"
+    }
+  },
+  "authorize": {
+    "title": "授权访问",
+    "requestAccess": "{appName} 请求访问您的账户",
+    "permissions": "此应用程序将能够：",
+    "appDescription": "应用描述：",
+    "scopes": {
+      "read:user": "读取您的账户信息"
+    },
+    "buttons": {
+      "authorize": "授权",
+      "deny": "拒绝",
+      "processing": "处理中..."
+    },
+    "redirectNotice": "授权后，您将被重定向到 {appName}"
+  }
+}

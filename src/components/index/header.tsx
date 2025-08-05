@@ -4,12 +4,14 @@ import Link from "next/link";
 import { ChevronRight, Menu, X } from "lucide-react";
 import { motion } from "motion/react";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 import { cn, formatCompactNumber } from "@/lib/utils";
 import { useGithubStars } from "@/hooks/use-github-stars";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
+import LocaleSwitcher from "../locale-switcher";
 import DynamicLogo from "../shared/dynamic-logo";
 import { Icons } from "../shared/icons";
 import { ProfileDropdown } from "../shared/profile-dropdown";
@@ -20,12 +22,6 @@ interface HeaderProps {
   setMobileMenuOpen: (open: boolean) => void;
 }
 
-const navItems = [
-  { id: "features", label: "特性", href: "#features" },
-  { id: "how-it-works", label: "使用流程", href: "#how-it-works" },
-  { id: "community", label: "数字牧民社区", href: "https://shuzimumin.com" },
-];
-
 export function Header({
   isScrolled,
   mobileMenuOpen,
@@ -34,6 +30,17 @@ export function Header({
   const { data: session } = useSession();
   const user = session?.user;
   const { stargazersCount } = useGithubStars("tuluobo", "discourse-connect");
+  const t = useTranslations("header");
+
+  const navItems = [
+    { id: "features", label: t("nav.features"), href: "#features" },
+    { id: "how-it-works", label: t("nav.howItWorks"), href: "#how-it-works" },
+    {
+      id: "community",
+      label: t("nav.community"),
+      href: "https://shuzimumin.com",
+    },
+  ];
 
   const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -65,7 +72,7 @@ export function Header({
         <Link href="/">
           <div className="flex items-center gap-2 font-bold">
             <DynamicLogo />
-            <span>数字牧民 Connect</span>
+            <span>{t("brand")}</span>
           </div>
         </Link>
         <nav className="hidden items-center gap-4 md:flex lg:gap-8">
@@ -108,19 +115,26 @@ export function Header({
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: 0.4 }}
           >
-            <ThemeToggle />
+            <LocaleSwitcher />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: 0.5 }}
           >
+            <ThemeToggle />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: 0.6 }}
+          >
             {user ? (
               <ProfileDropdown user={user} />
             ) : (
               <Link href="/sign-in" prefetch>
                 <Button className="cursor-pointer rounded-full font-medium transition-transform hover:scale-105">
-                  Sign In Now
+                  {t("signIn")}
                   <ChevronRight className="ml-1 size-4" />
                 </Button>
               </Link>
@@ -128,6 +142,7 @@ export function Header({
           </motion.div>
         </div>
         <div className="flex items-center gap-4 md:hidden">
+          <LocaleSwitcher />
           <ThemeToggle />
           <Button
             variant="ghost"
@@ -139,7 +154,7 @@ export function Header({
             ) : (
               <Menu className="size-5" />
             )}
-            <span className="sr-only">Toggle menu</span>
+            <span className="sr-only">{t("toggleMenu")}</span>
           </Button>
         </div>
       </div>
@@ -177,7 +192,7 @@ export function Header({
             >
               <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full rounded-full">
-                  Sign In Now
+                  {t("signIn")}
                   <ChevronRight className="ml-2 size-4" />
                 </Button>
               </Link>

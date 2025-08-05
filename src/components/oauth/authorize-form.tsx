@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Application } from "@prisma/client";
+import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,7 @@ export function AuthorizeForm({
   onDeny,
 }: AuthorizeFormProps) {
   const [isLoading, setIsLoading] = useState(false);
+  const t = useTranslations("authorize");
 
   const handleAuthorize = async () => {
     setIsLoading(true);
@@ -40,12 +42,10 @@ export function AuthorizeForm({
   };
 
   const getScopeDescription = (scope: string) => {
-    switch (scope) {
-      case "read:user":
-        return "读取您的账户信息";
-      default:
-        return scope;
-    }
+    const scopeKey = `scopes.${scope}`;
+    const translated = t(scopeKey);
+    // If translation key doesn't exist, return the scope as is
+    return translated === scopeKey ? scope : translated;
   };
 
   return (
@@ -66,16 +66,16 @@ export function AuthorizeForm({
               </div>
             )}
           </div>
-          <CardTitle className="text-xl">授权访问</CardTitle>
+          <CardTitle className="text-xl">{t("title")}</CardTitle>
           <CardDescription>
-            <strong>{application.name}</strong> 请求访问您的账户
+            {t("requestAccess", { appName: application.name })}
           </CardDescription>
         </CardHeader>
 
         <CardContent className="space-y-6">
           <div>
             <h3 className="mb-3 text-sm font-medium text-gray-900">
-              此应用程序将能够：
+              {t("permissions")}
             </h3>
             <ul className="space-y-2">
               {scopes.map((scope) => (
@@ -93,7 +93,7 @@ export function AuthorizeForm({
 
           {application.description && (
             <div className="rounded-md bg-gray-50 p-3 text-sm text-gray-600">
-              <strong>应用描述：</strong> {application.description}
+              <strong>{t("appDescription")}</strong> {application.description}
             </div>
           )}
 
@@ -103,7 +103,7 @@ export function AuthorizeForm({
               disabled={isLoading}
               className="flex-1"
             >
-              {isLoading ? "处理中..." : "授权"}
+              {isLoading ? t("buttons.processing") : t("buttons.authorize")}
             </Button>
             <Button
               variant="outline"
@@ -111,12 +111,12 @@ export function AuthorizeForm({
               disabled={isLoading}
               className="flex-1"
             >
-              拒绝
+              {t("buttons.deny")}
             </Button>
           </div>
 
           <div className="text-center text-xs text-gray-500">
-            授权后，您将被重定向到 {application.name}
+            {t("redirectNotice", { appName: application.name })}
           </div>
         </CardContent>
       </Card>

@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, MessageCircleCode } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { cn } from "@/lib/utils";
@@ -18,13 +19,14 @@ export function SignInForm({
 }: React.HTMLAttributes<HTMLDivElement>) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const router = useRouter();
+  const t = useTranslations("signIn.form");
 
   const signIn = () => {
     React.startTransition(async () => {
       const response = await fetch("/api/auth/discourse", { method: "POST" });
       if (!response.ok || response.status !== 200) {
         setIsLoading(false);
-        toast.error("内部服务异常", {
+        toast.error(t("errorTitle"), {
           description: response.statusText,
         });
       } else {
@@ -50,7 +52,7 @@ export function SignInForm({
         ) : (
           <MessageCircleCode className="mr-2 size-4" />
         )}{" "}
-        数字牧民社区
+        {t("buttonText")}
       </button>
     </div>
   );

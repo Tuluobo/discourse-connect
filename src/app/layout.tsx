@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/sonner";
 import "@/styles/globals.css";
 
 import { Suspense } from "react";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale } from "next-intl/server";
 
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { UmamiAnalytics } from "@/components/analytics/umami-analytics";
@@ -27,17 +29,21 @@ export const viewport: Viewport = {
   initialScale: 1.0,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <Suspense>
-          <Providers>{children}</Providers>
-        </Suspense>
+        <NextIntlClientProvider>
+          <Suspense>
+            <Providers>{children}</Providers>
+          </Suspense>
+        </NextIntlClientProvider>
         <Toaster />
         <GoogleAnalytics />
         <UmamiAnalytics />

@@ -8,6 +8,7 @@ import {
   SortAscIcon,
   SortDescIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Application } from "@/lib/dto/application";
 import { cn } from "@/lib/utils";
@@ -27,14 +28,15 @@ import ApplicationsProvider, {
 import { ApplicationsDialogs } from "@/components/application/dialog";
 import ApplicationGrid from "@/components/application/grid";
 
-const appActivedFilter = [
-  { key: "all", value: "All Apps" },
-  { key: "isActived", value: "Actived" },
-  { key: "notActived", value: "Not Actived" },
+const getAppActivedFilter = (t: (key: string) => string) => [
+  { key: "all", value: t("filter.allApps") },
+  { key: "isActived", value: t("filter.activated") },
+  { key: "notActived", value: t("filter.notActivated") },
 ];
 
 function CreateApplicationButton() {
   const { setOpen } = useApplications();
+  const t = useTranslations("application.view");
   return (
     <div className="flex gap-2">
       <Button
@@ -43,7 +45,7 @@ function CreateApplicationButton() {
           setOpen("create");
         }}
       >
-        <PackagePlusIcon size={18} /> <span>Create Application</span>
+        <PackagePlusIcon size={18} /> <span>{t("createButton")}</span>
       </Button>
     </div>
   );
@@ -51,6 +53,7 @@ function CreateApplicationButton() {
 
 function ApplicationEmpty() {
   const { setOpen } = useApplications();
+  const t = useTranslations("application.view");
   return (
     <div
       className={cn(
@@ -62,9 +65,9 @@ function ApplicationEmpty() {
           <PackageCheckIcon className="size-8" />
         </div>
         <div className="space-y-2 text-center">
-          <h1 className="text-xl font-semibold">Your applications</h1>
+          <h1 className="text-xl font-semibold">{t("empty.title")}</h1>
           <p className="text-muted-foreground text-sm">
-            Create an application to start.
+            {t("empty.description")}
           </p>
         </div>
         <Button
@@ -73,7 +76,7 @@ function ApplicationEmpty() {
             setOpen("create");
           }}
         >
-          Create Application
+          {t("empty.createButton")}
         </Button>
       </div>
     </div>
@@ -88,6 +91,8 @@ export default function ApplicationView({ data }: ApplicationViewProps) {
   const [sort, setSort] = useState("ascending");
   const [appType, setAppType] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const t = useTranslations("application.view");
+  const appActivedFilter = getAppActivedFilter(t);
 
   const filteredApps = data
     .sort((a, b) =>
@@ -108,17 +113,15 @@ export default function ApplicationView({ data }: ApplicationViewProps) {
     <ApplicationsProvider>
       <div className="mb-2 flex flex-wrap items-center justify-between space-y-2">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight">Applications</h2>
-          <p className="text-muted-foreground">
-            Manage your applications and their properties here.
-          </p>
+          <h2 className="text-2xl font-bold tracking-tight">{t("title")}</h2>
+          <p className="text-muted-foreground">{t("subtitle")}</p>
         </div>
         <CreateApplicationButton />
       </div>
       <div className="my-4 flex items-end justify-between sm:my-0 sm:items-center">
         <div className="flex flex-col gap-4 sm:my-4 sm:flex-row">
           <Input
-            placeholder="Filter apps..."
+            placeholder={t("filterPlaceholder")}
             className="h-9 w-40 lg:w-[250px]"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -151,13 +154,13 @@ export default function ApplicationView({ data }: ApplicationViewProps) {
             <SelectItem value="ascending">
               <div className="flex items-center gap-4">
                 <SortAscIcon size={16} />
-                <span>Ascending</span>
+                <span>{t("sort.ascending")}</span>
               </div>
             </SelectItem>
             <SelectItem value="descending">
               <div className="flex items-center gap-4">
                 <SortDescIcon size={16} />
-                <span>Descending</span>
+                <span>{t("sort.descending")}</span>
               </div>
             </SelectItem>
           </SelectContent>

@@ -6,42 +6,26 @@ import {
   Package2Icon,
   ShieldCheckIcon,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { getUserActiveTokenCount } from "@/lib/dto/access-token";
 import { getUserApplicationCount } from "@/lib/dto/application";
 import { getUserAuthorizationCount } from "@/lib/dto/authorization";
+import { formatMemberSince } from "@/lib/time";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-// Simple time formatter
-function formatMemberSince(date: Date): string {
-  const now = new Date();
-  const diffInMs = now.getTime() - date.getTime();
-  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-
-  if (diffInDays < 30) {
-    return `${diffInDays} days`;
-  } else if (diffInDays < 365) {
-    const months = Math.floor(diffInDays / 30);
-    return `${months} month${months > 1 ? "s" : ""}`;
-  } else {
-    const years = Math.floor(diffInDays / 365);
-    return `${years} year${years > 1 ? "s" : ""}`;
-  }
-}
 
 export default async function DashboardPage() {
   const session = await auth();
+  const t = await getTranslations("dashboard");
 
   if (!session?.user?.id) {
     return (
       <>
         <div className="mb-2 flex items-center justify-between space-y-2">
-          <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
+          <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
         </div>
         <div className="py-12 text-center">
-          <p className="text-muted-foreground">
-            Please sign in to view your dashboard.
-          </p>
+          <p className="text-muted-foreground">{t("signInPrompt")}</p>
         </div>
       </>
     );
@@ -58,9 +42,9 @@ export default async function DashboardPage() {
     <>
       <div className="mb-6 flex items-center justify-between space-y-2">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
+          <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
           <p className="text-muted-foreground mt-2">
-            Welcome back, {user.name || user.username || "User"}!
+            {t("welcome", { name: user.name || user.username || "User" })}
           </p>
         </div>
       </div>
@@ -69,7 +53,7 @@ export default async function DashboardPage() {
         <Card className="transition-all duration-200 hover:shadow-md">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              My Applications
+              {t("stats.myApplications")}
             </CardTitle>
             <Package2Icon className="text-muted-foreground h-4 w-4" />
           </CardHeader>
@@ -77,8 +61,10 @@ export default async function DashboardPage() {
             <div className="text-2xl font-bold">{appCount}</div>
             <p className="text-muted-foreground text-xs">
               {appCount === 0
-                ? "No applications created yet"
-                : `${appCount} application${appCount > 1 ? "s" : ""} created`}
+                ? t("counts.applications.none")
+                : appCount === 1
+                  ? t("counts.applications.single")
+                  : t("counts.applications.multiple", { count: appCount })}
             </p>
           </CardContent>
         </Card>
@@ -86,7 +72,7 @@ export default async function DashboardPage() {
         <Card className="transition-all duration-200 hover:shadow-md">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Authorized Apps
+              {t("stats.authorizedApps")}
             </CardTitle>
             <ShieldCheckIcon className="text-muted-foreground h-4 w-4" />
           </CardHeader>
@@ -94,37 +80,49 @@ export default async function DashboardPage() {
             <div className="text-2xl font-bold">{authCount}</div>
             <p className="text-muted-foreground text-xs">
               {authCount === 0
-                ? "No authorized applications"
-                : `${authCount} app${authCount > 1 ? "s" : ""} authorized`}
+                ? t("counts.authorizations.none")
+                : authCount === 1
+                  ? t("counts.authorizations.single")
+                  : t("counts.authorizations.multiple", { count: authCount })}
             </p>
           </CardContent>
         </Card>
 
         <Card className="transition-all duration-200 hover:shadow-md">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Tokens</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              {t("stats.activeTokens")}
+            </CardTitle>
             <KeyIcon className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{tokenCount}</div>
             <p className="text-muted-foreground text-xs">
               {tokenCount === 0
-                ? "No active tokens"
-                : `${tokenCount} token${tokenCount > 1 ? "s" : ""} active`}
+                ? t("counts.tokens.none")
+                : tokenCount === 1
+                  ? t("counts.tokens.single")
+                  : t("counts.tokens.multiple", { count: tokenCount })}
             </p>
           </CardContent>
         </Card>
 
         <Card className="transition-all duration-200 hover:shadow-md">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Member Since</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              {t("stats.memberSince")}
+            </CardTitle>
             <CalendarIcon className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {formatMemberSince(new Date(user.createdAt))}
+              {formatMemberSince(new Date(user.createdAt), (key, params) =>
+                t(`counts.${key}`, params),
+              )}
             </div>
-            <p className="text-muted-foreground text-xs">Account created</p>
+            <p className="text-muted-foreground text-xs">
+              {t("stats.accountCreated")}
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -132,23 +130,24 @@ export default async function DashboardPage() {
       {/* Quick Actions */}
       <div className="mt-8">
         <div className="bg-muted/30 border-border/50 rounded-lg border p-6">
-          <h2 className="mb-2 text-lg font-semibold">Quick Start</h2>
+          <h2 className="mb-2 text-lg font-semibold">
+            {t("quickStart.title")}
+          </h2>
           <p className="text-muted-foreground mb-4 text-sm">
-            Get started with OAuth 2.0 by creating your first application or
-            managing your authorized apps.
+            {t("quickStart.description")}
           </p>
           <div className="flex flex-wrap gap-2">
             <a
               href="/applications"
               className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors"
             >
-              Create Application
+              {t("quickStart.createApp")}
             </a>
             <a
               href="/authorization"
               className="border-border bg-background hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium transition-colors"
             >
-              Manage Authorizations
+              {t("quickStart.manageAuth")}
             </a>
           </div>
         </div>

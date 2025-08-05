@@ -1,4 +1,5 @@
 import { EditIcon, MoreVerticalIcon, Trash2Icon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Application } from "@/lib/dto/application";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,7 @@ interface CardActionsProps {
 
 export function CardActions({ app }: CardActionsProps) {
   const { setOpen, setCurrentApplication } = useApplications();
+  const t = useTranslations("application.cardActions");
 
   return (
     <>
@@ -28,7 +30,7 @@ export function CardActions({ app }: CardActionsProps) {
             className="data-[state=open]:bg-muted flex h-8 w-8 p-0"
           >
             <MoreVerticalIcon className="h-4 w-4" />
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">{t("openMenu")}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
@@ -39,7 +41,7 @@ export function CardActions({ app }: CardActionsProps) {
             }}
           >
             <EditIcon className="mr-2 h-4 w-4" />
-            Edit
+            {t("edit")}
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
@@ -50,7 +52,7 @@ export function CardActions({ app }: CardActionsProps) {
             className="text-red-500!"
           >
             <Trash2Icon className="mr-2 h-4 w-4" />
-            Delete
+            {t("delete")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

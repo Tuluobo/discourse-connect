@@ -9,6 +9,7 @@ import {
 } from "@/actions/application";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Plus, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -34,27 +35,26 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-const formSchema = z.object({
-  name: z.string().min(1, { message: "应用名称是必填项" }),
-  home: z.string().url({ message: "请输入有效的网站 URL" }),
-  logoUri: z
-    .string()
-    .optional()
-    .refine((val) => !val || z.string().url().safeParse(val).success, {
-      message: "请输入有效的 Logo URL",
-    }),
-  description: z.string().optional(),
-  redirectUris: z
-    .array(
-      z.object({
-        url: z.string().url({ message: "请输入有效的重定向 URL" }),
+const getFormSchema = (t: (key: string) => string) =>
+  z.object({
+    name: z.string().min(1, { message: t("validation.nameRequired") }),
+    home: z.string().url({ message: t("validation.validWebsiteUrl") }),
+    logoUri: z
+      .string()
+      .optional()
+      .refine((val) => !val || z.string().url().safeParse(val).success, {
+        message: t("validation.validLogoUrl"),
       }),
-    )
-    .min(1, { message: "至少需要一个重定向 URL" }),
-  scopes: z.string().min(1, { message: "权限范围是必填项" }),
-});
-
-type ApplicationForm = z.infer<typeof formSchema>;
+    description: z.string().optional(),
+    redirectUris: z
+      .array(
+        z.object({
+          url: z.string().url({ message: t("validation.validRedirectUrl") }),
+        }),
+      )
+      .min(1, { message: t("validation.redirectUrlRequired") }),
+    scopes: z.string().min(1, { message: t("validation.scopesRequired") }),
+  });
 
 interface Props {
   currentApplication?: Application;
@@ -69,6 +69,9 @@ export function ApplicationsActionDialog({
 }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const isEdit = !!currentApplication;
+  const t = useTranslations("application.dialog");
+  const formSchema = getFormSchema(t);
+  type ApplicationForm = z.infer<typeof formSchema>;
 
   const form = useForm<ApplicationForm>({
     resolver: zodResolver(formSchema),
@@ -122,13 +125,13 @@ export function ApplicationsActionDialog({
         };
         const result = await updateApplicationAction(payload);
         if (result.error) {
-          toast.error("更新失败", {
+          toast.error(t("toast.updateFailed"), {
             description: result.error,
           });
           return;
         }
-        toast.success("更新成功", {
-          description: "应用信息已成功更新",
+        toast.success(t("toast.updateSuccess"), {
+          description: t("toast.updateSuccessDesc"),
         });
       } else {
         const payload: CreateApplicationInput = {
@@ -143,14 +146,14 @@ export function ApplicationsActionDialog({
         const result = await createApplicationAction(payload);
 
         if (result.error) {
-          toast.error("创建失败", {
+          toast.error(t("toast.createFailed"), {
             description: result.error,
           });
           return;
         }
 
-        toast.success("创建成功", {
-          description: "应用已成功创建",
+        toast.success(t("toast.createSuccess"), {
+          description: t("toast.createSuccessDesc"),
         });
       }
 
@@ -158,8 +161,8 @@ export function ApplicationsActionDialog({
       onOpenChange(false);
     } catch (error) {
       console.log(`onSubmit error: ${error}`);
-      toast.error("创建失败", {
-        description: "创建应用时发生未知错误",
+      toast.error(t("toast.createFailed"), {
+        description: t("toast.unknownError"),
       });
     } finally {
       setIsLoading(false);
@@ -178,9 +181,11 @@ export function ApplicationsActionDialog({
     >
       <DialogContent className="sm:max-w-lg">
         <DialogHeader className="text-left">
-          <DialogTitle>{isEdit ? "编辑应用" : "创建新应用"}</DialogTitle>
+          <DialogTitle>
+            {isEdit ? t("title.edit") : t("title.create")}
+          </DialogTitle>
           <DialogDescription>
-            {isEdit ? "修改应用信息" : "创建一个新的 OAuth 应用"}
+            {isEdit ? t("description.edit") : t("description.create")}
           </DialogDescription>
         </DialogHeader>
         <div className="-mr-4 h-[30rem] w-full overflow-y-auto py-1 pr-4">
@@ -196,11 +201,12 @@ export function ApplicationsActionDialog({
                 render={({ field }) => (
                   <FormItem className="grid grid-cols-6 items-start space-y-0 gap-x-4 gap-y-1">
                     <FormLabel className="col-span-2 pt-2 text-right">
-                      应用名称 <span className="text-red-500">*</span>
+                      {t("fields.name.label")}{" "}
+                      <span className="text-red-500">*</span>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="我的应用"
+                        placeholder={t("fields.name.placeholder")}
                         className="col-span-4"
                         {...field}
                       />
@@ -216,11 +222,11 @@ export function ApplicationsActionDialog({
                 render={({ field }) => (
                   <FormItem className="grid grid-cols-6 items-start space-y-0 gap-x-4 gap-y-1">
                     <FormLabel className="col-span-2 pt-2 text-right">
-                      应用描述
+                      {t("fields.description.label")}
                     </FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="应用的详细描述（可选）"
+                        placeholder={t("fields.description.placeholder")}
                         className="col-span-4 resize-none"
                         rows={3}
                         {...field}
@@ -237,11 +243,12 @@ export function ApplicationsActionDialog({
                 render={({ field }) => (
                   <FormItem className="grid grid-cols-6 items-start space-y-0 gap-x-4 gap-y-1">
                     <FormLabel className="col-span-2 pt-2 text-right">
-                      网站 URL <span className="text-red-500">*</span>
+                      {t("fields.websiteUrl.label")}{" "}
+                      <span className="text-red-500">*</span>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="https://example.com"
+                        placeholder={t("fields.websiteUrl.placeholder")}
                         className="col-span-4"
                         {...field}
                       />
@@ -257,11 +264,11 @@ export function ApplicationsActionDialog({
                 render={({ field }) => (
                   <FormItem className="grid grid-cols-6 items-start space-y-0 gap-x-4 gap-y-1">
                     <FormLabel className="col-span-2 pt-2 text-right">
-                      Logo URL
+                      {t("fields.logoUrl.label")}
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="https://example.com/logo.png"
+                        placeholder={t("fields.logoUrl.placeholder")}
                         className="col-span-4"
                         {...field}
                       />
@@ -274,7 +281,8 @@ export function ApplicationsActionDialog({
               <div className="grid grid-cols-6 items-start space-y-0 gap-x-4 gap-y-1">
                 <div className="col-span-2 pt-2 text-left">
                   <label className="text-sm font-medium">
-                    重定向 URL <span className="text-red-500">*</span>
+                    {t("fields.redirectUrls.label")}{" "}
+                    <span className="text-red-500">*</span>
                   </label>
                 </div>
                 <div className="col-span-4 space-y-2">
@@ -287,7 +295,9 @@ export function ApplicationsActionDialog({
                           <FormItem className="flex-1">
                             <FormControl>
                               <Input
-                                placeholder="https://example.com/callback"
+                                placeholder={t(
+                                  "fields.redirectUrls.placeholder",
+                                )}
                                 {...field}
                               />
                             </FormControl>
@@ -316,10 +326,10 @@ export function ApplicationsActionDialog({
                     className="flex items-center gap-1"
                   >
                     <Plus className="h-3 w-3" />
-                    添加重定向 URL
+                    {t("fields.redirectUrls.addButton")}
                   </Button>
                   <p className="text-muted-foreground text-xs">
-                    应用授权后用户重定向的地址
+                    {t("fields.redirectUrls.description")}
                   </p>
                 </div>
               </div>
@@ -330,14 +340,18 @@ export function ApplicationsActionDialog({
                 render={({ field }) => (
                   <FormItem className="grid grid-cols-6 items-start space-y-0 gap-x-4 gap-y-1">
                     <FormLabel className="col-span-2 pt-2 text-right">
-                      权限范围 <span className="text-red-500">*</span>
+                      {t("fields.scopes.label")}{" "}
+                      <span className="text-red-500">*</span>
                     </FormLabel>
                     <div className="col-span-4 space-y-2">
                       <FormControl>
-                        <Input placeholder="read, write, admin" {...field} />
+                        <Input
+                          placeholder={t("fields.scopes.placeholder")}
+                          {...field}
+                        />
                       </FormControl>
                       <p className="text-muted-foreground text-xs">
-                        用逗号分隔多个权限
+                        {t("fields.scopes.description")}
                       </p>
                       <FormMessage />
                     </div>
@@ -351,11 +365,11 @@ export function ApplicationsActionDialog({
           <Button type="submit" form="application-form" disabled={isLoading}>
             {isLoading
               ? isEdit
-                ? "更新中..."
-                : "创建中..."
+                ? t("buttons.updating")
+                : t("buttons.creating")
               : isEdit
-                ? "更新应用"
-                : "创建应用"}
+                ? t("buttons.update")
+                : t("buttons.create")}
           </Button>
         </DialogFooter>
       </DialogContent>

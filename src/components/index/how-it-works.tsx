@@ -1,27 +1,28 @@
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 
-const steps = [
-  {
-    step: "01",
-    title: "注册应用",
-    description: "在数字牧民 Connect 平台注册您的应用，获取客户端 ID 和密钥。",
-  },
-  {
-    step: "02",
-    title: "集成 OAuth 2.0",
-    description:
-      "使用我们提供的 API 并按照文档说明集成 OAuth 2.0 认证流程到您的应用中。",
-  },
-  {
-    step: "03",
-    title: "用户授权",
-    description: "用户通过数字牧民账号授权登录，无需创建新账号，简化用户体验。",
-  },
-];
-
 export function HowItWorks() {
+  const t = useTranslations("howItWorks");
+
+  const steps = [
+    {
+      step: "01",
+      title: t("steps.register.title"),
+      description: t("steps.register.description"),
+    },
+    {
+      step: "02",
+      title: t("steps.integrate.title"),
+      description: t("steps.integrate.description"),
+    },
+    {
+      step: "03",
+      title: t("steps.authorize.title"),
+      description: t("steps.authorize.description"),
+    },
+  ];
   return (
     <section
       id="how-it-works"
@@ -41,13 +42,13 @@ export function HowItWorks() {
             className="rounded-full px-4 py-1.5 text-sm font-medium shadow-sm"
             variant="secondary"
           >
-            <span className="text-primary mr-1">✦</span> 使用流程
+            <span className="text-primary mr-1">✦</span> {t("badge")}
           </Badge>
           <h2 className="from-foreground to-foreground/80 bg-gradient-to-r bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
-            简单流程，快速集成
+            {t("title")}
           </h2>
           <p className="text-muted-foreground max-w-[800px] md:text-lg">
-            只需几个简单步骤，即可将 Discourse 账号认证集成到您的应用中。
+            {t("description")}
           </p>
         </motion.div>
 

@@ -1,12 +1,14 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { ChevronLeft, MessageCircleCode } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { SignInForm } from "@/components/auth/sign-in-form";
 
-export default function SigninPage() {
+export default async function SigninPage() {
+  const t = await getTranslations("signIn.page");
   return (
     <>
       <Link
@@ -18,36 +20,34 @@ export default function SigninPage() {
       >
         <>
           <ChevronLeft className="mr-2 size-4" />
-          Back
+          {t("back")}
         </>
       </Link>
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
           <MessageCircleCode className="mx-auto size-12" />
           <div className="text-2xl font-semibold tracking-tight">
-            <span>Welcome to</span>{" "}
-            <span style={{ fontFamily: "Bahamas Bold" }}>
-              数字牧民社区 Connect
-            </span>
+            <span>{t("welcomeTo")}</span>{" "}
+            <span style={{ fontFamily: "Bahamas Bold" }}>{t("brandName")}</span>
           </div>
         </div>
         <Suspense>
           <SignInForm />
         </Suspense>
         <p className="text-muted-foreground px-8 text-center text-sm">
-          By clicking continue, you agree to our{" "}
+          {t("agreement")}{" "}
           <Link
             href="/terms"
             className="hover:text-brand underline underline-offset-4"
           >
-            Terms of Service
+            {t("termsOfService")}
           </Link>{" "}
-          and{" "}
+          {t("and")}{" "}
           <Link
             href="/privacy-policy"
             className="hover:text-brand underline underline-offset-4"
           >
-            Privacy Policy
+            {t("privacyPolicy")}
           </Link>
           .
         </p>

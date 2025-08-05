@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Copy, Eye, EyeOff } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { Application } from "@/lib/dto/application";
@@ -12,13 +13,14 @@ import { CardActions } from "./card-actions";
 
 function SecretField({ value, label }: { value: string; label: string }) {
   const [isVisible, setIsVisible] = useState(false);
+  const t = useTranslations("application.grid");
 
   const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      toast.success(`${label} 已复制到剪贴板`);
+      toast.success(t("copySuccess", { label }));
     } catch {
-      toast.error("复制失败");
+      toast.error(t("copyFailed"));
     }
   };
 
@@ -52,6 +54,7 @@ function SecretField({ value, label }: { value: string; label: string }) {
 }
 
 export default function ApplicationGrid({ data }: { data: Application[] }) {
+  const t = useTranslations("application.grid");
   return (
     <ul className="faded-bottom no-scrollbar grid gap-4 overflow-auto pt-4 pb-16 md:grid-cols-2 lg:grid-cols-3">
       {data.map((app) => (
@@ -74,7 +77,9 @@ export default function ApplicationGrid({ data }: { data: Application[] }) {
                 )}
               </div>
               <Badge variant={app.isActived ? "default" : "secondary"}>
-                {app.isActived ? "已激活" : "未激活"}
+                {app.isActived
+                  ? t("status.activated")
+                  : t("status.notActivated")}
               </Badge>
             </div>
             <CardActions app={app} />
@@ -94,7 +99,7 @@ export default function ApplicationGrid({ data }: { data: Application[] }) {
             {/* App ID */}
             <div>
               <label className="text-muted-foreground text-xs font-medium">
-                Client ID
+                {t("clientId")}
               </label>
               <SecretField value={app.clientId} label="Client ID" />
             </div>
@@ -102,7 +107,7 @@ export default function ApplicationGrid({ data }: { data: Application[] }) {
             {/* App Secret */}
             <div>
               <label className="text-muted-foreground text-xs font-medium">
-                Client Secret
+                {t("clientSecret")}
               </label>
               <SecretField value={app.clientSecret} label="Client Secret" />
             </div>
@@ -116,7 +121,7 @@ export default function ApplicationGrid({ data }: { data: Application[] }) {
                   rel="noopener noreferrer"
                   className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
                 >
-                  访问网站 →
+                  {t("visitWebsite")} →
                 </a>
               </div>
             )}

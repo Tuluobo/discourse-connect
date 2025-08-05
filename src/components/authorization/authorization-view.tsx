@@ -2,48 +2,30 @@
 
 import { useState } from "react";
 import { CalendarIcon, SearchIcon, ShieldCheckIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { type AuthorizationWithRelations } from "@/lib/dto/authorization";
+import { formatRelativeTime } from "@/lib/time";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { AuthorizationCard } from "./authorization-card";
-
-// Simple time ago formatter
-function formatTimeAgo(date: Date): string {
-  const now = new Date();
-  const diffInMs = now.getTime() - date.getTime();
-  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-  const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
-  const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
-
-  if (diffInDays > 0) {
-    return `${diffInDays} day${diffInDays > 1 ? "s" : ""} ago`;
-  } else if (diffInHours > 0) {
-    return `${diffInHours} hour${diffInHours > 1 ? "s" : ""} ago`;
-  } else if (diffInMinutes > 0) {
-    return `${diffInMinutes} minute${diffInMinutes > 1 ? "s" : ""} ago`;
-  } else {
-    return "Just now";
-  }
-}
 
 interface AuthorizationViewProps {
   initialAuthorizations: AuthorizationWithRelations[];
 }
 
 function AuthorizationEmpty() {
+  const t = useTranslations("authorization.view");
   return (
     <div className="flex flex-col items-center justify-center space-y-6 py-12">
       <div className="border-border flex size-16 items-center justify-center rounded-full border-2">
         <ShieldCheckIcon className="text-muted-foreground size-8" />
       </div>
       <div className="space-y-2 text-center">
-        <h2 className="text-xl font-semibold">No Authorized Applications</h2>
+        <h2 className="text-xl font-semibold">{t("empty.title")}</h2>
         <p className="text-muted-foreground max-w-md text-sm">
-          You haven&apos;t authorized any applications yet. When you grant
-          access to applications, they will appear here and you can manage their
-          permissions.
+          {t("empty.description")}
         </p>
       </div>
     </div>
@@ -55,6 +37,7 @@ export function AuthorizationView({
 }: AuthorizationViewProps) {
   const [authorizations, setAuthorizations] = useState(initialAuthorizations);
   const [searchTerm, setSearchTerm] = useState("");
+  const t = useTranslations("authorization");
 
   const handleRevoke = (authorizationId: string) => {
     setAuthorizations((prev) =>
@@ -87,11 +70,9 @@ export function AuthorizationView({
           <ShieldCheckIcon className="text-muted-foreground h-6 w-6" />
           <div>
             <h1 className="text-2xl font-bold tracking-tight">
-              Authorized Applications
+              {t("view.title")}
             </h1>
-            <p className="text-muted-foreground">
-              Manage applications that have access to your account
-            </p>
+            <p className="text-muted-foreground">{t("view.subtitle")}</p>
           </div>
         </div>
       </div>
@@ -102,18 +83,22 @@ export function AuthorizationView({
           <div className="bg-card rounded-lg border p-4">
             <div className="flex items-center space-x-2">
               <ShieldCheckIcon className="text-muted-foreground h-4 w-4" />
-              <span className="text-sm font-medium">Total Authorized</span>
+              <span className="text-sm font-medium">
+                {t("view.stats.totalAuthorized")}
+              </span>
             </div>
             <p className="mt-1 text-2xl font-bold">{authorizations.length}</p>
           </div>
           <div className="bg-card rounded-lg border p-4">
             <div className="flex items-center space-x-2">
               <CalendarIcon className="text-muted-foreground h-4 w-4" />
-              <span className="text-sm font-medium">Recent Authorization</span>
+              <span className="text-sm font-medium">
+                {t("view.stats.recentAuthorization")}
+              </span>
             </div>
             <p className="mt-1 text-sm font-medium">
               {authorizations.length > 0
-                ? formatTimeAgo(
+                ? formatRelativeTime(
                     new Date(
                       Math.max(
                         ...authorizations.map((auth) =>
@@ -121,8 +106,10 @@ export function AuthorizationView({
                         ),
                       ),
                     ),
+                    t,
+                    "card",
                   )
-                : "None"}
+                : t("view.stats.none")}
             </p>
           </div>
         </div>
@@ -133,7 +120,7 @@ export function AuthorizationView({
         <div className="relative max-w-md">
           <SearchIcon className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform" />
           <Input
-            placeholder="Search applications..."
+            placeholder={t("view.search.placeholder")}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10"
@@ -145,8 +132,10 @@ export function AuthorizationView({
       {authorizations.length > 0 &&
         filteredAuthorizations.length !== authorizations.length && (
           <div className="text-muted-foreground text-sm">
-            Showing {filteredAuthorizations.length} of {authorizations.length}{" "}
-            applications
+            {t("view.search.results", {
+              filtered: filteredAuthorizations.length,
+              total: authorizations.length,
+            })}
           </div>
         )}
 
@@ -155,15 +144,13 @@ export function AuthorizationView({
         <AuthorizationEmpty />
       ) : filteredAuthorizations.length === 0 ? (
         <div className="py-12 text-center">
-          <p className="text-muted-foreground">
-            No applications match your search criteria.
-          </p>
+          <p className="text-muted-foreground">{t("view.noResults.message")}</p>
           <Button
             variant="outline"
             className="mt-4"
             onClick={() => setSearchTerm("")}
           >
-            Clear Search
+            {t("view.noResults.clearButton")}
           </Button>
         </div>
       ) : (

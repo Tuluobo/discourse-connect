@@ -7,6 +7,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { Header } from "@/components/dashboard/header";
 import { Main } from "@/components/dashboard/main";
+import LocaleSwitcher from "@/components/locale-switcher";
 import { ProfileDropdown } from "@/components/shared/profile-dropdown";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -36,6 +37,7 @@ export default async function DashboardLayout({
         >
           <Header>
             <div className="ml-auto flex items-center space-x-4">
+              <LocaleSwitcher />
               <ThemeToggle />
               <ProfileDropdown user={user} />
             </div>
