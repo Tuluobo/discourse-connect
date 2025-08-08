@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Time formatting utilities with i18n support
  */
@@ -10,7 +11,7 @@
  */
 export function formatTimeAgo(
   date: Date,
-  t: (key: string, params?: Record<string, unknown>) => string,
+  t: (key: string, params?: any) => string,
 ): string {
   const now = new Date();
   const diffInMs = now.getTime() - date.getTime();
@@ -37,7 +38,7 @@ export function formatTimeAgo(
  */
 export function formatMemberSince(
   date: Date,
-  t: (key: string, params?: Record<string, unknown>) => string,
+  t: (key: string, params?: Record<string, any>) => string,
 ): string {
   const now = new Date();
   const diffInMs = now.getTime() - date.getTime();
@@ -63,7 +64,7 @@ export function formatMemberSince(
  */
 export function formatRelativeTime(
   date: Date,
-  t: (key: string, params?: Record<string, unknown>) => string,
+  t: (key: string, params?: Record<string, any>) => string,
   context: string = "",
 ): string {
   const now = new Date();

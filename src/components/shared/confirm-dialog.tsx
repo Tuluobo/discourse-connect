@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 import { cn } from "@/lib/utils";
 import {
   AlertDialog,
@@ -39,6 +43,8 @@ export function ConfirmDialog(props: ConfirmDialogProps) {
     handleConfirm,
     ...actions
   } = props;
+
+  const t = useTranslations("common.dialog");
   return (
     <AlertDialog {...actions}>
       <AlertDialogContent className={cn(className && className)}>
@@ -51,14 +57,14 @@ export function ConfirmDialog(props: ConfirmDialogProps) {
         {children}
         <AlertDialogFooter>
           <AlertDialogCancel disabled={isLoading}>
-            {cancelBtnText ?? "Cancel"}
+            {cancelBtnText ?? t("cancel")}
           </AlertDialogCancel>
           <Button
             variant={destructive ? "destructive" : "default"}
             onClick={handleConfirm}
             disabled={disabled || isLoading}
           >
-            {confirmText ?? "Continue"}
+            {confirmText ?? t("continue")}
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>

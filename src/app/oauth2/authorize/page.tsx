@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
+import { getTranslations } from "next-intl/server";
 
 import { createAuthorizationCode } from "@/lib/oauth/code";
 import { SUPPORTED_SCOPES, SupportedScope } from "@/lib/oauth/types";
@@ -40,6 +41,7 @@ export default async function AuthorizePage({
   if (!validation.valid) {
     const { error } = validation;
     const redirectUri = urlParams.get("redirect_uri");
+    const t = await getTranslations("authorize.error");
 
     if (redirectUri) {
       const errorParams = new URLSearchParams({
@@ -56,7 +58,7 @@ export default async function AuthorizePage({
         <div className="flex min-h-screen items-center justify-center">
           <div className="text-center">
             <h1 className="mb-2 text-2xl font-bold text-red-600">
-              Authorization Error
+              {t("title")}
             </h1>
             <p className="text-gray-600">
               {error.error_description || error.error}
@@ -142,10 +144,11 @@ export default async function AuthorizePage({
 
   const handleDeny = async () => {
     "use server";
+    const tError = await getTranslations("authorize.error");
 
     const errorParams = new URLSearchParams({
       error: "access_denied",
-      error_description: "User denied the authorization request",
+      error_description: tError("denied"),
       ...(request.state && { state: request.state }),
     });
 

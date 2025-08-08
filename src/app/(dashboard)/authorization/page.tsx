@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { getUserAuthorizations } from "@/actions/authorization";
+import { getTranslations } from "next-intl/server";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { AuthorizationView } from "@/components/authorization/authorization-view";
@@ -61,6 +62,8 @@ function AuthorizationSkeleton() {
 }
 
 async function AuthorizationContent() {
+  const t = await getTranslations("authorization.view.error");
+
   try {
     const authorizations = await getUserAuthorizations();
     return <AuthorizationView initialAuthorizations={authorizations} />;
@@ -69,11 +72,10 @@ async function AuthorizationContent() {
       <div className="flex flex-col items-center justify-center space-y-4 py-12">
         <div className="text-center">
           <h2 className="text-xl font-semibold text-red-600">
-            Failed to Load Authorizations
+            {t("failedToLoad")}
           </h2>
           <p className="text-muted-foreground mt-2">
-            There was an error loading your authorized applications. Please try
-            refreshing the page.
+            {t("loadErrorDescription")}
           </p>
         </div>
       </div>

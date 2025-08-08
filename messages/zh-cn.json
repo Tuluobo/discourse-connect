@@ -128,68 +128,6 @@
         "createButton": "创建应用"
       }
     },
-    "dialog": {
-      "title": {
-        "create": "创建新应用",
-        "edit": "编辑应用"
-      },
-      "description": {
-        "create": "创建一个新的 OAuth 应用",
-        "edit": "修改应用信息"
-      },
-      "fields": {
-        "name": {
-          "label": "应用名称",
-          "placeholder": "我的应用"
-        },
-        "description": {
-          "label": "应用描述",
-          "placeholder": "应用的详细描述（可选）"
-        },
-        "websiteUrl": {
-          "label": "网站 URL",
-          "placeholder": "https://example.com"
-        },
-        "logoUrl": {
-          "label": "Logo URL",
-          "placeholder": "https://example.com/logo.png"
-        },
-        "redirectUrls": {
-          "label": "重定向 URL",
-          "placeholder": "https://example.com/callback",
-          "addButton": "添加重定向 URL",
-          "description": "应用授权后用户重定向的地址"
-        },
-        "scopes": {
-          "label": "权限范围",
-          "placeholder": "read, write, admin",
-          "description": "用逗号分隔多个权限"
-        }
-      },
-      "validation": {
-        "nameRequired": "应用名称是必填项",
-        "validWebsiteUrl": "请输入有效的网站 URL",
-        "validLogoUrl": "请输入有效的 Logo URL",
-        "validRedirectUrl": "请输入有效的重定向 URL",
-        "redirectUrlRequired": "至少需要一个重定向 URL",
-        "scopesRequired": "权限范围是必填项"
-      },
-      "buttons": {
-        "create": "创建应用",
-        "update": "更新应用",
-        "creating": "创建中...",
-        "updating": "更新中..."
-      },
-      "toast": {
-        "createSuccess": "创建成功",
-        "createSuccessDesc": "应用已成功创建",
-        "createFailed": "创建失败",
-        "updateSuccess": "更新成功",
-        "updateSuccessDesc": "应用信息已成功更新",
-        "updateFailed": "更新失败",
-        "unknownError": "操作时发生未知错误"
-      }
-    },
     "cardActions": {
       "openMenu": "打开菜单",
       "edit": "编辑",
@@ -211,12 +149,6 @@
       "buttons": {
         "confirmDelete": "确认删除",
         "deleting": "删除中..."
-      },
-      "toast": {
-        "deleteSuccess": "删除成功",
-        "deleteSuccessDesc": "应用已成功删除",
-        "deleteFailed": "删除失败",
-        "unknownError": "删除应用时发生未知错误"
       }
     },
     "grid": {
@@ -237,23 +169,7 @@
       "permissions": "权限",
       "revoke": "撤销",
       "authorized": "已授权 {timeAgo}",
-      "updated": "更新于 {timeAgo}",
-      "timeAgo": {
-        "justNow": "刚刚",
-        "minutesAgo": "{count, plural, =1 {1 分钟前} other {# 分钟前}}",
-        "hoursAgo": "{count, plural, =1 {1 小时前} other {# 小时前}}",
-        "daysAgo": "{count, plural, =1 {1 天前} other {# 天前}}"
-      },
-      "revokeDialog": {
-        "title": "撤销授权",
-        "description": "您确定要撤销对 \"{appName}\" 的访问权限吗？这将删除所有权限，应用将无法再访问您的账户。",
-        "confirmText": "撤销访问",
-        "cancelText": "取消"
-      },
-      "toast": {
-        "revokeSuccess": "授权已成功撤销",
-        "revokeFailed": "撤销授权失败"
-      }
+      "updated": "更新于 {timeAgo}"
     },
     "view": {
       "title": "已授权应用",
@@ -274,6 +190,10 @@
       "noResults": {
         "message": "没有应用程序符合您的搜索条件。",
         "clearButton": "清除搜索"
+      },
+      "error": {
+        "failedToLoad": "授权信息加载失败",
+        "loadErrorDescription": "加载您的授权应用程序时出现错误。请尝试刷新页面。"
       }
     }
   },
@@ -287,34 +207,6 @@
       "activeTokens": "活跃令牌",
       "memberSince": "注册时间",
       "accountCreated": "账户创建"
-    },
-    "counts": {
-      "applications": {
-        "none": "尚未创建应用",
-        "single": "已创建 1 个应用",
-        "multiple": "已创建 {count} 个应用"
-      },
-      "authorizations": {
-        "none": "无已授权应用",
-        "single": "已授权 1 个应用",
-        "multiple": "已授权 {count} 个应用"
-      },
-      "tokens": {
-        "none": "无活跃令牌",
-        "single": "1 个令牌活跃",
-        "multiple": "{count} 个令牌活跃"
-      },
-      "memberTime": {
-        "days": "{count} 天",
-        "months": "{count} 个月",
-        "years": "{count} 年"
-      }
-    },
-    "quickStart": {
-      "title": "快速开始",
-      "description": "通过创建第一个应用程序或管理已授权应用来开始使用 OAuth 2.0。",
-      "createApp": "创建应用",
-      "manageAuth": "管理授权"
     }
   },
   "signIn": {
@@ -345,6 +237,99 @@
       "deny": "拒绝",
       "processing": "处理中..."
     },
-    "redirectNotice": "授权后，您将被重定向到 {appName}"
+    "redirectNotice": "授权后，您将被重定向到 {appName}",
+    "error": {
+      "title": "授权错误",
+      "denied": "用户拒绝了授权请求"
+    }
+  },
+  "authPage": {
+    "welcomeTo": "欢迎来到",
+    "community": "数字牧民社区",
+    "agreement": "点击继续即表示您同意我们的",
+    "termsOfService": "服务条款",
+    "and": "和",
+    "privacyPolicy": "隐私政策"
+  },
+  "userAuthorize": {
+    "loginError": "登录异常，授权失败！",
+    "verifying": "账号信息验证中，准备跳转中，请稍等..."
+  },
+  "profile": {
+    "title": "个人资料",
+    "subtitle": "查看您的账户信息和设置",
+    "unknownUser": "未知用户",
+    "error": {
+      "failedToLoad": "个人资料加载失败",
+      "loadErrorDescription": "加载您的个人资料信息时出现错误。请尝试刷新页面。"
+    }
+  },
+  "common": {
+    "brand": {
+      "name": "数字牧民社区",
+      "connect": "Connect",
+      "logoAlt": "数字牧民 Logo"
+    },
+    "search": {
+      "placeholder": "搜索",
+      "commandPlaceholder": "输入命令或搜索...",
+      "noResults": "未找到结果。"
+    },
+    "theme": {
+      "title": "主题",
+      "light": "浅色",
+      "dark": "深色",
+      "system": "系统"
+    },
+    "dialog": {
+      "cancel": "取消",
+      "continue": "继续"
+    },
+    "language": "语言"
+  },
+  "profileDropdown": {
+    "dashboard": "仪表板",
+    "profile": "个人资料",
+    "logout": "退出登录"
+  },
+  "siteHeader": {
+    "documents": "文档"
+  },
+  "serverErrors": {
+    "application": {
+      "nameRequired": "应用名称是必填项",
+      "validUrl": "请输入有效的 URL",
+      "validLogoUrl": "请输入有效的 Logo URL",
+      "validRedirectUrl": "请输入有效的重定向 URL",
+      "redirectUrlRequired": "至少需要一个重定向 URL",
+      "scopesRequired": "至少需要一个权限范围",
+      "notLoggedIn": "未登录",
+      "createFailed": "创建应用失败",
+      "validationFailed": "数据验证失败",
+      "createError": "创建应用时发生错误",
+      "updateError": "更新应用时发生错误",
+      "notFoundOrNoPermission": "应用不存在或无权限删除",
+      "confirmNameMismatch": "确认名称不匹配",
+      "deleteError": "删除应用时发生错误"
+    },
+    "authorization": {
+      "notAuthenticated": "用户未认证",
+      "revokeFailed": "撤销授权失败"
+    },
+    "user": {
+      "notAuthenticated": "用户未认证",
+      "notFound": "用户未找到",
+      "deleteFailed": "删除用户失败"
+    }
+  },
+  "comingSoon": {
+    "title": "即将推出 👀",
+    "description": "此页面尚未创建。",
+    "stayTuned": "敬请期待！"
+  },
+  "metadata": {
+    "title": "数字牧民 Connect | 基于 Discourse SSO 的 OAuth 2.0 认证平台",
+    "description": "一个基于 Discourse SSO 的身份认证系统，支持 OAuth 2.0 协议，让用户使用已有的数字牧民账号登录到您的应用程序。",
+    "keywords": "Discourse, SSO, OAuth, 认证, 授权, 身份验证, 数字牧民"
   }
 }

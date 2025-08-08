@@ -4,7 +4,7 @@ import { useEffect, useState, useTransition } from "react";
 import { LOCALE_MAPS, LOCALES } from "@/i18n/config";
 import { setUserLocale } from "@/i18n/locale";
 import { Globe } from "lucide-react";
-import { Locale, useLocale } from "next-intl";
+import { Locale, useLocale, useTranslations } from "next-intl";
 
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
@@ -20,6 +20,7 @@ export default function LocaleSwitcher() {
   const [, startTransition] = useTransition();
   const [currentLocale, setCurrentLocale] = useState("locale");
   const isMobile = useIsMobile();
+  const t = useTranslations("common");
 
   useEffect(() => {
     setCurrentLocale(locale);
@@ -39,7 +40,7 @@ export default function LocaleSwitcher() {
     >
       <SelectTrigger className="w-fit" showChevronDown={!isMobile}>
         <Globe className="mr-1 h-4 w-4" />
-        {!isMobile && <SelectValue placeholder="Language" />}
+        {!isMobile && <SelectValue placeholder={t("language")} />}
       </SelectTrigger>
       <SelectContent>
         {LOCALES.map((cur) => (

@@ -128,68 +128,6 @@
         "createButton": "Create Application"
       }
     },
-    "dialog": {
-      "title": {
-        "create": "Create New Application",
-        "edit": "Edit Application"
-      },
-      "description": {
-        "create": "Create a new OAuth application",
-        "edit": "Modify application information"
-      },
-      "fields": {
-        "name": {
-          "label": "Application Name",
-          "placeholder": "My Application"
-        },
-        "description": {
-          "label": "Application Description",
-          "placeholder": "Detailed description of the application (optional)"
-        },
-        "websiteUrl": {
-          "label": "Website URL",
-          "placeholder": "https://example.com"
-        },
-        "logoUrl": {
-          "label": "Logo URL",
-          "placeholder": "https://example.com/logo.png"
-        },
-        "redirectUrls": {
-          "label": "Redirect URLs",
-          "placeholder": "https://example.com/callback",
-          "addButton": "Add Redirect URL",
-          "description": "User redirect address after application authorization"
-        },
-        "scopes": {
-          "label": "Scopes",
-          "placeholder": "read, write, admin",
-          "description": "Separate multiple permissions with commas"
-        }
-      },
-      "validation": {
-        "nameRequired": "Application name is required",
-        "validWebsiteUrl": "Please enter a valid website URL",
-        "validLogoUrl": "Please enter a valid logo URL",
-        "validRedirectUrl": "Please enter a valid redirect URL",
-        "redirectUrlRequired": "At least one redirect URL is required",
-        "scopesRequired": "Scopes are required"
-      },
-      "buttons": {
-        "create": "Create Application",
-        "update": "Update Application",
-        "creating": "Creating...",
-        "updating": "Updating..."
-      },
-      "toast": {
-        "createSuccess": "Created Successfully",
-        "createSuccessDesc": "Application has been created successfully",
-        "createFailed": "Creation Failed",
-        "updateSuccess": "Updated Successfully",
-        "updateSuccessDesc": "Application information has been updated successfully",
-        "updateFailed": "Update Failed",
-        "unknownError": "An unknown error occurred during operation"
-      }
-    },
     "cardActions": {
       "openMenu": "Open menu",
       "edit": "Edit",
@@ -211,12 +149,6 @@
       "buttons": {
         "confirmDelete": "Confirm Delete",
         "deleting": "Deleting..."
-      },
-      "toast": {
-        "deleteSuccess": "Deleted Successfully",
-        "deleteSuccessDesc": "Application has been deleted successfully",
-        "deleteFailed": "Deletion Failed",
-        "unknownError": "An unknown error occurred while deleting the application"
       }
     },
     "grid": {
@@ -237,23 +169,7 @@
       "permissions": "Permissions",
       "revoke": "Revoke",
       "authorized": "Authorized {timeAgo}",
-      "updated": "Updated {timeAgo}",
-      "timeAgo": {
-        "justNow": "Just now",
-        "minutesAgo": "{count, plural, =1 {1 minute ago} other {# minutes ago}}",
-        "hoursAgo": "{count, plural, =1 {1 hour ago} other {# hours ago}}",
-        "daysAgo": "{count, plural, =1 {1 day ago} other {# days ago}}"
-      },
-      "revokeDialog": {
-        "title": "Revoke Authorization",
-        "description": "Are you sure you want to revoke access for \"{appName}\"? This will remove all permissions and the application will no longer be able to access your account.",
-        "confirmText": "Revoke Access",
-        "cancelText": "Cancel"
-      },
-      "toast": {
-        "revokeSuccess": "Authorization revoked successfully",
-        "revokeFailed": "Failed to revoke authorization"
-      }
+      "updated": "Updated {timeAgo}"
     },
     "view": {
       "title": "Authorized Applications",
@@ -274,6 +190,10 @@
       "noResults": {
         "message": "No applications match your search criteria.",
         "clearButton": "Clear Search"
+      },
+      "error": {
+        "failedToLoad": "Failed to Load Authorizations",
+        "loadErrorDescription": "There was an error loading your authorized applications. Please try refreshing the page."
       }
     }
   },
@@ -287,34 +207,6 @@
       "activeTokens": "Active Tokens",
       "memberSince": "Member Since",
       "accountCreated": "Account created"
-    },
-    "counts": {
-      "applications": {
-        "none": "No applications created yet",
-        "single": "1 application created",
-        "multiple": "{count} applications created"
-      },
-      "authorizations": {
-        "none": "No authorized applications",
-        "single": "1 app authorized",
-        "multiple": "{count} apps authorized"
-      },
-      "tokens": {
-        "none": "No active tokens",
-        "single": "1 token active",
-        "multiple": "{count} tokens active"
-      },
-      "memberTime": {
-        "days": "{count} days",
-        "months": "{count} month{count, plural, =1 {} other {s}}",
-        "years": "{count} year{count, plural, =1 {} other {s}}"
-      }
-    },
-    "quickStart": {
-      "title": "Quick Start",
-      "description": "Get started with OAuth 2.0 by creating your first application or managing your authorized apps.",
-      "createApp": "Create Application",
-      "manageAuth": "Manage Authorizations"
     }
   },
   "signIn": {
@@ -345,6 +237,99 @@
       "deny": "Deny",
       "processing": "Processing..."
     },
-    "redirectNotice": "You will be redirected to {appName} after authorization"
+    "redirectNotice": "You will be redirected to {appName} after authorization",
+    "error": {
+      "title": "Authorization Error",
+      "denied": "User denied the authorization request"
+    }
+  },
+  "authPage": {
+    "welcomeTo": "Welcome to",
+    "community": "数字牧民社区",
+    "agreement": "By clicking continue, you agree to our",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "userAuthorize": {
+    "loginError": "Login failed, authorization failed!",
+    "verifying": "Verifying account information, preparing to redirect, please wait..."
+  },
+  "profile": {
+    "title": "Profile",
+    "subtitle": "View your account information and settings",
+    "unknownUser": "Unknown User",
+    "error": {
+      "failedToLoad": "Failed to Load Profile",
+      "loadErrorDescription": "There was an error loading your profile information. Please try refreshing the page."
+    }
+  },
+  "common": {
+    "brand": {
+      "name": "Shuzimumin Community",
+      "connect": "Connect",
+      "logoAlt": "Shuzimumin Logo"
+    },
+    "search": {
+      "placeholder": "Search",
+      "commandPlaceholder": "Type a command or search...",
+      "noResults": "No results found."
+    },
+    "theme": {
+      "title": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "dialog": {
+      "cancel": "Cancel",
+      "continue": "Continue"
+    },
+    "language": "Language"
+  },
+  "profileDropdown": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "logout": "Log out"
+  },
+  "siteHeader": {
+    "documents": "Documents"
+  },
+  "serverErrors": {
+    "application": {
+      "nameRequired": "Application name is required",
+      "validUrl": "Please enter a valid URL",
+      "validLogoUrl": "Please enter a valid logo URL",
+      "validRedirectUrl": "Please enter a valid redirect URL",
+      "redirectUrlRequired": "At least one redirect URL is required",
+      "scopesRequired": "At least one permission scope is required",
+      "notLoggedIn": "Not logged in",
+      "createFailed": "Failed to create application",
+      "validationFailed": "Data validation failed",
+      "createError": "An error occurred while creating the application",
+      "updateError": "An error occurred while updating the application",
+      "notFoundOrNoPermission": "Application not found or no permission to delete",
+      "confirmNameMismatch": "Confirmation name does not match",
+      "deleteError": "An error occurred while deleting the application"
+    },
+    "authorization": {
+      "notAuthenticated": "User not authenticated",
+      "revokeFailed": "Failed to revoke authorization"
+    },
+    "user": {
+      "notAuthenticated": "User not authenticated",
+      "notFound": "User not found",
+      "deleteFailed": "Failed to delete user"
+    }
+  },
+  "comingSoon": {
+    "title": "Coming Soon 👀",
+    "description": "This page has not been created yet.",
+    "stayTuned": "Stay tuned though!"
+  },
+  "metadata": {
+    "title": "Shuzimumin Connect | OAuth 2.0 Authentication Platform Based on Discourse SSO",
+    "description": "An identity authentication system based on Discourse SSO that supports OAuth 2.0 protocol, allowing users to log in to your applications using their existing Shuzimumin accounts.",
+    "keywords": "Discourse, SSO, OAuth, Authentication, Authorization, Identity Verification, Shuzimumin"
   }
 }
