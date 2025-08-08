@@ -1,0 +1,349 @@
+{
+  "common": {
+    "brand": {
+      "name": "数字牧民社区",
+      "connect": "Connect",
+      "logoAlt": "数字牧民 Logo"
+    },
+    "search": {
+      "placeholder": "搜索",
+      "commandPlaceholder": "输入命令或搜索...",
+      "noResults": "未找到结果。"
+    },
+    "theme": {
+      "title": "主题",
+      "light": "浅色",
+      "dark": "深色",
+      "system": "系统"
+    },
+    "dialog": {
+      "cancel": "取消",
+      "continue": "继续"
+    },
+    "language": "语言",
+    "roles": {
+      "ADMIN": "管理员",
+      "USER": "用户"
+    },
+    "sidebar": {
+      "groups": {
+        "general": "常规",
+        "other": "其他"
+      },
+      "items": {
+        "dashboard": "仪表板",
+        "applications": "应用管理",
+        "authorization": "授权管理",
+        "settings": "设置",
+        "profile": "个人资料",
+        "community": "社区",
+        "helpCenter": "帮助中心"
+      }
+    },
+    "time": {
+      "justNow": "刚刚",
+      "minutesAgo": "{count} 分钟前",
+      "hoursAgo": "{count} 小时前",
+      "daysAgo": "{count} 天前",
+      "memberSince": {
+        "days": "{count} 天",
+        "months": "{count} 个月",
+        "years": "{count} 年"
+      }
+    }
+  },
+  "profileDropdown": {
+    "dashboard": "仪表板",
+    "profile": "个人资料",
+    "logout": "退出登录"
+  },
+  "siteHeader": {
+    "documents": "文档"
+  },
+  "application": {
+    "view": {
+      "title": "应用管理",
+      "subtitle": "在这里管理您的应用程序及其配置。",
+      "createButton": "创建应用",
+      "filterPlaceholder": "筛选应用...",
+      "filter": {
+        "allApps": "所有应用",
+        "activated": "已激活",
+        "notActivated": "未激活"
+      },
+      "sort": {
+        "ascending": "升序",
+        "descending": "降序"
+      },
+      "empty": {
+        "title": "您的应用",
+        "description": "创建一个应用开始使用。",
+        "createButton": "创建应用"
+      }
+    },
+    "cardActions": {
+      "openMenu": "打开菜单",
+      "edit": "编辑",
+      "delete": "删除"
+    },
+    "deleteDialog": {
+      "title": "删除应用",
+      "description": {
+        "confirm": "您确定要删除",
+        "warning": "此操作将永久删除名为",
+        "cannotUndo": "的应用。此操作无法撤销。"
+      },
+      "nameLabel": "名称",
+      "namePlaceholder": "输入名称以确认删除。",
+      "warning": {
+        "title": "警告！",
+        "description": "请谨慎操作，此操作无法回滚。"
+      },
+      "buttons": {
+        "confirmDelete": "确认删除",
+        "deleting": "删除中..."
+      }
+    },
+    "grid": {
+      "status": {
+        "activated": "已激活",
+        "notActivated": "未激活"
+      },
+      "clientId": "Client ID",
+      "clientSecret": "Client Secret",
+      "visitWebsite": "访问网站",
+      "copySuccess": "{label} 已复制到剪贴板",
+      "copyFailed": "复制失败"
+    },
+    "dialog": {
+      "title": {
+        "create": "创建应用",
+        "edit": "编辑应用"
+      },
+      "description": {
+        "create": "创建一个新的 OAuth 应用程序",
+        "edit": "更新您的 OAuth 应用程序设置"
+      },
+      "fields": {
+        "name": {
+          "label": "应用名称",
+          "placeholder": "输入应用名称"
+        },
+        "description": {
+          "label": "描述",
+          "placeholder": "描述您的应用程序"
+        },
+        "websiteUrl": {
+          "label": "网站 URL",
+          "placeholder": "https://example.com"
+        },
+        "logoUrl": {
+          "label": "Logo URL",
+          "placeholder": "https://example.com/logo.png"
+        },
+        "redirectUrls": {
+          "label": "重定向 URL",
+          "placeholder": "https://example.com/callback",
+          "addButton": "添加 URL",
+          "description": "用户授权后将被重定向到的地址"
+        },
+        "scopes": {
+          "label": "权限范围",
+          "placeholder": "read:user, write:user",
+          "description": "逗号分隔的权限列表"
+        }
+      },
+      "validation": {
+        "nameRequired": "应用名称是必填项",
+        "validWebsiteUrl": "请输入有效的网站 URL",
+        "validLogoUrl": "请输入有效的 Logo URL",
+        "validRedirectUrl": "请输入有效的重定向 URL",
+        "redirectUrlRequired": "至少需要一个重定向 URL",
+        "scopesRequired": "至少需要一个权限范围"
+      },
+      "buttons": {
+        "create": "创建",
+        "creating": "创建中...",
+        "update": "更新",
+        "updating": "更新中..."
+      },
+      "toast": {
+        "createSuccess": "应用创建成功",
+        "createSuccessDesc": "您的应用已准备就绪",
+        "createFailed": "创建应用失败",
+        "updateSuccess": "应用更新成功",
+        "updateSuccessDesc": "您的更改已保存",
+        "updateFailed": "更新应用失败",
+        "unknownError": "发生未知错误"
+      }
+    }
+  },
+  "authorization": {
+    "card": {
+      "noDescription": "未提供描述",
+      "permissions": "权限",
+      "revoke": "撤销",
+      "authorized": "已授权 {timeAgo}",
+      "updated": "更新于 {timeAgo}",
+      "toast": {
+        "revokeSuccess": "授权撤销成功",
+        "revokeFailed": "撤销授权失败"
+      },
+      "revokeDialog": {
+        "title": "撤销授权",
+        "description": "您确定要撤销此应用程序的访问权限吗？",
+        "confirmText": "撤销",
+        "cancelText": "取消"
+      }
+    },
+    "view": {
+      "title": "已授权应用",
+      "subtitle": "管理有权访问您账户的应用程序",
+      "stats": {
+        "totalAuthorized": "授权总数",
+        "recentAuthorization": "最近授权",
+        "none": "无"
+      },
+      "search": {
+        "placeholder": "搜索应用程序...",
+        "results": "显示 {filtered} 个，共 {total} 个应用程序"
+      },
+      "empty": {
+        "title": "没有已授权的应用",
+        "description": "您还没有授权任何应用程序。当您授权应用访问权限时，它们将在这里显示，您可以管理它们的权限。"
+      },
+      "noResults": {
+        "message": "没有应用程序符合您的搜索条件。",
+        "clearButton": "清除搜索"
+      },
+      "error": {
+        "failedToLoad": "授权信息加载失败",
+        "loadErrorDescription": "加载您的授权应用程序时出现错误。请尝试刷新页面。"
+      }
+    }
+  },
+  "dashboard": {
+    "title": "仪表板",
+    "welcome": "欢迎回来，{name}！",
+    "signInPrompt": "请登录以查看您的仪表板。",
+    "stats": {
+      "myApplications": "我的应用",
+      "authorizedApps": "已授权应用",
+      "activeTokens": "活跃令牌",
+      "memberSince": "注册时间",
+      "accountCreated": "账户创建"
+    },
+    "counts": {
+      "applications": {
+        "none": "暂无应用",
+        "single": "1 个应用",
+        "multiple": "{count} 个应用"
+      },
+      "authorizations": {
+        "none": "暂无授权应用",
+        "single": "1 个授权应用",
+        "multiple": "{count} 个授权应用"
+      },
+      "tokens": {
+        "none": "暂无活跃令牌",
+        "single": "1 个活跃令牌",
+        "multiple": "{count} 个活跃令牌"
+      },
+      "memberSince": {
+        "days": "{count} 天",
+        "months": "{count} 个月",
+        "years": "{count} 年"
+      }
+    },
+    "quickStart": {
+      "title": "快速开始",
+      "description": "通过创建您的第一个应用程序或管理授权来开始使用数字牧民 Connect。",
+      "createApp": "创建应用",
+      "manageAuth": "管理授权"
+    }
+  },
+  "profile": {
+    "title": "个人资料",
+    "subtitle": "查看您的账户信息和设置",
+    "unknownUser": "未知用户",
+    "sections": {
+      "accountDetails": "账户详情",
+      "additionalInfo": "附加信息",
+      "accountStatus": "账户状态"
+    },
+    "fields": {
+      "memberSince": "注册时间",
+      "lastUpdated": "最后更新",
+      "moderatorStatus": "版主状态",
+      "groups": "用户组"
+    },
+    "status": {
+      "moderator": "版主",
+      "regularUser": "普通用户",
+      "activeAccount": "活跃账户",
+      "activeDescription": "您的账户状态良好"
+    },
+    "dangerZone": {
+      "title": "危险区域",
+      "subtitle": "不可逆转的破坏性操作",
+      "deleteAccount": {
+        "title": "删除账户",
+        "description": "永久删除您的账户和所有数据",
+        "button": "删除账户",
+        "willDelete": "这将删除：",
+        "items": {
+          "profile": "您的个人资料和个人信息",
+          "authorizations": "所有已授权的应用程序",
+          "tokens": "所有访问令牌",
+          "applications": "您的所有应用程序"
+        }
+      }
+    },
+    "deleteDialog": {
+      "title": "删除账户",
+      "description": "您确定要删除您的账户吗？",
+      "confirmText": "删除账户",
+      "cancelText": "取消"
+    },
+    "toast": {
+      "deleteSuccess": "账户删除成功",
+      "deleteFailed": "删除账户失败"
+    },
+    "error": {
+      "failedToLoad": "个人资料加载失败",
+      "loadErrorDescription": "加载您的个人资料信息时出现错误。请尝试刷新页面。"
+    }
+  },
+  "serverErrors": {
+    "application": {
+      "nameRequired": "应用名称是必填项",
+      "validUrl": "请输入有效的 URL",
+      "validLogoUrl": "请输入有效的 Logo URL",
+      "validRedirectUrl": "请输入有效的重定向 URL",
+      "redirectUrlRequired": "至少需要一个重定向 URL",
+      "scopesRequired": "至少需要一个权限范围",
+      "notLoggedIn": "未登录",
+      "createFailed": "创建应用失败",
+      "validationFailed": "数据验证失败",
+      "createError": "创建应用时发生错误",
+      "updateError": "更新应用时发生错误",
+      "notFoundOrNoPermission": "应用不存在或无权限删除",
+      "confirmNameMismatch": "确认名称不匹配",
+      "deleteError": "删除应用时发生错误"
+    },
+    "authorization": {
+      "notAuthenticated": "用户未认证",
+      "revokeFailed": "撤销授权失败"
+    },
+    "user": {
+      "notAuthenticated": "用户未认证",
+      "notFound": "用户未找到",
+      "deleteFailed": "删除用户失败"
+    }
+  },
+  "comingSoon": {
+    "title": "即将推出 👀",
+    "description": "此页面尚未创建。",
+    "stayTuned": "敬请期待！"
+  }
+}

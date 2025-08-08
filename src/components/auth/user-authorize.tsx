@@ -3,11 +3,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "@/actions/sign-in";
+import { useTranslations } from "next-intl";
 
 export function UserAuthorize() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | unknown>(null);
   const router = useRouter();
+  const t = useTranslations("userAuthorize");
 
   const searchParams = useSearchParams();
   const searchParamsRecord = Object.fromEntries([
@@ -44,9 +46,9 @@ export function UserAuthorize() {
   return (
     <div className="{className}">
       {error ? (
-        <p className="text-center">登录异常，授权失败！</p>
+        <p className="text-center">{t("loginError")}</p>
       ) : (
-        <p className="text-center">账号信息验证中，准备跳转中，请稍等...</p>
+        <p className="text-center">{t("verifying")}</p>
       )}
     </div>
   );

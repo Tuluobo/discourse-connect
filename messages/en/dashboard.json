@@ -1,0 +1,349 @@
+{
+  "common": {
+    "brand": {
+      "name": "Shuzimumin Community",
+      "connect": "Connect",
+      "logoAlt": "Shuzimumin Logo"
+    },
+    "search": {
+      "placeholder": "Search",
+      "commandPlaceholder": "Type a command or search...",
+      "noResults": "No results found."
+    },
+    "theme": {
+      "title": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "dialog": {
+      "cancel": "Cancel",
+      "continue": "Continue"
+    },
+    "language": "Language",
+    "roles": {
+      "ADMIN": "Administrator",
+      "USER": "User"
+    },
+    "sidebar": {
+      "groups": {
+        "general": "General",
+        "other": "Other"
+      },
+      "items": {
+        "dashboard": "Dashboard",
+        "applications": "Applications",
+        "authorization": "Authorization",
+        "settings": "Settings",
+        "profile": "Profile",
+        "community": "Community",
+        "helpCenter": "Help Center"
+      }
+    },
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{count} minutes ago",
+      "hoursAgo": "{count} hours ago",
+      "daysAgo": "{count} days ago",
+      "memberSince": {
+        "days": "{count} days",
+        "months": "{count} months",
+        "years": "{count} years"
+      }
+    }
+  },
+  "profileDropdown": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "logout": "Log out"
+  },
+  "siteHeader": {
+    "documents": "Documents"
+  },
+  "application": {
+    "view": {
+      "title": "Applications",
+      "subtitle": "Manage your applications and their properties here.",
+      "createButton": "Create Application",
+      "filterPlaceholder": "Filter apps...",
+      "filter": {
+        "allApps": "All Apps",
+        "activated": "Activated",
+        "notActivated": "Not Activated"
+      },
+      "sort": {
+        "ascending": "Ascending",
+        "descending": "Descending"
+      },
+      "empty": {
+        "title": "Your applications",
+        "description": "Create an application to start.",
+        "createButton": "Create Application"
+      }
+    },
+    "cardActions": {
+      "openMenu": "Open menu",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "deleteDialog": {
+      "title": "Delete Application",
+      "description": {
+        "confirm": "Are you sure you want to delete",
+        "warning": "This action will permanently remove the application with the name of",
+        "cannotUndo": "from the system. This cannot be undone."
+      },
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter name to confirm deletion.",
+      "warning": {
+        "title": "Warning!",
+        "description": "Please be careful, this operation cannot be rolled back."
+      },
+      "buttons": {
+        "confirmDelete": "Confirm Delete",
+        "deleting": "Deleting..."
+      }
+    },
+    "grid": {
+      "status": {
+        "activated": "Activated",
+        "notActivated": "Not Activated"
+      },
+      "clientId": "Client ID",
+      "clientSecret": "Client Secret",
+      "visitWebsite": "Visit Website",
+      "copySuccess": "{label} copied to clipboard",
+      "copyFailed": "Copy Failed"
+    },
+    "dialog": {
+      "title": {
+        "create": "Create Application",
+        "edit": "Edit Application"
+      },
+      "description": {
+        "create": "Create a new OAuth application",
+        "edit": "Update your OAuth application settings"
+      },
+      "fields": {
+        "name": {
+          "label": "Application Name",
+          "placeholder": "Enter application name"
+        },
+        "description": {
+          "label": "Description",
+          "placeholder": "Describe your application"
+        },
+        "websiteUrl": {
+          "label": "Website URL",
+          "placeholder": "https://example.com"
+        },
+        "logoUrl": {
+          "label": "Logo URL",
+          "placeholder": "https://example.com/logo.png"
+        },
+        "redirectUrls": {
+          "label": "Redirect URLs",
+          "placeholder": "https://example.com/callback",
+          "addButton": "Add URL",
+          "description": "Where users will be redirected after authorization"
+        },
+        "scopes": {
+          "label": "Scopes",
+          "placeholder": "read:user, write:user",
+          "description": "Comma-separated list of permissions"
+        }
+      },
+      "validation": {
+        "nameRequired": "Application name is required",
+        "validWebsiteUrl": "Please enter a valid website URL",
+        "validLogoUrl": "Please enter a valid logo URL",
+        "validRedirectUrl": "Please enter a valid redirect URL",
+        "redirectUrlRequired": "At least one redirect URL is required",
+        "scopesRequired": "At least one scope is required"
+      },
+      "buttons": {
+        "create": "Create",
+        "creating": "Creating...",
+        "update": "Update",
+        "updating": "Updating..."
+      },
+      "toast": {
+        "createSuccess": "Application created successfully",
+        "createSuccessDesc": "Your application is ready to use",
+        "createFailed": "Failed to create application",
+        "updateSuccess": "Application updated successfully",
+        "updateSuccessDesc": "Your changes have been saved",
+        "updateFailed": "Failed to update application",
+        "unknownError": "An unknown error occurred"
+      }
+    }
+  },
+  "authorization": {
+    "card": {
+      "noDescription": "No description provided",
+      "permissions": "Permissions",
+      "revoke": "Revoke",
+      "authorized": "Authorized {timeAgo}",
+      "updated": "Updated {timeAgo}",
+      "toast": {
+        "revokeSuccess": "Authorization revoked successfully",
+        "revokeFailed": "Failed to revoke authorization"
+      },
+      "revokeDialog": {
+        "title": "Revoke Authorization",
+        "description": "Are you sure you want to revoke access for this application?",
+        "confirmText": "Revoke",
+        "cancelText": "Cancel"
+      }
+    },
+    "view": {
+      "title": "Authorized Applications",
+      "subtitle": "Manage applications that have access to your account",
+      "stats": {
+        "totalAuthorized": "Total Authorized",
+        "recentAuthorization": "Recent Authorization",
+        "none": "None"
+      },
+      "search": {
+        "placeholder": "Search applications...",
+        "results": "Showing {filtered} of {total} applications"
+      },
+      "empty": {
+        "title": "No Authorized Applications",
+        "description": "You haven't authorized any applications yet. When you grant access to applications, they will appear here and you can manage their permissions."
+      },
+      "noResults": {
+        "message": "No applications match your search criteria.",
+        "clearButton": "Clear Search"
+      },
+      "error": {
+        "failedToLoad": "Failed to Load Authorizations",
+        "loadErrorDescription": "There was an error loading your authorized applications. Please try refreshing the page."
+      }
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back, {name}!",
+    "signInPrompt": "Please sign in to view your dashboard.",
+    "stats": {
+      "myApplications": "My Applications",
+      "authorizedApps": "Authorized Apps",
+      "activeTokens": "Active Tokens",
+      "memberSince": "Member Since",
+      "accountCreated": "Account created"
+    },
+    "counts": {
+      "applications": {
+        "none": "No applications created",
+        "single": "1 application",
+        "multiple": "{count} applications"
+      },
+      "authorizations": {
+        "none": "No authorized applications",
+        "single": "1 authorized app",
+        "multiple": "{count} authorized apps"
+      },
+      "tokens": {
+        "none": "No active tokens",
+        "single": "1 active token",
+        "multiple": "{count} active tokens"
+      },
+      "memberSince": {
+        "days": "{count} days",
+        "months": "{count} months",
+        "years": "{count} years"
+      }
+    },
+    "quickStart": {
+      "title": "Quick Start",
+      "description": "Get started with Shuzimumin Connect by creating your first application or managing authorizations.",
+      "createApp": "Create Application",
+      "manageAuth": "Manage Authorizations"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "subtitle": "View your account information and settings",
+    "unknownUser": "Unknown User",
+    "sections": {
+      "accountDetails": "Account Details",
+      "additionalInfo": "Additional Information",
+      "accountStatus": "Account Status"
+    },
+    "fields": {
+      "memberSince": "Member Since",
+      "lastUpdated": "Last Updated",
+      "moderatorStatus": "Moderator Status",
+      "groups": "Groups"
+    },
+    "status": {
+      "moderator": "Moderator",
+      "regularUser": "Regular User",
+      "activeAccount": "Active Account",
+      "activeDescription": "Your account is in good standing"
+    },
+    "dangerZone": {
+      "title": "Danger Zone",
+      "subtitle": "Irreversible and destructive actions",
+      "deleteAccount": {
+        "title": "Delete Account",
+        "description": "Permanently delete your account and all data",
+        "button": "Delete Account",
+        "willDelete": "This will delete:",
+        "items": {
+          "profile": "Your profile and personal information",
+          "authorizations": "All authorized applications",
+          "tokens": "All access tokens",
+          "applications": "All your applications"
+        }
+      }
+    },
+    "deleteDialog": {
+      "title": "Delete Account",
+      "description": "Are you sure you want to delete your account?",
+      "confirmText": "Delete Account",
+      "cancelText": "Cancel"
+    },
+    "toast": {
+      "deleteSuccess": "Account deleted successfully",
+      "deleteFailed": "Failed to delete account"
+    },
+    "error": {
+      "failedToLoad": "Failed to Load Profile",
+      "loadErrorDescription": "There was an error loading your profile information. Please try refreshing the page."
+    }
+  },
+  "serverErrors": {
+    "application": {
+      "nameRequired": "Application name is required",
+      "validUrl": "Please enter a valid URL",
+      "validLogoUrl": "Please enter a valid logo URL",
+      "validRedirectUrl": "Please enter a valid redirect URL",
+      "redirectUrlRequired": "At least one redirect URL is required",
+      "scopesRequired": "At least one permission scope is required",
+      "notLoggedIn": "Not logged in",
+      "createFailed": "Failed to create application",
+      "validationFailed": "Data validation failed",
+      "createError": "An error occurred while creating the application",
+      "updateError": "An error occurred while updating the application",
+      "notFoundOrNoPermission": "Application not found or no permission to delete",
+      "confirmNameMismatch": "Confirmation name does not match",
+      "deleteError": "An error occurred while deleting the application"
+    },
+    "authorization": {
+      "notAuthenticated": "User not authenticated",
+      "revokeFailed": "Failed to revoke authorization"
+    },
+    "user": {
+      "notAuthenticated": "User not authenticated",
+      "notFound": "User not found",
+      "deleteFailed": "Failed to delete user"
+    }
+  },
+  "comingSoon": {
+    "title": "Coming Soon 👀",
+    "description": "This page has not been created yet.",
+    "stayTuned": "Stay tuned though!"
+  }
+}

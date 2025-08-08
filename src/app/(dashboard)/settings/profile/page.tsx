@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { getCurrentUser } from "@/actions/user";
+import { getTranslations } from "next-intl/server";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { ProfileView } from "@/components/profile/profile-view";
@@ -59,6 +60,8 @@ function ProfileSkeleton() {
 }
 
 async function ProfileContent() {
+  const t = await getTranslations("profile.error");
+
   try {
     const user = await getCurrentUser();
     return <ProfileView user={user} />;
@@ -67,11 +70,10 @@ async function ProfileContent() {
       <div className="flex flex-col items-center justify-center space-y-4 py-12">
         <div className="text-center">
           <h2 className="text-xl font-semibold text-red-600">
-            Failed to Load Profile
+            {t("failedToLoad")}
           </h2>
           <p className="text-muted-foreground mt-2">
-            There was an error loading your profile information. Please try
-            refreshing the page.
+            {t("loadErrorDescription")}
           </p>
         </div>
       </div>

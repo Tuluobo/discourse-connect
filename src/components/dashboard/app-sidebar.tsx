@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { cn } from "@/lib/utils";
 import {
@@ -17,10 +18,13 @@ import {
 import { NavGroup } from "@/components/dashboard/nav-group";
 
 import DynamicLogo from "../shared/dynamic-logo";
-import { sidebarData } from "./data/sidebar-data";
+import { getSidebarData } from "./data/sidebar-data";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { open } = useSidebar();
+  const t = useTranslations("common");
+
+  const sidebarData = getSidebarData(t);
 
   return (
     <Sidebar collapsible="icon" variant="floating" {...props}>
@@ -35,8 +39,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <DynamicLogo className="size-4" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">数字牧民社区</span>
-                <span className="truncate text-xs">Connect</span>
+                <span className="truncate font-semibold">
+                  {t("brand.name")}
+                </span>
+                <span className="truncate text-xs">{t("brand.connect")}</span>
               </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -64,7 +70,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               rel="noreferrer"
               className="text-primary font-medium underline underline-offset-2"
             >
-              数字牧民社区
+              {t("brand.name")}
             </Link>
           )}
         </p>

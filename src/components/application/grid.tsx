@@ -101,7 +101,7 @@ export default function ApplicationGrid({ data }: { data: Application[] }) {
               <label className="text-muted-foreground text-xs font-medium">
                 {t("clientId")}
               </label>
-              <SecretField value={app.clientId} label="Client ID" />
+              <SecretField value={app.clientId} label={t("clientId")} />
             </div>
 
             {/* App Secret */}
@@ -109,7 +109,7 @@ export default function ApplicationGrid({ data }: { data: Application[] }) {
               <label className="text-muted-foreground text-xs font-medium">
                 {t("clientSecret")}
               </label>
-              <SecretField value={app.clientSecret} label="Client Secret" />
+              <SecretField value={app.clientSecret} label={t("clientSecret")} />
             </div>
 
             {/* Website link */}

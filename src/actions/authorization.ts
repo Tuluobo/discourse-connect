@@ -1,6 +1,7 @@
 "use server";
 
 import { auth } from "@/auth";
+import { getTranslations } from "next-intl/server";
 
 import {
   deleteAuthorizationByUserAndApplication,
@@ -11,9 +12,10 @@ import { logger } from "@/lib/logger";
 export async function getUserAuthorizations() {
   try {
     const session = await auth();
+    const t = await getTranslations("serverErrors.authorization");
 
     if (!session?.user?.id) {
-      throw new Error("User not authenticated");
+      throw new Error(t("notAuthenticated"));
     }
 
     const authorizations = await findAuthorizationsByUser(session.user.id);
@@ -27,9 +29,10 @@ export async function getUserAuthorizations() {
 export async function revokeUserAuthorization(applicationId: string) {
   try {
     const session = await auth();
+    const t = await getTranslations("serverErrors.authorization");
 
     if (!session?.user?.id) {
-      throw new Error("User not authenticated");
+      throw new Error(t("notAuthenticated"));
     }
 
     const success = await deleteAuthorizationByUserAndApplication(
@@ -38,7 +41,7 @@ export async function revokeUserAuthorization(applicationId: string) {
     );
 
     if (!success) {
-      throw new Error("Failed to revoke authorization");
+      throw new Error(t("revokeFailed"));
     }
 
     return { success: true };

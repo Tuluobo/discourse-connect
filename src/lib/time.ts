@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Time formatting utilities with i18n support
  */
@@ -10,7 +11,7 @@
  */
 export function formatTimeAgo(
   date: Date,
-  t: (key: string, params?: Record<string, unknown>) => string,
+  t: (key: string, params?: any) => string,
 ): string {
   const now = new Date();
   const diffInMs = now.getTime() - date.getTime();
@@ -19,13 +20,13 @@ export function formatTimeAgo(
   const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
 
   if (diffInDays > 0) {
-    return t("timeAgo.daysAgo", { count: diffInDays });
+    return t("common.time.daysAgo", { count: diffInDays });
   } else if (diffInHours > 0) {
-    return t("timeAgo.hoursAgo", { count: diffInHours });
+    return t("common.time.hoursAgo", { count: diffInHours });
   } else if (diffInMinutes > 0) {
-    return t("timeAgo.minutesAgo", { count: diffInMinutes });
+    return t("common.time.minutesAgo", { count: diffInMinutes });
   } else {
-    return t("timeAgo.justNow");
+    return t("common.time.justNow");
   }
 }
 
@@ -37,20 +38,20 @@ export function formatTimeAgo(
  */
 export function formatMemberSince(
   date: Date,
-  t: (key: string, params?: Record<string, unknown>) => string,
+  t: (key: string, params?: Record<string, any>) => string,
 ): string {
   const now = new Date();
   const diffInMs = now.getTime() - date.getTime();
   const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 
   if (diffInDays < 30) {
-    return t("memberTime.days", { count: diffInDays });
+    return t("memberSince.days", { count: diffInDays });
   } else if (diffInDays < 365) {
     const months = Math.floor(diffInDays / 30);
-    return t("memberTime.months", { count: months });
+    return t("memberSince.months", { count: months });
   } else {
     const years = Math.floor(diffInDays / 365);
-    return t("memberTime.years", { count: years });
+    return t("memberSince.years", { count: years });
   }
 }
 
@@ -63,7 +64,7 @@ export function formatMemberSince(
  */
 export function formatRelativeTime(
   date: Date,
-  t: (key: string, params?: Record<string, unknown>) => string,
+  t: (key: string, params?: Record<string, any>) => string,
   context: string = "",
 ): string {
   const now = new Date();
@@ -75,12 +76,12 @@ export function formatRelativeTime(
   const prefix = context ? `${context}.` : "";
 
   if (diffInDays > 0) {
-    return t(`${prefix}timeAgo.daysAgo`, { count: diffInDays });
+    return t(`${prefix}common.time.daysAgo`, { count: diffInDays });
   } else if (diffInHours > 0) {
-    return t(`${prefix}timeAgo.hoursAgo`, { count: diffInHours });
+    return t(`${prefix}common.time.hoursAgo`, { count: diffInHours });
   } else if (diffInMinutes > 0) {
-    return t(`${prefix}timeAgo.minutesAgo`, { count: diffInMinutes });
+    return t(`${prefix}common.time.minutesAgo`, { count: diffInMinutes });
   } else {
-    return t(`${prefix}timeAgo.justNow`);
+    return t(`${prefix}common.time.justNow`);
   }
 }

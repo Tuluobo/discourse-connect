@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { LogOutIcon } from "lucide-react";
 import { signOut } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 import { ExtendedUser } from "@/types/next-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -19,6 +20,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function ProfileDropdown({ user }: { user: ExtendedUser }) {
+  const t = useTranslations("profileDropdown");
+
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
@@ -54,13 +57,13 @@ export function ProfileDropdown({ user }: { user: ExtendedUser }) {
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
             <Link href="/dashboard">
-              Dashboard
+              {t("dashboard")}
               <DropdownMenuShortcut>⌘H</DropdownMenuShortcut>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link href="/settings/profile">
-              Profile
+              {t("profile")}
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </Link>
           </DropdownMenuItem>
@@ -72,7 +75,7 @@ export function ProfileDropdown({ user }: { user: ExtendedUser }) {
           }}
         >
           <LogOutIcon />
-          Log out
+          {t("logout")}
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>

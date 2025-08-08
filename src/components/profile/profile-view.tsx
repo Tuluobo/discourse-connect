@@ -12,6 +12,7 @@ import {
   UserIcon,
   UsersIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { type User } from "@/lib/dto/user";
@@ -28,8 +29,8 @@ import {
 import { ConfirmDialog } from "@/components/shared/confirm-dialog";
 
 // Simple time formatter
-function formatDate(date: Date): string {
-  return new Intl.DateTimeFormat("en-US", {
+function formatDate(date: Date, locale?: string): string {
+  return new Intl.DateTimeFormat(locale || "en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -65,14 +66,16 @@ interface ProfileViewProps {
 export function ProfileView({ user }: ProfileViewProps) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const t = useTranslations("profile");
+  const tCommon = useTranslations("common");
 
   const handleDeleteAccount = async () => {
     setIsDeleting(true);
     try {
       await deleteCurrentUser();
-      toast.success("Account deleted successfully");
+      toast.success(t("toast.deleteSuccess"));
     } catch (error) {
-      toast.error("Failed to delete account");
+      toast.error(t("toast.deleteFailed"));
       console.error("Error deleting account:", error);
     } finally {
       setIsDeleting(false);
@@ -87,10 +90,8 @@ export function ProfileView({ user }: ProfileViewProps) {
         <div className="flex items-center gap-3">
           <UserIcon className="text-muted-foreground h-6 w-6" />
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">Profile</h1>
-            <p className="text-muted-foreground">
-              View your account information and settings
-            </p>
+            <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
+            <p className="text-muted-foreground">{t("subtitle")}</p>
           </div>
         </div>
       </div>
@@ -105,7 +106,7 @@ export function ProfileView({ user }: ProfileViewProps) {
               <Avatar className="ring-background h-20 w-20 shadow-lg ring-4">
                 <AvatarImage
                   src={user.avatarUrl || undefined}
-                  alt={user.name || "User avatar"}
+                  alt={user.name || t("unknownUser")}
                 />
                 <AvatarFallback className="bg-primary/10 text-primary text-lg font-semibold">
                   {user.name
@@ -121,13 +122,13 @@ export function ProfileView({ user }: ProfileViewProps) {
             <div className="flex-1 space-y-2">
               <div className="flex items-center gap-3">
                 <CardTitle className="text-2xl font-bold">
-                  {user.name || "Unknown User"}
+                  {user.name || t("unknownUser")}
                 </CardTitle>
                 <Badge
                   variant="outline"
                   className={`font-medium ${getRoleColor(user.role)}`}
                 >
-                  {user.role}
+                  {tCommon(`roles.${user.role}`)}
                 </Badge>
               </div>
               <div className="space-y-1">
@@ -149,7 +150,7 @@ export function ProfileView({ user }: ProfileViewProps) {
             <div className="space-y-4">
               <h3 className="flex items-center gap-2 text-lg font-semibold">
                 <div className="bg-primary h-1.5 w-1.5 rounded-full" />
-                Account Details
+                {t("sections.accountDetails")}
               </h3>
 
               <div className="space-y-3">
@@ -157,7 +158,7 @@ export function ProfileView({ user }: ProfileViewProps) {
                   <CalendarIcon className="text-muted-foreground h-4 w-4" />
                   <div>
                     <p className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-                      Member Since
+                      {t("fields.memberSince")}
                     </p>
                     <p className="font-medium">
                       {formatDate(new Date(user.createdAt))}
@@ -170,7 +171,7 @@ export function ProfileView({ user }: ProfileViewProps) {
                     <CalendarIcon className="text-muted-foreground h-4 w-4" />
                     <div>
                       <p className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-                        Last Updated
+                        {t("fields.lastUpdated")}
                       </p>
                       <p className="font-medium">
                         {formatDate(new Date(user.updatedAt))}
@@ -184,7 +185,7 @@ export function ProfileView({ user }: ProfileViewProps) {
             <div className="space-y-4">
               <h3 className="flex items-center gap-2 text-lg font-semibold">
                 <div className="bg-primary h-1.5 w-1.5 rounded-full" />
-                Additional Info
+                {t("sections.additionalInfo")}
               </h3>
 
               <div className="space-y-3">
@@ -192,14 +193,16 @@ export function ProfileView({ user }: ProfileViewProps) {
                   <ShieldIcon className="text-muted-foreground h-4 w-4" />
                   <div>
                     <p className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-                      Moderator Status
+                      {t("fields.moderatorStatus")}
                     </p>
                     <div className="flex items-center gap-2">
                       <div
                         className={`h-2 w-2 rounded-full ${user.moderator ? "bg-green-500" : "bg-gray-400"}`}
                       ></div>
                       <p className="font-medium">
-                        {user.moderator ? "Moderator" : "Regular User"}
+                        {user.moderator
+                          ? t("status.moderator")
+                          : t("status.regularUser")}
                       </p>
                     </div>
                   </div>
@@ -210,7 +213,7 @@ export function ProfileView({ user }: ProfileViewProps) {
                     <UsersIcon className="text-muted-foreground mt-0.5 h-4 w-4" />
                     <div className="min-w-0 flex-1">
                       <p className="text-muted-foreground mb-2 text-xs font-medium tracking-wide uppercase">
-                        Groups
+                        {t("fields.groups")}
                       </p>
                       <div className="flex flex-wrap gap-1">
                         {user.groups.map((group) => (
@@ -234,16 +237,16 @@ export function ProfileView({ user }: ProfileViewProps) {
           <div className="bg-muted/30 border-border/50 rounded-lg border p-4">
             <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
               <div className="bg-primary h-1.5 w-1.5 rounded-full" />
-              Account Status
+              {t("sections.accountStatus")}
             </h3>
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-green-500"></div>
               <span className="text-sm font-medium text-green-700">
-                Active Account
+                {t("status.activeAccount")}
               </span>
             </div>
             <p className="text-muted-foreground mt-1 text-sm">
-              Your account is active and in good standing.
+              {t("status.activeDescription")}
             </p>
           </div>
         </CardContent>
@@ -258,11 +261,9 @@ export function ProfileView({ user }: ProfileViewProps) {
             </div>
             <div>
               <CardTitle className="text-destructive text-lg font-semibold">
-                Danger Zone
+                {t("dangerZone.title")}
               </CardTitle>
-              <CardDescription>
-                Irreversible and destructive actions
-              </CardDescription>
+              <CardDescription>{t("dangerZone.subtitle")}</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -271,10 +272,11 @@ export function ProfileView({ user }: ProfileViewProps) {
           <div className="border-destructive/20 bg-background space-y-4 rounded-lg border p-4">
             <div className="flex items-center justify-between">
               <div className="space-y-1">
-                <h4 className="text-destructive font-medium">Delete Account</h4>
+                <h4 className="text-destructive font-medium">
+                  {t("dangerZone.deleteAccount.title")}
+                </h4>
                 <p className="text-muted-foreground text-sm">
-                  Permanently delete your account and all associated data. This
-                  action cannot be undone.
+                  {t("dangerZone.deleteAccount.description")}
                 </p>
               </div>
               <Button
@@ -284,19 +286,19 @@ export function ProfileView({ user }: ProfileViewProps) {
                 className="ml-4 shrink-0"
               >
                 <TrashIcon className="mr-2 h-4 w-4" />
-                Delete Account
+                {t("dangerZone.deleteAccount.button")}
               </Button>
             </div>
 
             <div className="bg-muted/50 border-muted rounded-md border p-3">
               <p className="text-muted-foreground mb-2 text-xs font-medium">
-                This will permanently delete:
+                {t("dangerZone.deleteAccount.willDelete")}
               </p>
               <ul className="text-muted-foreground space-y-1 text-xs">
-                <li>• Your profile and account information</li>
-                <li>• All authorized applications and permissions</li>
-                <li>• All associated OAuth tokens and sessions</li>
-                <li>• Any applications you have created</li>
+                <li>{t("dangerZone.deleteAccount.items.profile")}</li>
+                <li>{t("dangerZone.deleteAccount.items.authorizations")}</li>
+                <li>{t("dangerZone.deleteAccount.items.tokens")}</li>
+                <li>{t("dangerZone.deleteAccount.items.applications")}</li>
               </ul>
             </div>
           </div>
@@ -306,10 +308,10 @@ export function ProfileView({ user }: ProfileViewProps) {
       <ConfirmDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
-        title="Delete Account"
-        desc={`Are you sure you want to permanently delete your account? This will delete all your data including your profile, authorized applications, and any OAuth applications you have created. This action cannot be undone.`}
-        confirmText="Delete Account"
-        cancelBtnText="Cancel"
+        title={t("deleteDialog.title")}
+        desc={t("deleteDialog.description")}
+        confirmText={t("deleteDialog.confirmText")}
+        cancelBtnText={t("deleteDialog.cancelText")}
         handleConfirm={handleDeleteAccount}
         isLoading={isDeleting}
         destructive={true}

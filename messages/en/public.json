@@ -1,0 +1,218 @@
+{
+  "header": {
+    "brand": "Shuzimumin Connect",
+    "nav": {
+      "features": "Features",
+      "howItWorks": "How It Works",
+      "community": "Shuzimumin Community"
+    },
+    "signIn": "Sign In Now",
+    "toggleMenu": "Toggle menu"
+  },
+  "hero": {
+    "badge": "Authentication",
+    "title": {
+      "main": "Discourse SSO-based",
+      "highlight": "OAuth 2.0",
+      "suffix": "Authentication Platform"
+    },
+    "description": "Allow users to log in to your applications using their existing Shuzimumin accounts, eliminating the need to create new accounts and providing secure, convenient identity verification services.",
+    "buttons": {
+      "getStarted": "Get Started",
+      "visitCommunity": "Visit Shuzimumin Community"
+    },
+    "features": {
+      "discourseSSO": "Based on Discourse SSO",
+      "oauth2": "OAuth 2.0 Protocol",
+      "secure": "Secure & Reliable"
+    }
+  },
+  "cta": {
+    "title": "Ready to login with Shuzimumin account?",
+    "description": "Start using Shuzimumin Connect now to provide secure and convenient authentication services for your applications.",
+    "buttons": {
+      "tryNow": "Try Now",
+      "viewGitHub": "View GitHub"
+    },
+    "tagline": "Use Shuzimumin account. Easy integration. Open source project."
+  },
+  "footer": {
+    "brand": "Shuzimumin",
+    "description": "Shuzimumin Connect is an OAuth authentication platform based on Discourse SSO (Single Sign-On) user system. Through Shuzimumin Connect, you can let users log in to your applications using their existing Shuzimumin accounts without creating new accounts.",
+    "social": {
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "community": "Community"
+    },
+    "sections": {
+      "products": "Products",
+      "resources": "Resources"
+    },
+    "links": {
+      "community": "Shuzimumin Community",
+      "lianTo": "LIAN.TO",
+      "github": "GitHub",
+      "contact": "Contact Us"
+    },
+    "copyright": "Shuzimumin Community. All rights reserved.",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "howItWorks": {
+    "badge": "How It Works",
+    "title": "Simple Process, Quick Integration",
+    "description": "Integrate Shuzimumin Community account authentication into your application with just a few simple steps.",
+    "steps": {
+      "register": {
+        "title": "Register Application",
+        "description": "Register your application on the Shuzimumin Connect platform to get client ID and secret."
+      },
+      "integrate": {
+        "title": "Integrate OAuth 2.0",
+        "description": "Use our provided APIs and follow the documentation to integrate OAuth 2.0 authentication flow into your application."
+      },
+      "authorize": {
+        "title": "User Authorization",
+        "description": "Users log in through their Shuzimumin accounts without creating new accounts, simplifying user experience."
+      }
+    }
+  },
+  "features": {
+    "badge": "Features",
+    "title": "Powerful OAuth 2.0 Authentication Tool",
+    "description": "Shuzimumin Connect provides all the tools you need to let users authenticate with Shuzimumin accounts, simplifying the login process.",
+    "items": {
+      "oauth2": {
+        "title": "OAuth 2.0 Protocol",
+        "description": "Based on standard OAuth 2.0 protocol implementation, supports authorization code mode, ensuring secure and reliable authentication process."
+      },
+      "sso": {
+        "title": "Shuzimumin SSO Integration",
+        "description": "Seamlessly integrate with Shuzimumin community single sign-on system, allowing users to authenticate with existing Shuzimumin accounts."
+      },
+      "sync": {
+        "title": "User Information Sync",
+        "description": "Automatically sync user's basic information, avatar, roles and permissions, maintaining data consistency and real-time updates."
+      },
+      "multiApp": {
+        "title": "Multi-Application Support",
+        "description": "Support multiple client applications access, unified user authentication management, simplifying system architecture and maintenance costs."
+      },
+      "secure": {
+        "title": "Secure & Reliable",
+        "description": "Adopts encrypted transmission and signature verification mechanisms, ensuring authentication process security, preventing forgery and tampering."
+      },
+      "easy": {
+        "title": "Simple & Easy",
+        "description": "Provides clear interfaces and documentation, developers can quickly integrate into their applications, reducing development costs."
+      }
+    }
+  },
+  "signIn": {
+    "page": {
+      "back": "Back",
+      "welcomeTo": "Welcome to",
+      "brandName": "Shuzimumin Connect",
+      "agreement": "By clicking continue, you agree to our",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "form": {
+      "buttonText": "Continue with Shuzimumin",
+      "errorTitle": "Internal Service Error"
+    }
+  },
+  "authorize": {
+    "title": "Authorize Access",
+    "requestAccess": "{appName} is requesting access to your account",
+    "permissions": "This application will be able to:",
+    "appDescription": "Application Description:",
+    "scopes": {
+      "read:user": "Read your account information"
+    },
+    "buttons": {
+      "authorize": "Authorize",
+      "deny": "Deny",
+      "processing": "Processing..."
+    },
+    "redirectNotice": "You will be redirected to {appName} after authorization",
+    "error": {
+      "title": "Authorization Error",
+      "denied": "User denied the authorization request"
+    }
+  },
+  "authPage": {
+    "welcomeTo": "Welcome to",
+    "community": "数字牧民社区",
+    "agreement": "By clicking continue, you agree to our",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "userAuthorize": {
+    "loginError": "Login failed, authorization failed!",
+    "verifying": "Verifying account information, preparing to redirect, please wait..."
+  },
+  "legal": {
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "effectiveDate": "Effective Date: July 27, 2025",
+      "lastUpdated": "Last Updated: July 27, 2025",
+      "introduction": {
+        "text": "**Shuzimumin Community Operator** (\"we\", \"operator\", \"data controller\") operates this service as an individual entity in Singapore, deeply understanding the importance of personal information to you, and will do our best to protect your personal information safely and reliably. This privacy policy details how we collect, use, store, share and protect your personal information when you use the Shuzimumin Connect platform (\"this service\"), as well as the rights you enjoy.",
+        "importantNotice": {
+          "title": "Important Notice",
+          "text": "This privacy policy strictly complies with the Singapore Personal Data Protection Act (Personal Data Protection Act, PDPA), Singapore Cybersecurity Act and other applicable Singapore data protection and privacy laws and regulations. As a service operated by an individual entity, we assume personal responsibility as data controllers."
+        },
+        "readCarefully": "**Please read this privacy policy carefully.** Using our service means that you have fully understood and agreed to our processing of your personal information in accordance with this privacy policy. If you do not agree with any content of this privacy policy, please stop using our service immediately."
+      },
+      "tableOfContents": {
+        "title": "Table of Contents",
+        "items": {
+          "infoWeCollect": "Information We Collect",
+          "howWeUse": "How We Use Your Information",
+          "infoSharing": "Information Sharing and Disclosure",
+          "dataRetention": "Data Retention",
+          "dataSecurity": "Data Security",
+          "yourRights": "Your Rights",
+          "changes": "Changes to This Policy",
+          "contact": "Contact Us"
+        }
+      }
+    },
+    "termsOfService": {
+      "title": "Terms of Service",
+      "effectiveDate": "Effective Date: July 27, 2025",
+      "lastUpdated": "Last Updated: July 27, 2025",
+      "introduction": {
+        "text": "Welcome to the Shuzimumin Connect platform (\"service\", \"platform\"). This service is operated by the Shuzimumin Community Operator (\"we\", \"operator\", \"service provider\") in their personal capacity in Singapore, with the website address at https://connect.shuzimumin.com. Using our service indicates your agreement to comply with these terms of service.",
+        "legalNotice": {
+          "title": "Important Legal Statement",
+          "text": "This service is operated by an individual entity, not a corporate legal person. The operator assumes personal responsibility under Singapore law. Certain liability limitations in these terms may be legally restricted due to the individual entity nature."
+        },
+        "readCarefully": "Please read these terms carefully. If you do not agree with these terms, please do not use this service. We reserve the right to modify these terms at any time, and the modified terms will take effect immediately upon publication."
+      },
+      "tableOfContents": {
+        "title": "Table of Contents",
+        "items": {
+          "serviceDescription": "Service Description",
+          "userAccounts": "User Accounts",
+          "acceptable": "Acceptable Use",
+          "prohibited": "Prohibited Activities",
+          "privacy": "Privacy and Data Protection",
+          "intellectual": "Intellectual Property",
+          "liability": "Limitation of Liability",
+          "termination": "Termination",
+          "governing": "Governing Law",
+          "changes": "Changes to Terms",
+          "contact": "Contact Information"
+        }
+      }
+    }
+  },
+  "metadata": {
+    "title": "Shuzimumin Connect | OAuth 2.0 Authentication Platform Based on Discourse SSO",
+    "description": "An identity authentication system based on Discourse SSO that supports OAuth 2.0 protocol, allowing users to log in to your applications using their existing Shuzimumin accounts.",
+    "keywords": "Discourse, SSO, OAuth, Authentication, Authorization, Identity Verification, Shuzimumin"
+  }
+}

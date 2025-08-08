@@ -2,39 +2,67 @@
 
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
+import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 
 import { createApplication } from "@/lib/dto/application";
 import { prisma } from "@/lib/prisma";
 import { generateRandomKey, generateSecretWords } from "@/lib/utils";
 
-const createApplicationSchema = z.object({
-  name: z.string().min(1, "应用名称是必填项"),
-  home: z.string().url("请输入有效的 URL"),
-  logoUri: z
-    .string()
-    .optional()
-    .refine((val) => !val || z.string().url().safeParse(val).success, {
-      message: "请输入有效的 Logo URL",
-    }),
-  description: z.string().optional(),
-  redirectUris: z
-    .array(z.string().url("请输入有效的重定向 URL"))
-    .min(1, "至少需要一个重定向 URL"),
-  scopes: z.array(z.string()).min(1, "至少需要一个权限范围"),
-});
+async function getApplicationErrorMessages() {
+  const t = await getTranslations("serverErrors.application");
+  return {
+    nameRequired: t("nameRequired"),
+    validUrl: t("validUrl"),
+    validLogoUrl: t("validLogoUrl"),
+    validRedirectUrl: t("validRedirectUrl"),
+    redirectUrlRequired: t("redirectUrlRequired"),
+    scopesRequired: t("scopesRequired"),
+    notLoggedIn: t("notLoggedIn"),
+    createFailed: t("createFailed"),
+    validationFailed: t("validationFailed"),
+    createError: t("createError"),
+    updateError: t("updateError"),
+    notFoundOrNoPermission: t("notFoundOrNoPermission"),
+    confirmNameMismatch: t("confirmNameMismatch"),
+    deleteError: t("deleteError"),
+  };
+}
 
-export type CreateApplicationInput = z.infer<typeof createApplicationSchema>;
+async function createApplicationSchema() {
+  const messages = await getApplicationErrorMessages();
+  return z.object({
+    name: z.string().min(1, messages.nameRequired),
+    home: z.string().url(messages.validUrl),
+    logoUri: z
+      .string()
+      .optional()
+      .refine((val) => !val || z.string().url().safeParse(val).success, {
+        message: messages.validLogoUrl,
+      }),
+    description: z.string().optional(),
+    redirectUris: z
+      .array(z.string().url(messages.validRedirectUrl))
+      .min(1, messages.redirectUrlRequired),
+    scopes: z.array(z.string()).min(1, messages.scopesRequired),
+  });
+}
+
+export type CreateApplicationInput = z.infer<
+  Awaited<ReturnType<typeof createApplicationSchema>>
+>;
 
 export async function createApplicationAction(data: CreateApplicationInput) {
   try {
     const session = await auth();
+    const messages = await getApplicationErrorMessages();
 
     if (!session?.user?.id) {
-      return { error: "未登录" };
+      return { error: messages.notLoggedIn };
     }
 
-    const validatedData = createApplicationSchema.parse(data);
+    const schema = await createApplicationSchema();
+    const validatedData = schema.parse(data);
 
     // Generate client credentials
     const clientId = `app_${generateRandomKey()}`;
@@ -52,46 +80,54 @@ export async function createApplicationAction(data: CreateApplicationInput) {
     });
 
     if (!application) {
-      return { error: "创建应用失败" };
+      return { error: messages.createFailed };
     }
 
     revalidatePath("/applications");
     return { success: true, data: application };
   } catch (error) {
+    const messages = await getApplicationErrorMessages();
     if (error instanceof z.ZodError) {
-      return { error: "数据验证失败", details: error.errors };
+      return { error: messages.validationFailed, details: error.errors };
     }
-    return { error: "创建应用时发生错误" };
+    return { error: messages.createError };
   }
 }
 
-const updateApplicationSchema = z.object({
-  id: z.string(),
-  name: z.string().min(1, "应用名称是必填项"),
-  home: z.string().url("请输入有效的 URL"),
-  logoUri: z
-    .string()
-    .optional()
-    .refine((val) => !val || z.string().url().safeParse(val).success, {
-      message: "请输入有效的 Logo URL",
-    }),
-  description: z.string().optional(),
-  redirectUris: z
-    .array(z.string().url("请输入有效的重定向 URL"))
-    .min(1, "至少需要一个重定向 URL"),
-  scopes: z.array(z.string()).min(1, "至少需要一个权限范围"),
-});
+async function updateApplicationSchema() {
+  const messages = await getApplicationErrorMessages();
+  return z.object({
+    id: z.string(),
+    name: z.string().min(1, messages.nameRequired),
+    home: z.string().url(messages.validUrl),
+    logoUri: z
+      .string()
+      .optional()
+      .refine((val) => !val || z.string().url().safeParse(val).success, {
+        message: messages.validLogoUrl,
+      }),
+    description: z.string().optional(),
+    redirectUris: z
+      .array(z.string().url(messages.validRedirectUrl))
+      .min(1, messages.redirectUrlRequired),
+    scopes: z.array(z.string()).min(1, messages.scopesRequired),
+  });
+}
 
-export type UpdateApplicationInput = z.infer<typeof updateApplicationSchema>;
+export type UpdateApplicationInput = z.infer<
+  Awaited<ReturnType<typeof updateApplicationSchema>>
+>;
 
 export async function updateApplicationAction(data: UpdateApplicationInput) {
   try {
     const session = await auth();
+    const messages = await getApplicationErrorMessages();
     if (!session?.user?.id) {
-      return { error: "未登录" };
+      return { error: messages.notLoggedIn };
     }
 
-    const validatedData = updateApplicationSchema.parse(data);
+    const schema = await updateApplicationSchema();
+    const validatedData = schema.parse(data);
     const application = await prisma.application.update({
       where: {
         id: validatedData.id,
@@ -110,10 +146,11 @@ export async function updateApplicationAction(data: UpdateApplicationInput) {
     revalidatePath("/applications");
     return { success: true, data: application };
   } catch (error) {
+    const messages = await getApplicationErrorMessages();
     if (error instanceof z.ZodError) {
-      return { error: "数据验证失败", details: error.errors };
+      return { error: messages.validationFailed, details: error.errors };
     }
-    return { error: "更新应用时发生错误" };
+    return { error: messages.updateError };
   }
 }
 
@@ -127,9 +164,10 @@ export type DeleteApplicationInput = z.infer<typeof deleteApplicationSchema>;
 export async function deleteApplicationAction(data: DeleteApplicationInput) {
   try {
     const session = await auth();
+    const messages = await getApplicationErrorMessages();
 
     if (!session?.user?.id) {
-      return { error: "未登录" };
+      return { error: messages.notLoggedIn };
     }
 
     const validatedData = deleteApplicationSchema.parse(data);
@@ -143,12 +181,12 @@ export async function deleteApplicationAction(data: DeleteApplicationInput) {
     });
 
     if (!application) {
-      return { error: "应用不存在或无权限删除" };
+      return { error: messages.notFoundOrNoPermission };
     }
 
     // 验证确认名称
     if (validatedData.confirmName !== application.name) {
-      return { error: "确认名称不匹配" };
+      return { error: messages.confirmNameMismatch };
     }
 
     // 删除应用
@@ -162,9 +200,10 @@ export async function deleteApplicationAction(data: DeleteApplicationInput) {
     revalidatePath("/applications");
     return { success: true };
   } catch (error) {
+    const messages = await getApplicationErrorMessages();
     if (error instanceof z.ZodError) {
-      return { error: "数据验证失败", details: error.errors };
+      return { error: messages.validationFailed, details: error.errors };
     }
-    return { error: "删除应用时发生错误" };
+    return { error: messages.deleteError };
   }
 }

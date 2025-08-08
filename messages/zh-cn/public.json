@@ -1,0 +1,218 @@
+{
+  "header": {
+    "brand": "数字牧民 Connect",
+    "nav": {
+      "features": "特性",
+      "howItWorks": "使用流程",
+      "community": "数字牧民社区"
+    },
+    "signIn": "立即登录",
+    "toggleMenu": "切换菜单"
+  },
+  "hero": {
+    "badge": "身份认证",
+    "title": {
+      "main": "基于 Discourse SSO 的",
+      "highlight": "OAuth 2.0",
+      "suffix": "认证平台"
+    },
+    "description": "让用户使用已有的数字牧民账号登录到您的应用程序，无需创建新账号，提供安全、便捷的身份验证服务。",
+    "buttons": {
+      "getStarted": "开始使用",
+      "visitCommunity": "访问数字牧民社区"
+    },
+    "features": {
+      "discourseSSO": "基于 Discourse SSO",
+      "oauth2": "OAuth 2.0 协议",
+      "secure": "安全可靠"
+    }
+  },
+  "cta": {
+    "title": "准备好使用数字牧民账号登录了吗？",
+    "description": "立即开始使用数字牧民 Connect，为您的应用提供安全、便捷的身份验证服务。",
+    "buttons": {
+      "tryNow": "立即体验",
+      "viewGitHub": "查看 GitHub"
+    },
+    "tagline": "使用数字牧民账号。简单集成。开源项目。"
+  },
+  "footer": {
+    "brand": "数字牧民 Connect",
+    "description": "数字牧民 Connect 是一个基于 Discourse SSO (Single Sign-On) 用户系统的 OAuth 认证平台。 通过数字牧民 Connect，您可以让用户使用已有的数字牧民账号登录到您的应用程序，无需创建新账号。",
+    "social": {
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "community": "社区"
+    },
+    "sections": {
+      "products": "产品",
+      "resources": "资源"
+    },
+    "links": {
+      "community": "数字牧民社区",
+      "lianTo": "LIAN.TO",
+      "github": "GitHub",
+      "contact": "联系我们"
+    },
+    "copyright": "数字牧民社区. All rights reserved.",
+    "privacyPolicy": "隐私政策"
+  },
+  "howItWorks": {
+    "badge": "使用流程",
+    "title": "简单流程，快速集成",
+    "description": "只需几个简单步骤，即可将数字牧民社区账号认证集成到您的应用中。",
+    "steps": {
+      "register": {
+        "title": "注册应用",
+        "description": "在数字牧民 Connect 平台注册您的应用，获取客户端 ID 和密钥。"
+      },
+      "integrate": {
+        "title": "集成 OAuth 2.0",
+        "description": "使用我们提供的 API 并按照文档说明集成 OAuth 2.0 认证流程到您的应用中。"
+      },
+      "authorize": {
+        "title": "用户授权",
+        "description": "用户通过数字牧民账号授权登录，无需创建新账号，简化用户体验。"
+      }
+    }
+  },
+  "features": {
+    "badge": "特性",
+    "title": "强大的 OAuth 2.0 认证工具",
+    "description": "数字牧民 Connect 提供了所有您需要的工具，让用户使用数字牧民账号进行身份验证，简化登录流程。",
+    "items": {
+      "oauth2": {
+        "title": "OAuth 2.0 协议",
+        "description": "基于标准 OAuth 2.0 协议实现，支持授权码模式，确保安全可靠的身份验证流程。"
+      },
+      "sso": {
+        "title": "数字牧民 SSO 集成",
+        "description": "无缝集成数字牧民社区单点登录系统，让用户使用已有的数字牧民账号进行身份验证。"
+      },
+      "sync": {
+        "title": "用户信息同步",
+        "description": "自动同步用户的基本信息、头像、角色和权限，保持数据的一致性和实时性。"
+      },
+      "multiApp": {
+        "title": "多应用支持",
+        "description": "支持多个客户端应用接入，统一管理用户认证，简化系统架构和维护成本。"
+      },
+      "secure": {
+        "title": "安全可靠",
+        "description": "采用加密传输和签名验证机制，确保认证过程的安全性，防止伪造和篡改。"
+      },
+      "easy": {
+        "title": "简单易用",
+        "description": "提供简洁明了的接口和文档，开发者可以快速集成到自己的应用中，降低开发成本。"
+      }
+    }
+  },
+  "signIn": {
+    "page": {
+      "back": "返回",
+      "welcomeTo": "欢迎来到",
+      "brandName": "数字牧民 Connect",
+      "agreement": "点击继续即表示您同意我们的",
+      "termsOfService": "服务条款",
+      "and": "和",
+      "privacyPolicy": "隐私政策"
+    },
+    "form": {
+      "buttonText": "使用 数字牧民 登录",
+      "errorTitle": "内部服务异常"
+    }
+  },
+  "authorize": {
+    "title": "授权访问",
+    "requestAccess": "{appName} 请求访问您的账户",
+    "permissions": "此应用程序将能够：",
+    "appDescription": "应用描述：",
+    "scopes": {
+      "read:user": "读取您的账户信息"
+    },
+    "buttons": {
+      "authorize": "授权",
+      "deny": "拒绝",
+      "processing": "处理中..."
+    },
+    "redirectNotice": "授权后，您将被重定向到 {appName}",
+    "error": {
+      "title": "授权错误",
+      "denied": "用户拒绝了授权请求"
+    }
+  },
+  "authPage": {
+    "welcomeTo": "欢迎来到",
+    "community": "数字牧民社区",
+    "agreement": "点击继续即表示您同意我们的",
+    "termsOfService": "服务条款",
+    "and": "和",
+    "privacyPolicy": "隐私政策"
+  },
+  "userAuthorize": {
+    "loginError": "登录异常，授权失败！",
+    "verifying": "账号信息验证中，准备跳转中，请稍等..."
+  },
+  "legal": {
+    "privacyPolicy": {
+      "title": "隐私政策",
+      "effectiveDate": "生效日期：2025年7月27日",
+      "lastUpdated": "最后更新：2025年7月27日",
+      "introduction": {
+        "text": "**数字牧民社区运营方**（\"我们\"、\"运营方\"、\"数据控制者\"）以个人实体身份在新加坡运营本服务，深知个人信息对您的重要性，并会尽力保护您的个人信息安全可靠。本隐私政策详细说明了我们在您使用数字牧民连接平台（\"本服务\"）时如何收集、使用、存储、共享和保护您的个人信息，以及您享有的权利。",
+        "importantNotice": {
+          "title": "重要提示",
+          "text": "本隐私政策严格遵守《新加坡个人数据保护法》（个人数据 Protection Act, PDPA）、《新加坡网络安全法》以及其他适用的新加坡数据保护和隐私法律法规要求。作为个人实体运营的服务，我们作为数据控制者承担个人责任。"
+        },
+        "readCarefully": "**请您仔细阅读本隐私政策。** 使用我们的服务即表示您已充分理解并同意我们按照本隐私政策处理您的个人信息。如果您不同意本隐私政策的任何内容，请立即停止使用我们的服务。"
+      },
+      "tableOfContents": {
+        "title": "目录",
+        "items": {
+          "infoWeCollect": "我们收集的信息",
+          "howWeUse": "我们如何使用您的信息",
+          "infoSharing": "信息共享和披露",
+          "dataRetention": "数据保留",
+          "dataSecurity": "数据安全",
+          "yourRights": "您的权利",
+          "changes": "本政策的变更",
+          "contact": "联系我们"
+        }
+      }
+    },
+    "termsOfService": {
+      "title": "服务条款",
+      "effectiveDate": "生效日期：2025年7月27日",
+      "lastUpdated": "最后更新：2025年7月27日",
+      "introduction": {
+        "text": "欢迎使用数字牧民连接平台（\"服务\"、\"平台\"）。本服务由数字牧民社区运营方（\"我们\"、\"运营方\"、\"服务提供方\"）以个人名义在新加坡运营，网址为 https://connect.shuzimumin.com。使用我们的服务即表示您同意遵守这些服务条款。",
+        "legalNotice": {
+          "title": "重要法律声明",
+          "text": "本服务由个人实体运营，非公司法人。运营方依据新加坡法律承担个人责任。本条款的某些责任限制可能因个人实体性质而受到法律限制。"
+        },
+        "readCarefully": "请仔细阅读这些条款。如果您不同意这些条款，请不要使用本服务。我们保留随时修改这些条款的权利，修改后的条款将在发布后立即生效。"
+      },
+      "tableOfContents": {
+        "title": "目录",
+        "items": {
+          "serviceDescription": "服务描述",
+          "userAccounts": "用户账户",
+          "acceptable": "可接受使用",
+          "prohibited": "禁止活动",
+          "privacy": "隐私和数据保护",
+          "intellectual": "知识产权",
+          "liability": "责任限制",
+          "termination": "终止",
+          "governing": "适用法律",
+          "changes": "条款变更",
+          "contact": "联系信息"
+        }
+      }
+    }
+  },
+  "metadata": {
+    "title": "数字牧民 Connect | 基于 Discourse SSO 的 OAuth 2.0 认证平台",
+    "description": "一个基于 Discourse SSO 的身份认证系统，支持 OAuth 2.0 协议，让用户使用已有的数字牧民账号登录到您的应用程序。",
+    "keywords": "Discourse, SSO, OAuth, 认证, 授权, 身份验证, 数字牧民"
+  }
+}
