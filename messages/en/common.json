@@ -1,0 +1,913 @@
+{
+  "header": {
+    "brand": "Shuzimumin Connect",
+    "nav": {
+      "features": "Features",
+      "howItWorks": "How It Works",
+      "community": "Shuzimumin Community"
+    },
+    "signIn": "Sign In Now",
+    "toggleMenu": "Toggle menu"
+  },
+  "hero": {
+    "badge": "Authentication",
+    "title": {
+      "main": "Discourse SSO-based",
+      "highlight": "OAuth 2.0",
+      "suffix": "Authentication Platform"
+    },
+    "description": "Allow users to log in to your applications using their existing Shuzimumin accounts, eliminating the need to create new accounts and providing secure, convenient identity verification services.",
+    "buttons": {
+      "getStarted": "Get Started",
+      "visitCommunity": "Visit Shuzimumin Community"
+    },
+    "features": {
+      "discourseSSO": "Based on Discourse SSO",
+      "oauth2": "OAuth 2.0 Protocol",
+      "secure": "Secure & Reliable"
+    }
+  },
+  "cta": {
+    "title": "Ready to login with Shuzimumin account?",
+    "description": "Start using Shuzimumin Connect now to provide secure and convenient authentication services for your applications.",
+    "buttons": {
+      "tryNow": "Try Now",
+      "viewGitHub": "View GitHub"
+    },
+    "tagline": "Use Shuzimumin account. Easy integration. Open source project."
+  },
+  "footer": {
+    "brand": "Shuzimumin",
+    "description": "Shuzimumin Connect is an OAuth authentication platform based on Discourse SSO (Single Sign-On) user system. Through Shuzimumin Connect, you can let users log in to your applications using their existing Shuzimumin accounts without creating new accounts.",
+    "social": {
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "community": "Community"
+    },
+    "sections": {
+      "products": "Products",
+      "resources": "Resources"
+    },
+    "links": {
+      "community": "Shuzimumin Community",
+      "lianTo": "LIAN.TO",
+      "github": "GitHub",
+      "contact": "Contact Us"
+    },
+    "copyright": "Shuzimumin Community. All rights reserved.",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "howItWorks": {
+    "badge": "How It Works",
+    "title": "Simple Process, Quick Integration",
+    "description": "Integrate Shuzimumin Community account authentication into your application with just a few simple steps.",
+    "steps": {
+      "register": {
+        "title": "Register Application",
+        "description": "Register your application on the Shuzimumin Connect platform to get client ID and secret."
+      },
+      "integrate": {
+        "title": "Integrate OAuth 2.0",
+        "description": "Use our provided APIs and follow the documentation to integrate OAuth 2.0 authentication flow into your application."
+      },
+      "authorize": {
+        "title": "User Authorization",
+        "description": "Users log in through their Shuzimumin accounts without creating new accounts, simplifying user experience."
+      }
+    }
+  },
+  "features": {
+    "badge": "Features",
+    "title": "Powerful OAuth 2.0 Authentication Tool",
+    "description": "Shuzimumin Connect provides all the tools you need to let users authenticate with Shuzimumin accounts, simplifying the login process.",
+    "items": {
+      "oauth2": {
+        "title": "OAuth 2.0 Protocol",
+        "description": "Based on standard OAuth 2.0 protocol implementation, supports authorization code mode, ensuring secure and reliable authentication process."
+      },
+      "sso": {
+        "title": "Shuzimumin SSO Integration",
+        "description": "Seamlessly integrate with Shuzimumin community single sign-on system, allowing users to authenticate with existing Shuzimumin accounts."
+      },
+      "sync": {
+        "title": "User Information Sync",
+        "description": "Automatically sync user's basic information, avatar, roles and permissions, maintaining data consistency and real-time updates."
+      },
+      "multiApp": {
+        "title": "Multi-Application Support",
+        "description": "Support multiple client applications access, unified user authentication management, simplifying system architecture and maintenance costs."
+      },
+      "secure": {
+        "title": "Secure & Reliable",
+        "description": "Adopts encrypted transmission and signature verification mechanisms, ensuring authentication process security, preventing forgery and tampering."
+      },
+      "easy": {
+        "title": "Simple & Easy",
+        "description": "Provides clear interfaces and documentation, developers can quickly integrate into their applications, reducing development costs."
+      }
+    }
+  },
+  "application": {
+    "view": {
+      "title": "Applications",
+      "subtitle": "Manage your applications and their properties here.",
+      "createButton": "Create Application",
+      "filterPlaceholder": "Filter apps...",
+      "filter": {
+        "allApps": "All Apps",
+        "activated": "Activated",
+        "notActivated": "Not Activated"
+      },
+      "sort": {
+        "ascending": "Ascending",
+        "descending": "Descending"
+      },
+      "empty": {
+        "title": "Your applications",
+        "description": "Create an application to start.",
+        "createButton": "Create Application"
+      }
+    },
+    "dialog": {
+      "title": {
+        "create": "Create New Application",
+        "edit": "Edit Application"
+      },
+      "description": {
+        "create": "Create a new OAuth application",
+        "edit": "Modify application information"
+      },
+      "fields": {
+        "name": {
+          "label": "Application Name",
+          "placeholder": "My Application"
+        },
+        "description": {
+          "label": "Application Description",
+          "placeholder": "Detailed description of the application (optional)"
+        },
+        "websiteUrl": {
+          "label": "Website URL",
+          "placeholder": "https://example.com"
+        },
+        "logoUrl": {
+          "label": "Logo URL",
+          "placeholder": "https://example.com/logo.png"
+        },
+        "redirectUrls": {
+          "label": "Redirect URLs",
+          "placeholder": "https://example.com/callback",
+          "addButton": "Add Redirect URL",
+          "description": "User redirect address after application authorization"
+        },
+        "scopes": {
+          "label": "Scopes",
+          "placeholder": "read, write, admin",
+          "description": "Separate multiple permissions with commas"
+        }
+      },
+      "validation": {
+        "nameRequired": "Application name is required",
+        "validWebsiteUrl": "Please enter a valid website URL",
+        "validLogoUrl": "Please enter a valid logo URL",
+        "validRedirectUrl": "Please enter a valid redirect URL",
+        "redirectUrlRequired": "At least one redirect URL is required",
+        "scopesRequired": "Scopes are required"
+      },
+      "buttons": {
+        "create": "Create Application",
+        "update": "Update Application",
+        "creating": "Creating...",
+        "updating": "Updating..."
+      },
+      "toast": {
+        "createSuccess": "Created Successfully",
+        "createSuccessDesc": "Application has been created successfully",
+        "createFailed": "Creation Failed",
+        "updateSuccess": "Updated Successfully",
+        "updateSuccessDesc": "Application information has been updated successfully",
+        "updateFailed": "Update Failed",
+        "unknownError": "An unknown error occurred during operation"
+      }
+    },
+    "cardActions": {
+      "openMenu": "Open menu",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "deleteDialog": {
+      "title": "Delete Application",
+      "description": {
+        "confirm": "Are you sure you want to delete",
+        "warning": "This action will permanently remove the application with the name of",
+        "cannotUndo": "from the system. This cannot be undone."
+      },
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter name to confirm deletion.",
+      "warning": {
+        "title": "Warning!",
+        "description": "Please be careful, this operation cannot be rolled back."
+      },
+      "buttons": {
+        "confirmDelete": "Confirm Delete",
+        "deleting": "Deleting..."
+      }
+    },
+    "grid": {
+      "status": {
+        "activated": "Activated",
+        "notActivated": "Not Activated"
+      },
+      "clientId": "Client ID",
+      "clientSecret": "Client Secret",
+      "visitWebsite": "Visit Website",
+      "copySuccess": "{label} copied to clipboard",
+      "copyFailed": "Copy Failed"
+    }
+  },
+  "authorization": {
+    "card": {
+      "noDescription": "No description provided",
+      "permissions": "Permissions",
+      "revoke": "Revoke",
+      "authorized": "Authorized {timeAgo}",
+      "updated": "Updated {timeAgo}"
+    },
+    "view": {
+      "title": "Authorized Applications",
+      "subtitle": "Manage applications that have access to your account",
+      "stats": {
+        "totalAuthorized": "Total Authorized",
+        "recentAuthorization": "Recent Authorization",
+        "none": "None"
+      },
+      "search": {
+        "placeholder": "Search applications...",
+        "results": "Showing {filtered} of {total} applications"
+      },
+      "empty": {
+        "title": "No Authorized Applications",
+        "description": "You haven't authorized any applications yet. When you grant access to applications, they will appear here and you can manage their permissions."
+      },
+      "noResults": {
+        "message": "No applications match your search criteria.",
+        "clearButton": "Clear Search"
+      },
+      "error": {
+        "failedToLoad": "Failed to Load Authorizations",
+        "loadErrorDescription": "There was an error loading your authorized applications. Please try refreshing the page."
+      }
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back, {name}!",
+    "signInPrompt": "Please sign in to view your dashboard.",
+    "stats": {
+      "myApplications": "My Applications",
+      "authorizedApps": "Authorized Apps",
+      "activeTokens": "Active Tokens",
+      "memberSince": "Member Since",
+      "accountCreated": "Account created"
+    }
+  },
+  "signIn": {
+    "page": {
+      "back": "Back",
+      "welcomeTo": "Welcome to",
+      "brandName": "Shuzimumin Connect",
+      "agreement": "By clicking continue, you agree to our",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "form": {
+      "buttonText": "Continue with Shuzimumin",
+      "errorTitle": "Internal Service Error"
+    }
+  },
+  "authorize": {
+    "title": "Authorize Access",
+    "requestAccess": "{appName} is requesting access to your account",
+    "permissions": "This application will be able to:",
+    "appDescription": "Application Description:",
+    "scopes": {
+      "read:user": "Read your account information"
+    },
+    "buttons": {
+      "authorize": "Authorize",
+      "deny": "Deny",
+      "processing": "Processing..."
+    },
+    "redirectNotice": "You will be redirected to {appName} after authorization",
+    "error": {
+      "title": "Authorization Error",
+      "denied": "User denied the authorization request"
+    }
+  },
+  "authPage": {
+    "welcomeTo": "Welcome to",
+    "community": "数字牧民社区",
+    "agreement": "By clicking continue, you agree to our",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "userAuthorize": {
+    "loginError": "Login failed, authorization failed!",
+    "verifying": "Verifying account information, preparing to redirect, please wait..."
+  },
+  "profile": {
+    "title": "Profile",
+    "subtitle": "View your account information and settings",
+    "unknownUser": "Unknown User",
+    "error": {
+      "failedToLoad": "Failed to Load Profile",
+      "loadErrorDescription": "There was an error loading your profile information. Please try refreshing the page."
+    }
+  },
+  "common": {
+    "brand": {
+      "name": "Shuzimumin Community",
+      "connect": "Connect",
+      "logoAlt": "Shuzimumin Logo"
+    },
+    "search": {
+      "placeholder": "Search",
+      "commandPlaceholder": "Type a command or search...",
+      "noResults": "No results found."
+    },
+    "theme": {
+      "title": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "dialog": {
+      "cancel": "Cancel",
+      "continue": "Continue"
+    },
+    "language": "Language"
+  },
+  "profileDropdown": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "logout": "Log out"
+  },
+  "siteHeader": {
+    "documents": "Documents"
+  },
+  "serverErrors": {
+    "application": {
+      "nameRequired": "Application name is required",
+      "validUrl": "Please enter a valid URL",
+      "validLogoUrl": "Please enter a valid logo URL",
+      "validRedirectUrl": "Please enter a valid redirect URL",
+      "redirectUrlRequired": "At least one redirect URL is required",
+      "scopesRequired": "At least one permission scope is required",
+      "notLoggedIn": "Not logged in",
+      "createFailed": "Failed to create application",
+      "validationFailed": "Data validation failed",
+      "createError": "An error occurred while creating the application",
+      "updateError": "An error occurred while updating the application",
+      "notFoundOrNoPermission": "Application not found or no permission to delete",
+      "confirmNameMismatch": "Confirmation name does not match",
+      "deleteError": "An error occurred while deleting the application"
+    },
+    "authorization": {
+      "notAuthenticated": "User not authenticated",
+      "revokeFailed": "Failed to revoke authorization"
+    },
+    "user": {
+      "notAuthenticated": "User not authenticated",
+      "notFound": "User not found",
+      "deleteFailed": "Failed to delete user"
+    }
+  },
+  "comingSoon": {
+    "title": "Coming Soon 👀",
+    "description": "This page has not been created yet.",
+    "stayTuned": "Stay tuned though!"
+  },
+  "metadata": {
+    "title": "Shuzimumin Connect | OAuth 2.0 Authentication Platform Based on Discourse SSO",
+    "description": "An identity authentication system based on Discourse SSO that supports OAuth 2.0 protocol, allowing users to log in to your applications using their existing Shuzimumin accounts.",
+    "keywords": "Discourse, SSO, OAuth, Authentication, Authorization, Identity Verification, Shuzimumin"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "effectiveDate": "Effective Date: July 27, 2025",
+    "lastUpdated": "Last Updated: July 27, 2025",
+    "introduction": {
+      "welcome": "Welcome to the Shuzimumin Connect Platform (\"Service\", \"Platform\"). This service is operated by the Shuzimumin Community Operator (\"we\", \"operator\", \"service provider\") as an individual entity in Singapore, accessible at",
+      "website": "https://connect.shuzimumin.com",
+      "agreement": "By using our service, you agree to comply with these Terms of Service.",
+      "legalNotice": {
+        "title": "Important Legal Notice",
+        "content": "This service is operated by an individual entity, not a corporate legal person. The operator assumes personal liability under Singapore law. Certain liability limitations in these terms may be subject to legal restrictions due to the nature of individual entity operation."
+      },
+      "readCarefully": "Please read these terms carefully. If you do not agree to these terms, please do not use this service. We reserve the right to modify these terms at any time, and modified terms will take effect immediately upon publication."
+    },
+    "tableOfContents": {
+      "title": "Table of Contents",
+      "sections": {
+        "importantTerms": "Important Terms",
+        "permission": "Your Permission to Use the Platform",
+        "conditions": "Conditions for Using This Platform",
+        "acceptableUse": "Acceptable Use",
+        "contentStandards": "Content Standards",
+        "enforcement": "Enforcement",
+        "yourAccount": "Your Account",
+        "yourContent": "Your Content",
+        "responsibility": "Your Responsibility",
+        "disclaimers": "Disclaimers",
+        "liability": "Limitation of Liability",
+        "feedback": "Feedback",
+        "termination": "Termination",
+        "disputes": "Disputes",
+        "general": "General Terms",
+        "contact": "Contact Information",
+        "changes": "Changes"
+      }
+    },
+    "sections": {
+      "importantTerms": {
+        "title": "Important Terms",
+        "content": "These terms include many important terms that affect your rights and responsibilities, such as the disclaimers in the Disclaimers section, our limitation of liability to you in the Limitation of Liability section, your agreement to indemnify us for losses caused by your misuse of this platform in the Your Responsibility section, and your agreement to resolve disputes in the Disputes section."
+      },
+      "permission": {
+        "title": "Your Permission to Use the Platform",
+        "content": "We grant you permission to use this platform under these terms. Everyone needs to agree to these terms to use this platform."
+      },
+      "conditions": {
+        "title": "Conditions for Using This Platform",
+        "intro": "You must meet the following basic conditions to use this service:",
+        "conditions": [
+          "You must be at least 13 years old, or use this service with parental/guardian consent.",
+          "You must comply with applicable laws, regulations, and community guidelines.",
+          "You agree to provide true and accurate registration information and update it promptly."
+        ]
+      },
+      "acceptableUse": {
+        "title": "Acceptable Use",
+        "prohibitions": [
+          "You may not violate the law while using this platform.",
+          "You may not use or attempt to use another person's account on this platform without their specific permission.",
+          "You may not buy, sell, or otherwise trade usernames or other unique identifiers on this platform.",
+          "You may not send advertisements, chain letters, or other solicitations through this platform, or use this platform to collect addresses or other personal data for commercial mailing lists or databases.",
+          "You may not automatically access this platform, or monitor this platform, such as through web crawlers, browser plugins or add-ons, or other computer programs that are not web browsers. If you run a public search engine, you may crawl this platform to index it for that search engine.",
+          "You may not use this platform to send emails to distribution lists, newsgroups, or group email aliases.",
+          "You may not falsely imply that you are affiliated with us or endorsed by us.",
+          "You may not create hyperlinks to images or other non-hypertext content on this platform from other web pages.",
+          "You may not remove any proprietary ownership notices from materials downloaded from this platform.",
+          "You may not use <iframe> tags on other websites to display any part of this platform.",
+          "You may not disable, avoid, or circumvent any security or access restrictions on this platform.",
+          "You may not strain this platform's infrastructure through unreasonable request volumes, or requests designed to impose unreasonable loads on the platform's underlying information systems.",
+          "You may not impersonate others through this platform.",
+          "You may not encourage or help anyone violate these terms."
+        ]
+      },
+      "contentStandards": {
+        "title": "Content Standards",
+        "prohibitions": [
+          "You may not submit illegal, offensive, or harmful content to this platform. This includes content that constitutes harassment, inappropriate, abusive, or hateful behavior.",
+          "You may not submit content to this platform that violates laws, infringes on anyone's intellectual property rights, infringes on anyone's privacy, or violates agreements you have with others.",
+          "You may not submit content to this platform containing malicious computer code (such as computer viruses or spyware).",
+          "You may not submit content to this platform in placeholder form to reserve specific addresses, usernames, or other unique identifiers.",
+          "You may not use this platform to disclose information you are not authorized to disclose, such as others' confidential or personal information."
+        ]
+      },
+      "enforcement": {
+        "title": "Enforcement",
+        "investigation": "We may investigate and prosecute violations of these terms to the maximum extent permitted by law. We may notify law enforcement and cooperate with them to prosecute violations of laws and these terms.",
+        "rights": "We reserve the right to change, edit, and delete content on this platform for any reason. If you believe someone has violated these terms when submitting content to this platform, please contact us immediately."
+      },
+      "yourAccount": {
+        "title": "Your Account",
+        "requirements": "You must create and log into an account to use certain features of this platform.",
+        "creation": "To create an account, you must provide some information about yourself. If you create an account, you agree to provide at least a valid email address and keep it current. You can close your account at any time by sending an email to",
+        "email": "service@shuzimumin.com",
+        "responsibility": "You agree to be responsible for all actions performed using your account, whether authorized by you or not, until you close your account or notify us that your account has been compromised. If you suspect your account has been compromised, you agree to notify us immediately. You agree to choose a secure password for your account and keep it confidential.",
+        "restrictions": "We may limit, suspend, or close your account on this platform according to relevant policies, or if we reasonably believe you have violated any rules in these terms."
+      },
+      "yourContent": {
+        "title": "Your Content",
+        "ownership": "Nothing in these terms gives us any ownership of your intellectual property that you share on this platform, such as your account information, posts, or other content you submit to this platform. Nothing in these terms gives you any ownership of our intellectual property either.",
+        "responsibility": "Between you and us, you remain fully responsible for content you submit to this platform. You agree not to falsely imply that content you submit to this platform is initiated or approved by us. These terms do not require us to store, maintain, or provide copies of content you submit under these terms, or to make changes to it.",
+        "license": "Content you submit to this platform belongs to you, and you can decide what permissions to give others. But you should at least allow us to provide content you submit to this platform to other users of this platform. This special license allows us to copy, publish, and analyze content you submit to this platform.",
+        "termination": "When content you submit is removed from this platform, whether by you or by us, our special license terminates when the last copy disappears from our backups, caches, and other systems. Other licenses you apply to submitted content, such as Creative Commons licenses, may continue after your content is removed. These licenses may give others or us the right to share your content again through this platform.",
+        "violations": "Others who receive content you submit to this platform may violate your content license terms. You agree that we are not responsible to you for these violations or their consequences."
+      },
+      "responsibility": {
+        "title": "Your Responsibility",
+        "content": "You agree to indemnify us for legal claims against us due to your violation of these terms, or due to others using your account on this platform violating these terms. You and we both agree to notify each other promptly of any legal claims for which you may need to indemnify us. If we fail to notify you of a legal claim promptly, you need not indemnify us for losses you could have defended against or mitigated through timely notice. You agree to allow us to control the investigation, defense, and settlement of legal claims for which you must indemnify us, and to cooperate with these efforts. We agree not to agree to any settlement that admits fault on your behalf or imposes obligations on you without your prior consent."
+      },
+      "disclaimers": {
+        "title": "Disclaimers",
+        "asIs": {
+          "title": "Service Provided As-Is",
+          "content": "You expressly understand and agree that you use this service at your own risk. To the maximum extent permitted by applicable law, this service is provided \"as is\" and \"as available\" without any express or implied warranties of any kind.",
+          "disclaimer": "We and our affiliates, employees, agents, and suppliers hereby disclaim all warranties, including but not limited to:"
+        },
+        "warranties": {
+          "merchantability": {
+            "title": "Merchantability Warranty",
+            "content": "No warranty of merchantability, fitness for a particular purpose, or satisfaction of specific needs"
+          },
+          "continuity": {
+            "title": "Continuity Warranty",
+            "content": "No warranty that the service will be uninterrupted, timely, secure, or error-free"
+          },
+          "accuracy": {
+            "title": "Content Accuracy",
+            "content": "No warranty of accuracy, reliability, or completeness of user-posted content"
+          },
+          "thirdParty": {
+            "title": "Third-Party Services",
+            "content": "No warranty of quality or security of third-party websites, services, or content"
+          }
+        },
+        "thirdParty": {
+          "title": "Third-Party Services Statement",
+          "content": "This service may contain links to or integrate with third-party websites, applications, or services. We are not responsible or liable for the availability, content, services, products, or other materials of any third-party website or service. Your use of third-party services must comply with the respective third-party service terms."
+        }
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "indirectDamages": {
+          "title": "Indirect Damages Disclaimer",
+          "content": "To the maximum extent permitted by law, whether under contract, tort, or other legal theory, we and our affiliates, employees, agents, and suppliers shall not be liable for any indirect, special, incidental, or punitive damages, including but not limited to loss of profits, data loss, business interruption, or other economic losses."
+        },
+        "limitation": {
+          "title": "Liability Limitation",
+          "content": "To the maximum extent permitted by law, regardless of the cause or under any theory of liability, our cumulative liability to you shall not exceed: (a) the actual fees you paid to us in the 12 months preceding the incident (if any); or (b) SGD 1,000. However, this limitation does not apply to liability that cannot be limited by law, including intentional misconduct, gross negligence, or personal injury."
+        },
+        "important": {
+          "title": "Important Notice",
+          "content": "The above limitations are only effective to the extent permitted by applicable law. If you live in a jurisdiction that does not allow limitation or exclusion of certain damages, some of the above limitations may not apply to you."
+        },
+        "individualEntity": {
+          "title": "Individual Entity Special Statement",
+          "content": "As this service is operated by an individual entity, the operator assumes personal liability rather than corporate limited liability. Under Singapore's legal framework, liability limitation clauses for individual entities may be subject to stricter legal scrutiny. The operator will limit liability to the maximum extent permitted by law, but may assume unlimited personal liability in certain circumstances."
+        }
+      },
+      "feedback": {
+        "title": "Feedback",
+        "welcome": "We welcome your feedback and suggestions for this platform. Please refer to the Contact section below for ways to contact us.",
+        "usage": "You agree that we may freely act on feedback and suggestions you provide, and we need not notify you that such feedback has been used, obtain your permission for use, or pay you. You agree not to submit feedback or suggestions you consider confidential or proprietary to you or others."
+      },
+      "termination": {
+        "title": "Termination",
+        "termination": "You or we may terminate the agreement described in these terms at any time. When our agreement terminates, your permission to use this platform terminates.",
+        "surviving": "The following terms remain effective after our agreement terminates: Your Content, Feedback, Your Responsibility, Disclaimers, Limitation of Liability, and General Terms."
+      },
+      "disputes": {
+        "title": "Disputes",
+        "governingLaw": "The laws of the Republic of Singapore will govern any disputes related to these terms or your use of this platform. The agreement between us shall be governed by the laws of the Republic of Singapore, without regard to conflict of law principles.",
+        "jurisdiction": "You and we agree that all disputes arising from or related to these terms shall first be resolved through friendly negotiation. If negotiation fails, either party may file a lawsuit with the High Court of Singapore. Both parties expressly agree to the exclusive jurisdiction of this court.",
+        "arbitration": "If the dispute amount exceeds SGD 50,000, both parties may negotiate to choose arbitration by the Singapore International Arbitration Centre (SIAC). Arbitration will be conducted according to the SIAC Arbitration Rules, with Singapore as the arbitration venue. The arbitral award is final and binding on both parties. Except for intellectual property infringement or emergency injunctive relief, all parties commit to resolving disputes through arbitration rather than litigation.",
+        "costs": "Arbitration costs are principally borne by the losing party, but the arbitral tribunal has the right to decide cost allocation based on the specific circumstances of the case and the degree of fault of each party. Unless otherwise provided by law, each party bears their own legal fees. Arbitral awards may be enforced by applying to the High Court of Singapore or other courts with jurisdiction.",
+        "individualEntity": {
+          "title": "Individual Entity Litigation Notice",
+          "content": "As this service is operated by an individual entity, in legal proceedings, the operator will participate in litigation or arbitration in their personal capacity. This means any legal judgment or arbitral award will directly bind and be enforceable against the operator personally. Users should consider this special circumstance when choosing legal procedures."
+        }
+      },
+      "general": {
+        "title": "General Terms",
+        "severability": "If a provision in these terms cannot be enforced as written but can be made enforceable by modification, that provision should be modified to the minimum extent necessary to make it enforceable. Otherwise, that provision should be deleted.",
+        "assignment": "You may not assign your agreement with us. As we are operated by an individual entity, assignment of the agreement requires the following conditions: (1) We may assign the agreement to other individuals or entities taking over platform operations with 30 days' prior written notice; (2) The assignee must agree to assume all obligations under this agreement; (3) The assignment must not substantially change user rights or increase user obligations. Any assignment not meeting the above conditions has no legal effect.",
+        "waiver": "Exercising any rights under this agreement and not pursuing any breach of this agreement does not constitute waiver of any other breach of this agreement.",
+        "entireAgreement": "These terms contain all the agreement terms between you and us regarding your use of this platform. These terms completely replace any other agreements regarding your use of this platform, whether written or not."
+      },
+      "contact": {
+        "title": "Contact Information",
+        "email": {
+          "title": "Contact Email",
+          "content": "You may notify us under these terms and send questions to us by:",
+          "address": "service@shuzimumin.com"
+        },
+        "notifications": "We may notify you under these terms using the email address you provided for your account on this platform, or by posting messages on the homepage of this platform or your account page."
+      },
+      "changes": {
+        "title": "Changes",
+        "lastUpdate": "We last updated these terms on",
+        "date": "2025-07-27",
+        "updates": "and may update these terms again. We will publish all updates on this platform. For updates containing significant changes, if you have created an account and provided a valid email address, we agree to send you an email. We may also announce updates through special messages or reminders on this platform.",
+        "acceptance": "When you notice updates to these terms, you must agree to these new terms to continue using this platform."
+      }
+    },
+    "backToTop": "Back to Top"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "effectiveDate": "Effective Date: July 27, 2025",
+    "lastUpdated": "Last Updated: July 27, 2025",
+    "introduction": {
+      "operator": "Shuzimumin Community Operator",
+      "welcome": "(\"we\", \"operator\", \"data controller\") operates this service as an individual entity in Singapore, deeply understanding the importance of personal information to you and will do our best to protect the security and reliability of your personal information. This Privacy Policy details how we collect, use, store, share, and protect your personal information when you use the Shuzimumin Connect Platform (\"this service\"), as well as your rights.",
+      "important": {
+        "title": "Important Notice",
+        "content": "This Privacy Policy strictly complies with the Singapore Personal Data Protection Act (PDPA), Singapore Cybersecurity Act, and other applicable Singapore data protection and privacy laws and regulations. As a service operated by an individual entity, we as the data controller assume personal liability."
+      },
+      "readCarefully": "Please read this Privacy Policy carefully. By using our service, you indicate that you have fully understood and agreed to our processing of your personal information in accordance with this Privacy Policy. If you do not agree to any content of this Privacy Policy, please immediately stop using our service."
+    },
+    "tableOfContents": {
+      "title": "Table of Contents",
+      "sections": {
+        "interpretation": "Definitions and Interpretation",
+        "collecting": "Collection and Use of Personal Information",
+        "children": "Children's Privacy Protection",
+        "links": "Third-Party Website Links",
+        "changes": "Privacy Policy Changes",
+        "contact": "Contact Us"
+      }
+    },
+    "sections": {
+      "interpretation": {
+        "title": "Definitions and Interpretation",
+        "termsExplanation": {
+          "title": "Terms Interpretation",
+          "content": "Words with capitalized first letters have the meanings defined under the following conditions. The following definitions have the same meaning whether they appear in singular or plural form."
+        },
+        "definitions": {
+          "title": "Definition Explanations",
+          "intro": "In this Privacy Policy, the following terms have the following meanings:",
+          "terms": {
+            "account": {
+              "term": "Account",
+              "definition": "refers to the unique account created for you to access our service or parts of the service."
+            },
+            "affiliate": {
+              "term": "Affiliate",
+              "definition": "refers to an entity that controls, is controlled by, or is under common control with a party, where \"control\" means ownership of 50% or more of the shares, equity interest, or other securities entitled to vote for the election of directors or other management authority."
+            },
+            "dataController": {
+              "term": "Data Controller",
+              "definition": "(referred to as \"we\", \"operator\", or \"data controller\" in this agreement) refers to the Shuzimumin Community Operator, operating as an individual entity in Singapore."
+            },
+            "cookie": {
+              "term": "Cookie",
+              "definition": "refers to small files placed on your computer, mobile device, or any other device by a website, containing details of your browsing history on that website and various other purposes."
+            },
+            "country": {
+              "term": "Country",
+              "definition": "refers to the Republic of Singapore (Singapore)"
+            },
+            "device": {
+              "term": "Device",
+              "definition": "refers to any device that can access the service, such as a computer, mobile phone, or digital tablet."
+            },
+            "personalData": {
+              "term": "Personal Data",
+              "definition": "refers to any information related to an identified or identifiable individual."
+            },
+            "service": {
+              "term": "Service",
+              "definition": "refers to the Shuzimumin Connect Platform website."
+            },
+            "serviceProvider": {
+              "term": "Service Provider",
+              "definition": "refers to any natural or legal person who processes data on behalf of our team. It refers to third-party companies or individuals we employ to facilitate the service, provide the service on our behalf, perform services related to the service, or assist us in analyzing how the service is used."
+            },
+            "thirdPartySocialMedia": {
+              "term": "Third-party Social Media Service",
+              "definition": "refers to any website or any social network website through which users can use the service by logging in or creating an account."
+            },
+            "usageData": {
+              "term": "Usage Data",
+              "definition": "refers to data collected automatically, generated by the use of the service or from the service infrastructure itself (for example, the duration of a page visit)."
+            },
+            "website": {
+              "term": "Website",
+              "definition": "refers to the Shuzimumin Connect Platform, accessible at"
+            },
+            "you": {
+              "term": "You",
+              "definition": "refers to the individual accessing or using the service, or the company or other legal entity on behalf of which such individual is accessing or using the service, as applicable."
+            }
+          }
+        }
+      },
+      "collecting": {
+        "title": "Collection and Use of Personal Information",
+        "dataTypes": {
+          "title": "Types of Data Collected",
+          "personalData": {
+            "title": "Personal Data",
+            "intro": "While using our service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to:",
+            "items": ["Email address", "Usage data"]
+          },
+          "usageData": {
+            "title": "Usage Data",
+            "intro": "Usage data is collected automatically when using the service.",
+            "details": [
+              "Usage data may include information such as your device's Internet Protocol address (e.g., IP address), browser type, browser version, the pages of our service you visit, the time and date of your visit, the time spent on those pages, unique device identifiers, and other diagnostic data.",
+              "When you access the service through a mobile device, we may automatically collect certain information, including but not limited to the type of mobile device you use, your mobile device's unique ID, your mobile device's IP address, your mobile operating system, the type of mobile Internet browser you use, unique device identifiers, and other diagnostic data.",
+              "We may also collect information that your browser sends when you visit our service or when you access the service through a mobile device."
+            ]
+          },
+          "thirdPartySocialMedia": {
+            "title": "Third-Party Social Media Service Information",
+            "intro": "We allow you to create an account and log in to use the service through the following third-party social media services:",
+            "services": [
+              "Google",
+              "Facebook",
+              "Instagram",
+              "Twitter",
+              "LinkedIn"
+            ],
+            "details": [
+              "If you decide to register through or otherwise grant us access to a third-party social media service, we may collect personal data that is already associated with your third-party social media service account, such as your name, email address, your activities, or your contact list associated with that account.",
+              "You may also choose to share additional information with us through your third-party social media service account. If you choose to provide such information and personal data during registration or at other times, you are giving us permission to use, share, and store it in a manner consistent with this Privacy Policy."
+            ]
+          }
+        },
+        "trackingTechnologies": {
+          "title": "Tracking Technologies and Cookies",
+          "intro": "We use cookies and similar tracking technologies to track activity on our service and store certain information. The tracking technologies we use include beacons, tags, and scripts to collect and track information and to improve and analyze our service. The technologies we may use include:",
+          "technologies": {
+            "cookies": {
+              "title": "Cookies or Browser Cookies",
+              "content": "A cookie is a small file placed on your device. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some parts of our service. Unless you have adjusted your browser setting to refuse cookies, our service may use cookies."
+            },
+            "webBeacons": {
+              "title": "Web Beacons",
+              "content": "Certain sections of our service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit us, for example, to count users who have visited those pages or opened an email, and for other related website statistics (for example, recording the popularity of a certain section and verifying system and server integrity)."
+            }
+          },
+          "cookieTypes": {
+            "intro": "Cookies can be \"persistent\" or \"session\" cookies. Persistent cookies remain on your personal computer or mobile device when you go offline, while session cookies are deleted as soon as you close your web browser.",
+            "purposes": "We use both session and persistent cookies for the purposes set out below:",
+            "types": {
+              "necessary": {
+                "title": "Necessary/Essential Cookies",
+                "type": "Session Cookies",
+                "administeredBy": "Us",
+                "purpose": "These cookies are essential to provide you with services available through our website and to enable you to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these cookies, the services you have asked for cannot be provided, and we only use these cookies to provide you with those services."
+              },
+              "policy": {
+                "title": "Cookies Policy/Notice Acceptance Cookies",
+                "type": "Persistent Cookies",
+                "administeredBy": "Us",
+                "purpose": "These cookies are used to identify if users have accepted the use of cookies on our website."
+              },
+              "functional": {
+                "title": "Functionality Cookies",
+                "type": "Persistent Cookies",
+                "administeredBy": "Us",
+                "purpose": "These cookies allow us to remember choices you make when you use our website, such as remembering your login details or language preference. The purpose of these cookies is to provide you with a more personal experience and to avoid you having to re-enter your preferences every time you use our website."
+              }
+            }
+          }
+        },
+        "useOfPersonalData": {
+          "title": "Use of Personal Data",
+          "intro": "We may use personal data for the following purposes:",
+          "purposes": [
+            {
+              "title": "To provide and maintain our service",
+              "description": "Including monitoring the usage of our service."
+            },
+            {
+              "title": "To manage your account",
+              "description": "To manage your registration as a user of the service. The personal data you provide can give you access to different functionalities of the service that are available to a registered user."
+            },
+            {
+              "title": "For the performance of a contract",
+              "description": "The development, compliance, and undertaking of the purchase contract for the products, items, or services you have purchased or of any other contract with us through the service."
+            },
+            {
+              "title": "To contact you",
+              "description": "To contact you by email, telephone calls, SMS, or other equivalent forms of electronic communication (such as mobile application push notifications) regarding updates or informative communications related to the functionalities, products, or contracted services, including security updates, when necessary or reasonable for their implementation."
+            },
+            {
+              "title": "To provide you with news and offers",
+              "description": "To provide you with news, special offers, and general information about other goods, services, and events we offer that are similar to those you have already purchased or inquired about unless you have opted not to receive such information."
+            },
+            {
+              "title": "To manage your requests",
+              "description": "To attend and manage your requests to us."
+            },
+            {
+              "title": "For business transfers",
+              "description": "We may use your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which personal data held by us about our service users is among the assets transferred."
+            },
+            {
+              "title": "For other purposes",
+              "description": "We may use your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns, and to evaluate and improve our service, products, services, marketing, and your experience."
+            }
+          ],
+          "sharing": {
+            "title": "We may share your personal information in the following circumstances:",
+            "circumstances": [
+              {
+                "title": "With service providers",
+                "description": "We may share your personal information with service providers to monitor and analyze the use of our service, to contact you."
+              },
+              {
+                "title": "For business transfers",
+                "description": "We may share or transfer your personal information in connection with, or during negotiations of, any merger, sale of our assets, financing, or acquisition of all or a portion of our business to another company."
+              },
+              {
+                "title": "With affiliates",
+                "description": "We may share your information with our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include our parent company and any other subsidiaries, joint venture partners, or other companies that we control or that are under common control with us."
+              },
+              {
+                "title": "With business partners",
+                "description": "We may share your information with our business partners to offer you certain products, services, or promotions."
+              },
+              {
+                "title": "With other users",
+                "description": "When you share personal information or otherwise interact in public areas with other users, such information may be viewed by all users and may be publicly distributed outside. If you interact with other users or register through a third-party social media service, your contacts on the third-party social media service may see your name, profile, pictures, and description of your activity. Similarly, other users will be able to view descriptions of your activity, communicate with you, and view your profile."
+              },
+              {
+                "title": "With your consent",
+                "description": "We may disclose your personal information for any other purpose with your consent."
+              }
+            ]
+          }
+        },
+        "retention": {
+          "title": "Retention of Personal Data",
+          "content": "We will retain your personal data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your personal data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.",
+          "usageData": "We will also retain usage data for internal analysis purposes. Usage data is generally retained for a shorter period, except when this data is used to strengthen the security or to improve the functionality of our service, or we are legally obligated to retain this data for longer periods."
+        },
+        "transfer": {
+          "title": "Transfer of Personal Data",
+          "content": "Your information, including personal data, is processed at our operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to—and maintained on—computers located outside of your state, province, country, or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction.",
+          "consent": "Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.",
+          "security": "We will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your personal data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information."
+        },
+        "deletion": {
+          "title": "Delete Your Personal Data",
+          "rights": {
+            "title": "Your Rights",
+            "content": "You have the right to delete or request that we assist in deleting the personal data we have collected about you."
+          },
+          "service": "Our service may give you the ability to delete certain information about you from within the service.",
+          "account": "You can update, amend, or delete your information at any time by signing in to your account (if you have an account) and visiting the account settings section that allows you to manage your personal information. You may also contact us to request access to, correct, or delete any personal information you have provided to us.",
+          "legal": "However, please note that we may need to retain certain information when we have a legal obligation or lawful basis to do so."
+        },
+        "disclosure": {
+          "title": "Disclosure of Personal Data",
+          "businessTransactions": {
+            "title": "Business Transactions",
+            "content": "If we are involved in a merger, acquisition, or asset sale, your personal data may be transferred. We will provide notice before your personal data is transferred and becomes subject to a different Privacy Policy."
+          },
+          "lawEnforcement": {
+            "title": "Law Enforcement",
+            "content": "Under certain circumstances, we may be required to disclose your personal data if required to do so by law or in response to valid requests by public authorities (e.g., a court or a government agency)."
+          },
+          "otherLegal": {
+            "title": "Other Legal Requirements",
+            "intro": "We may disclose your personal data in the good faith belief that such action is necessary to:",
+            "reasons": [
+              "Comply with a legal obligation",
+              "Protect and defend our rights or property",
+              "Prevent or investigate possible wrongdoing in connection with the service",
+              "Protect the personal safety of users of the service or the public",
+              "Protect against legal liability"
+            ]
+          }
+        },
+        "security": {
+          "title": "Security of Personal Data",
+          "notice": {
+            "title": "Security Notice",
+            "content": "The security of your personal data is important to us, but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal data, we cannot guarantee its absolute security."
+          }
+        }
+      },
+      "children": {
+        "title": "Children's Privacy Protection",
+        "ageLimit": {
+          "title": "Age Limit Notice",
+          "content": "Our service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If you are a parent or guardian and you are aware that your child has provided us with personal data, please contact us. If we become aware that we have collected personal data from anyone under the age of 13 without verification of parental consent, we take steps to remove that information from our servers.",
+          "consent": "If we need to rely on consent as a legal basis for processing your information and your country requires consent from a parent, we may require your parent's consent before we collect and use that information."
+        }
+      },
+      "links": {
+        "title": "Third-Party Website Links",
+        "content": "Our service may contain links to other websites that are not operated by us. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.",
+        "disclaimer": "We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "email": {
+          "title": "Contact Email",
+          "content": "If you have any questions about this Privacy Policy, you can contact us by:",
+          "address": "service@shuzimumin.com"
+        }
+      },
+      "changes": {
+        "title": "Privacy Policy Changes",
+        "lastUpdate": "We last updated this Privacy Policy on",
+        "date": "2025-07-27",
+        "updates": "and may update this Privacy Policy again. We will publish all updates on this platform. For updates containing significant changes, if you have created an account and provided a valid email address, we agree to send you an email. We may also announce updates through special messages or reminders on this platform.",
+        "acceptance": "When you notice updates to this Privacy Policy, continuing to use our service indicates your acceptance of the updated Privacy Policy.",
+        "continueUsing": "When you notice updates to this Privacy Policy, continuing to use our service indicates your acceptance of the updated Privacy Policy."
+      }
+    },
+    "backToTop": "Back to Top"
+  }
+}
