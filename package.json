@@ -16,6 +16,7 @@
     "db:migrate": "node scripts/db-migrate.js",
     "update-db": "prisma migrate deploy",
     "lint": "next lint",
+    "i18n:check": "i18n-check",
     "prepare": "husky"
   },
   "dependencies": {
@@ -59,6 +60,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
+    "@lingual/i18n-check": "^0.8.4",
     "@tailwindcss/postcss": "^4",
     "@types/crypto-js": "^4.2.2",
     "@types/node": "^20",

@@ -1,0 +1,863 @@
+{
+  "header": {
+    "brand": "数字牧民 Connect",
+    "nav": {
+      "features": "特性",
+      "howItWorks": "使用流程",
+      "community": "数字牧民社区"
+    },
+    "signIn": "立即登录",
+    "toggleMenu": "切换菜单"
+  },
+  "hero": {
+    "badge": "身份认证",
+    "title": {
+      "main": "基于 Discourse SSO 的",
+      "highlight": "OAuth 2.0",
+      "suffix": "认证平台"
+    },
+    "description": "让用户使用已有的数字牧民账号登录到您的应用程序，无需创建新账号，提供安全、便捷的身份验证服务。",
+    "buttons": {
+      "getStarted": "开始使用",
+      "visitCommunity": "访问数字牧民社区"
+    },
+    "features": {
+      "discourseSSO": "基于 Discourse SSO",
+      "oauth2": "OAuth 2.0 协议",
+      "secure": "安全可靠"
+    }
+  },
+  "cta": {
+    "title": "准备好使用数字牧民账号登录了吗？",
+    "description": "立即开始使用数字牧民 Connect，为您的应用提供安全、便捷的身份验证服务。",
+    "buttons": {
+      "tryNow": "立即体验",
+      "viewGitHub": "查看 GitHub"
+    },
+    "tagline": "使用数字牧民账号。简单集成。开源项目。"
+  },
+  "footer": {
+    "brand": "数字牧民 Connect",
+    "description": "数字牧民 Connect 是一个基于 Discourse SSO (Single Sign-On) 用户系统的 OAuth 认证平台。 通过数字牧民 Connect，您可以让用户使用已有的数字牧民账号登录到您的应用程序，无需创建新账号。",
+    "social": {
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "community": "社区"
+    },
+    "sections": {
+      "products": "产品",
+      "resources": "资源"
+    },
+    "links": {
+      "community": "数字牧民社区",
+      "lianTo": "LIAN.TO",
+      "github": "GitHub",
+      "contact": "联系我们"
+    },
+    "copyright": "数字牧民社区. All rights reserved.",
+    "privacyPolicy": "隐私政策"
+  },
+  "howItWorks": {
+    "badge": "使用流程",
+    "title": "简单流程，快速集成",
+    "description": "只需几个简单步骤，即可将数字牧民社区账号认证集成到您的应用中。",
+    "steps": {
+      "register": {
+        "title": "注册应用",
+        "description": "在数字牧民 Connect 平台注册您的应用，获取客户端 ID 和密钥。"
+      },
+      "integrate": {
+        "title": "集成 OAuth 2.0",
+        "description": "使用我们提供的 API 并按照文档说明集成 OAuth 2.0 认证流程到您的应用中。"
+      },
+      "authorize": {
+        "title": "用户授权",
+        "description": "用户通过数字牧民账号授权登录，无需创建新账号，简化用户体验。"
+      }
+    }
+  },
+  "features": {
+    "badge": "特性",
+    "title": "强大的 OAuth 2.0 认证工具",
+    "description": "数字牧民 Connect 提供了所有您需要的工具，让用户使用数字牧民账号进行身份验证，简化登录流程。",
+    "items": {
+      "oauth2": {
+        "title": "OAuth 2.0 协议",
+        "description": "基于标准 OAuth 2.0 协议实现，支持授权码模式，确保安全可靠的身份验证流程。"
+      },
+      "sso": {
+        "title": "数字牧民 SSO 集成",
+        "description": "无缝集成数字牧民社区单点登录系统，让用户使用已有的数字牧民账号进行身份验证。"
+      },
+      "sync": {
+        "title": "用户信息同步",
+        "description": "自动同步用户的基本信息、头像、角色和权限，保持数据的一致性和实时性。"
+      },
+      "multiApp": {
+        "title": "多应用支持",
+        "description": "支持多个客户端应用接入，统一管理用户认证，简化系统架构和维护成本。"
+      },
+      "secure": {
+        "title": "安全可靠",
+        "description": "采用加密传输和签名验证机制，确保认证过程的安全性，防止伪造和篡改。"
+      },
+      "easy": {
+        "title": "简单易用",
+        "description": "提供简洁明了的接口和文档，开发者可以快速集成到自己的应用中，降低开发成本。"
+      }
+    }
+  },
+  "application": {
+    "view": {
+      "title": "应用管理",
+      "subtitle": "在这里管理您的应用程序及其配置。",
+      "createButton": "创建应用",
+      "filterPlaceholder": "筛选应用...",
+      "filter": {
+        "allApps": "所有应用",
+        "activated": "已激活",
+        "notActivated": "未激活"
+      },
+      "sort": {
+        "ascending": "升序",
+        "descending": "降序"
+      },
+      "empty": {
+        "title": "您的应用",
+        "description": "创建一个应用开始使用。",
+        "createButton": "创建应用"
+      }
+    },
+    "dialog": {
+      "title": {
+        "create": "创建新应用",
+        "edit": "编辑应用"
+      },
+      "description": {
+        "create": "创建一个新的 OAuth 应用",
+        "edit": "修改应用信息"
+      },
+      "fields": {
+        "name": {
+          "label": "应用名称",
+          "placeholder": "我的应用"
+        },
+        "description": {
+          "label": "应用描述",
+          "placeholder": "应用的详细描述（可选）"
+        },
+        "websiteUrl": {
+          "label": "网站 URL",
+          "placeholder": "https://example.com"
+        },
+        "logoUrl": {
+          "label": "Logo URL",
+          "placeholder": "https://example.com/logo.png"
+        },
+        "redirectUrls": {
+          "label": "重定向 URL",
+          "placeholder": "https://example.com/callback",
+          "addButton": "添加重定向 URL",
+          "description": "应用授权后用户重定向的地址"
+        },
+        "scopes": {
+          "label": "权限范围",
+          "placeholder": "read, write, admin",
+          "description": "用逗号分隔多个权限"
+        }
+      },
+      "validation": {
+        "nameRequired": "应用名称是必填项",
+        "validWebsiteUrl": "请输入有效的网站 URL",
+        "validLogoUrl": "请输入有效的 Logo URL",
+        "validRedirectUrl": "请输入有效的重定向 URL",
+        "redirectUrlRequired": "至少需要一个重定向 URL",
+        "scopesRequired": "权限范围是必填项"
+      },
+      "buttons": {
+        "create": "创建应用",
+        "update": "更新应用",
+        "creating": "创建中...",
+        "updating": "更新中..."
+      },
+      "toast": {
+        "createSuccess": "创建成功",
+        "createSuccessDesc": "应用已成功创建",
+        "createFailed": "创建失败",
+        "updateSuccess": "更新成功",
+        "updateSuccessDesc": "应用信息已成功更新",
+        "updateFailed": "更新失败",
+        "unknownError": "操作时发生未知错误"
+      }
+    },
+    "cardActions": {
+      "openMenu": "打开菜单",
+      "edit": "编辑",
+      "delete": "删除"
+    },
+    "deleteDialog": {
+      "title": "删除应用",
+      "description": {
+        "confirm": "您确定要删除",
+        "warning": "此操作将永久删除名为",
+        "cannotUndo": "的应用。此操作无法撤销。"
+      },
+      "nameLabel": "名称",
+      "namePlaceholder": "输入名称以确认删除。",
+      "warning": {
+        "title": "警告！",
+        "description": "请谨慎操作，此操作无法回滚。"
+      },
+      "buttons": {
+        "confirmDelete": "确认删除",
+        "deleting": "删除中..."
+      }
+    },
+    "grid": {
+      "status": {
+        "activated": "已激活",
+        "notActivated": "未激活"
+      },
+      "clientId": "Client ID",
+      "clientSecret": "Client Secret",
+      "visitWebsite": "访问网站",
+      "copySuccess": "{label} 已复制到剪贴板",
+      "copyFailed": "复制失败"
+    }
+  },
+  "authorization": {
+    "card": {
+      "noDescription": "未提供描述",
+      "permissions": "权限",
+      "revoke": "撤销",
+      "authorized": "已授权 {timeAgo}",
+      "updated": "更新于 {timeAgo}"
+    },
+    "view": {
+      "title": "已授权应用",
+      "subtitle": "管理有权访问您账户的应用程序",
+      "stats": {
+        "totalAuthorized": "授权总数",
+        "recentAuthorization": "最近授权",
+        "none": "无"
+      },
+      "search": {
+        "placeholder": "搜索应用程序...",
+        "results": "显示 {filtered} 个，共 {total} 个应用程序"
+      },
+      "empty": {
+        "title": "没有已授权的应用",
+        "description": "您还没有授权任何应用程序。当您授权应用访问权限时，它们将在这里显示，您可以管理它们的权限。"
+      },
+      "noResults": {
+        "message": "没有应用程序符合您的搜索条件。",
+        "clearButton": "清除搜索"
+      },
+      "error": {
+        "failedToLoad": "授权信息加载失败",
+        "loadErrorDescription": "加载您的授权应用程序时出现错误。请尝试刷新页面。"
+      }
+    }
+  },
+  "dashboard": {
+    "title": "仪表板",
+    "welcome": "欢迎回来，{name}！",
+    "signInPrompt": "请登录以查看您的仪表板。",
+    "stats": {
+      "myApplications": "我的应用",
+      "authorizedApps": "已授权应用",
+      "activeTokens": "活跃令牌",
+      "memberSince": "注册时间",
+      "accountCreated": "账户创建"
+    }
+  },
+  "signIn": {
+    "page": {
+      "back": "返回",
+      "welcomeTo": "欢迎来到",
+      "brandName": "数字牧民 Connect",
+      "agreement": "点击继续即表示您同意我们的",
+      "termsOfService": "服务条款",
+      "and": "和",
+      "privacyPolicy": "隐私政策"
+    },
+    "form": {
+      "buttonText": "使用 数字牧民 登录",
+      "errorTitle": "内部服务异常"
+    }
+  },
+  "authorize": {
+    "title": "授权访问",
+    "requestAccess": "{appName} 请求访问您的账户",
+    "permissions": "此应用程序将能够：",
+    "appDescription": "应用描述：",
+    "scopes": {
+      "read:user": "读取您的账户信息"
+    },
+    "buttons": {
+      "authorize": "授权",
+      "deny": "拒绝",
+      "processing": "处理中..."
+    },
+    "redirectNotice": "授权后，您将被重定向到 {appName}",
+    "error": {
+      "title": "授权错误",
+      "denied": "用户拒绝了授权请求"
+    }
+  },
+  "authPage": {
+    "welcomeTo": "欢迎来到",
+    "community": "数字牧民社区",
+    "agreement": "点击继续即表示您同意我们的",
+    "termsOfService": "服务条款",
+    "and": "和",
+    "privacyPolicy": "隐私政策"
+  },
+  "userAuthorize": {
+    "loginError": "登录异常，授权失败！",
+    "verifying": "账号信息验证中，准备跳转中，请稍等..."
+  },
+  "profile": {
+    "title": "个人资料",
+    "subtitle": "查看您的账户信息和设置",
+    "unknownUser": "未知用户",
+    "error": {
+      "failedToLoad": "个人资料加载失败",
+      "loadErrorDescription": "加载您的个人资料信息时出现错误。请尝试刷新页面。"
+    }
+  },
+  "common": {
+    "brand": {
+      "name": "数字牧民社区",
+      "connect": "Connect",
+      "logoAlt": "数字牧民 Logo"
+    },
+    "search": {
+      "placeholder": "搜索",
+      "commandPlaceholder": "输入命令或搜索...",
+      "noResults": "未找到结果。"
+    },
+    "theme": {
+      "title": "主题",
+      "light": "浅色",
+      "dark": "深色",
+      "system": "系统"
+    },
+    "dialog": {
+      "cancel": "取消",
+      "continue": "继续"
+    },
+    "language": "语言"
+  },
+  "profileDropdown": {
+    "dashboard": "仪表板",
+    "profile": "个人资料",
+    "logout": "退出登录"
+  },
+  "siteHeader": {
+    "documents": "文档"
+  },
+  "serverErrors": {
+    "application": {
+      "nameRequired": "应用名称是必填项",
+      "validUrl": "请输入有效的 URL",
+      "validLogoUrl": "请输入有效的 Logo URL",
+      "validRedirectUrl": "请输入有效的重定向 URL",
+      "redirectUrlRequired": "至少需要一个重定向 URL",
+      "scopesRequired": "至少需要一个权限范围",
+      "notLoggedIn": "未登录",
+      "createFailed": "创建应用失败",
+      "validationFailed": "数据验证失败",
+      "createError": "创建应用时发生错误",
+      "updateError": "更新应用时发生错误",
+      "notFoundOrNoPermission": "应用不存在或无权限删除",
+      "confirmNameMismatch": "确认名称不匹配",
+      "deleteError": "删除应用时发生错误"
+    },
+    "authorization": {
+      "notAuthenticated": "用户未认证",
+      "revokeFailed": "撤销授权失败"
+    },
+    "user": {
+      "notAuthenticated": "用户未认证",
+      "notFound": "用户未找到",
+      "deleteFailed": "删除用户失败"
+    }
+  },
+  "comingSoon": {
+    "title": "即将推出 👀",
+    "description": "此页面尚未创建。",
+    "stayTuned": "敬请期待！"
+  },
+  "metadata": {
+    "title": "数字牧民 Connect | 基于 Discourse SSO 的 OAuth 2.0 认证平台",
+    "description": "一个基于 Discourse SSO 的身份认证系统，支持 OAuth 2.0 协议，让用户使用已有的数字牧民账号登录到您的应用程序。",
+    "keywords": "Discourse, SSO, OAuth, 认证, 授权, 身份验证, 数字牧民"
+  },
+  "terms": {
+    "title": "服务条款",
+    "effectiveDate": "生效日期：2025年7月27日",
+    "lastUpdated": "最后更新：2025年7月27日",
+    "introduction": {
+      "welcome": "欢迎使用数字牧民连接平台（\"服务\"、\"平台\"）。本服务由数字牧民社区运营方（\"我们\"、\"运营方\"、\"服务提供方\"）以个人名义在新加坡运营，网址为",
+      "website": "https://connect.shuzimumin.com",
+      "agreement": "。使用我们的服务即表示您同意遵守这些服务条款。",
+      "legalNotice": {
+        "title": "重要法律声明",
+        "content": "本服务由个人实体运营，非公司法人。运营方依据新加坡法律承担个人责任。本条款的某些责任限制可能因个人实体性质而受到法律限制。"
+      },
+      "readCarefully": "请仔细阅读这些条款。如果您不同意这些条款，请不要使用本服务。我们保留随时修改这些条款的权利，修改后的条款将在发布后立即生效。"
+    },
+    "tableOfContents": {
+      "title": "目录导航",
+      "sections": {
+        "importantTerms": "重要条款",
+        "permission": "您使用本平台的权限",
+        "conditions": "本平台使用条件",
+        "acceptableUse": "可接受的使用",
+        "contentStandards": "内容标准",
+        "enforcement": "执法",
+        "yourAccount": "您的帐户",
+        "yourContent": "您的内容",
+        "responsibility": "您的责任",
+        "disclaimers": "免责声明",
+        "liability": "责任限制",
+        "feedback": "反馈",
+        "termination": "终止",
+        "disputes": "争议",
+        "general": "一般条款",
+        "contact": "联系方式",
+        "changes": "变更"
+      }
+    },
+    "sections": {
+      "importantTerms": {
+        "title": "重要条款",
+        "content": "这些条款包括许多影响您的权利和责任的重要条款，如免责声明中的免责声明、责任限制中我们对您的责任限制、您同意依据使用的责任赔偿我们因您滥用本平台而造成的损失并同意依据争议解决争议。"
+      },
+      "permission": {
+        "title": "您使用本平台的权限",
+        "content": "我们依据这些条款向您授予使用本平台的权限。每个人都需要同意这些条款才能使用本平台。"
+      },
+      "conditions": {
+        "title": "本平台使用条件",
+        "intro": "您使用本服务需满足以下基本条件：",
+        "conditions": [
+          "您必须年满13周岁，或在父母/监护人同意下使用本服务。",
+          "您必须遵守适用的法律法规和社区准则。",
+          "您同意提供真实、准确的注册信息，并及时更新。"
+        ]
+      },
+      "acceptableUse": {
+        "title": "可接受的使用",
+        "prohibitions": [
+          "在使用本平台时不得违反法律。",
+          "未经他人特别许可，不得在本平台上使用或试图使用他人的帐户。",
+          "不得在本平台上购买、出售或以其他方式交易用户名或其他唯一标识符。",
+          "不得通过本平台发送广告、连锁信或其他征求，也不得使用本平台收集地址或其他个人数据，将其用于商业邮寄名单或数据库。",
+          "不得自动访问本平台，或监控本平台，如通过网络爬虫、浏览器插件或加载项，或其他非Web浏览器的计算机程序。如果您运行公开的搜索引擎，您可以爬取本平台来为该搜索引擎建立索引。",
+          "不得使用本平台向分发名单、新闻组或群组邮件别名发送电子邮件。",
+          "不得虚假地暗示您隶属于我们或得到我们的认可。",
+          "不得在其他网页上对本平台上的图片或其他非超文本内容建立超链接。",
+          "不得从在本平台上下载的材料中删除任何显示专有所有权的标记。",
+          "不得在其他网站上使用<iframe>显示本平台的任何部分。",
+          "不得禁用、避免或规避本平台的任何安全或访问限制。",
+          "不得通过不合理的请求量，或旨在对本平台底层的信息系统施加不合理负载的请求而使本平台的基础设施紧张。",
+          "不得通过本平台冒充他人。",
+          "不得鼓励或帮助任何人违反这些条款。"
+        ]
+      },
+      "contentStandards": {
+        "title": "内容标准",
+        "prohibitions": [
+          "不得向本平台提交非法、冒犯性或伤害他人的内容。这包括存在骚扰、不当、辱骂或仇恨行为的内容。",
+          "不得向本平台提交违反法律、侵犯任何人的知识产权、侵犯任何人隐私或违反您与他人签订的协议的内容。",
+          "不得向本平台提交包含恶意计算机代码（如计算机病毒或间谍软件）的内容。",
+          "不得以占位符形式向本平台提交内容来保留特定地址、用户名或其他唯一标识符。",
+          "不得使用本平台披露您无权披露的信息，如他人的机密或个人信息。"
+        ]
+      },
+      "enforcement": {
+        "title": "执法",
+        "investigation": "我们可以在最大的法律范围内调查和起诉违反这些条款的行为。我们可以通知执法部门并与之合作起诉违反法律和这些条款的行为。",
+        "rights": "我们保留出于任何理由更改、编辑和删除本平台内容的权利。如果您认为有人在向本平台提交内容时违反了这些条款，请立即联系我们。"
+      },
+      "yourAccount": {
+        "title": "您的帐户",
+        "requirements": "您必须创建并登录帐户才能使用本平台的某些功能。",
+        "creation": "要创建帐户，您必须提供有关自己的一些信息。如果您创建帐户，您同意至少提供有效的电子邮件地址，并使该地址保持最新状态。您可以随时通过向",
+        "email": "service@shuzimumin.com",
+        "responsibility": "发送电子邮件关闭您的帐户。您同意对使用您的帐户执行的所有操作负责，无论该操作是否经过您的授权，直到您关闭您的帐户或通知我们您的帐户被盗用。如果您怀疑您的帐户被盗用，您同意立即通知我们。您同意为您的帐户选择安全的密码并对其保密。",
+        "restrictions": "根据相关政策，或者如果我们合理地认为您违反了这些条款中的任何规则，我们可能会限制、暂停或关闭您在本平台上的帐户。"
+      },
+      "yourContent": {
+        "title": "您的内容",
+        "ownership": "这些条款中的任何内容都不赋予我们对您在本平台分享的知识产权的任何所有权，例如您的帐户信息、帖子或您提交给本平台的其他内容。这些条款中的任何内容也不赋予您对我们知识产权的任何所有权。",
+        "responsibility": "在您与我们之间，您仍然对您提交到本平台的内容全权负责。您同意不会错误地暗示您提交到本平台的内容是由我们倡议或获得我们批准的。这些条款并不要求我们根据这些条款存储、维护或提供您提交的内容的副本，也不要求我们对其进行更改。",
+        "license": "您提交到本平台的内容属于您，您可以决定为别人赋予何种权限。但您至少应允许我们向本平台其他用户提供您提交到本平台的内容。该特殊许可允许我们复制、发布和分析您提交到本平台的内容。",
+        "termination": "当您提交的内容从本平台中删除时，无论是由您还是由我们删除，当最后一份副本从我们的备份、缓存和其他系统中消失时，我们的特殊许可即告终止。您对提交的内容申请的其他许可，如知识共享许可，可以在您的内容删除后继续。这些许可可以授予他人或我们再次通过本平台分享您的内容的权利。",
+        "violations": "接收您提交到本平台的内容的其他人可能会违反您的内容许可条款。您同意我们不为这些违规行为或其后果对您负责。"
+      },
+      "responsibility": {
+        "title": "您的责任",
+        "content": "您同意赔偿我们因您违反这些条款，或因其他人使用您在本平台上的帐户违反这些条款而被他人提起的法律索赔。您和我们都同意尽快就您可能需要赔偿我们的任何法律索赔通知对方。如果我们未能及时通知您某项法律索赔，您不必就您本可以通过及时通知进行辩护或减轻的损失对我们进行赔偿。您同意允许我们控制对您必须赔偿我们的法律索赔进行的调查、辩护和解决，并配合这些努力。我们同意，未经您事先同意，不会同意任何替您认错或给您强加义务的和解。"
+      },
+      "disclaimers": {
+        "title": "免责声明",
+        "asIs": {
+          "title": "服务现状提供",
+          "content": "您明确了解并同意，您使用本服务的风险由您自行承担。在适用法律允许的最大范围内，本服务按\"现状\"和\"可用状态\"提供，不提供任何形式的明示或暗示保证。",
+          "disclaimer": "我们及其关联方、员工、代理人和供应商特此声明不做出任何保证，包括但不限于："
+        },
+        "warranties": {
+          "merchantability": {
+            "title": "适商性保证",
+            "content": "不保证服务的适商性、特定用途适用性或满足特定需求"
+          },
+          "continuity": {
+            "title": "连续性保证",
+            "content": "不保证服务将不间断、及时、安全或无错误"
+          },
+          "accuracy": {
+            "title": "内容准确性",
+            "content": "不保证用户发布内容的准确性、可靠性或完整性"
+          },
+          "thirdParty": {
+            "title": "第三方服务",
+            "content": "不保证第三方网站、服务或内容的质量或安全性"
+          }
+        },
+        "thirdParty": {
+          "title": "第三方服务声明",
+          "content": "本服务可能包含指向或接入第三方网站、应用程序或服务的链接。我们不对任何第三方网站或服务的可用性、内容、服务、产品或其他材料承担责任或负责。您使用第三方服务必须遵守相应的第三方服务条款。"
+        }
+      },
+      "liability": {
+        "title": "责任限制",
+        "indirectDamages": {
+          "title": "间接损害免责",
+          "content": "在法律允许的最大范围内，无论是否在合同、侵权或其他法律理论下，我们及其关联方、员工、代理人和供应商均不对任何间接、特殊、偶发或惩罚性损害承担责任，包括但不限于利润损失、数据丢失、业务中断或其他经济损失。"
+        },
+        "limitation": {
+          "title": "责任限制",
+          "content": "在法律允许的最大范围内，无论以任何原因或在任何责任理论下，我们对您的累计赔偿责任不得超过：（a）您在事件发生前12个月内向我们实际支付的费用（如有）；或（b）新币1000元。但本限制不适用于法律不允许限制的责任，包括故意不当行为、重大过失或人身伤害。"
+        },
+        "important": {
+          "title": "重要提示",
+          "content": "上述限制仅在适用法律允许的范围内有效。如果您住在不允许限制或排除某些损害的法域，则上述某些限制可能不适用于您。"
+        },
+        "individualEntity": {
+          "title": "个人实体特别声明",
+          "content": "由于本服务由个人实体运营，运营方承担的是个人责任而非公司有限责任。在新加坡法律框架下，个人实体的责任限制条款可能受到更严格的法律审查。运营方将在法律允许的最大范围内限制责任，但某些情况下可能承担个人无限责任。"
+        }
+      },
+      "feedback": {
+        "title": "反馈",
+        "welcome": "我们欢迎您对本平台提供反馈和建议。请参阅以下联系部分，了解与我们联系的方式。",
+        "usage": "您同意我们可以自由地根据您提供的反馈和建议采取行动，并且我们不必通知您相关反馈已被使用，也不必获得您的使用许可或向您付款。您同意不向您或他人提交您认为可能为机密或专有的反馈或建议。"
+      },
+      "termination": {
+        "title": "终止",
+        "termination": "您或我们可以随时终止这些条款中所述的协议。当我们的协议终止时，您使用本平台的权限即告终止。",
+        "surviving": "以下条款在我们的协议终止后仍然有效：您的内容、反馈、您的责任、免责声明、责任限制和一般条款。"
+      },
+      "disputes": {
+        "title": "争议",
+        "governingLaw": "新加坡共和国法律将管控与这些条款或您对本平台的使用有关的任何争议。我们之间的协议应适用新加坡共和国法律，不适用冲突法原则。",
+        "jurisdiction": "您和我们同意，因本条款引起或与本条款相关的所有争议，应优先通过友好协商解决。如协商不成，任何一方均可向新加坡高等法院提起诉讼。双方明确同意该法院的专属管辖权。",
+        "arbitration": "若争议金额超过新币50,000元，双方可协商选择由新加坡国际仲裁中心（SIAC）进行仲裁。仲裁将按照新加坡国际仲裁中心仲裁规则进行，仲裁地点为新加坡。仲裁裁决为终局裁决，对双方均有约束力。除涉及知识产权侵权或紧急禁令救济外，各方承诺通过仲裁解决争议，而非诉讼。",
+        "costs": "仲裁费用原则上由败诉方承担，但仲裁庭有权根据案件具体情况和各方过错程度决定费用分担。除非法律另有规定，各方自行承担各自的律师费用。仲裁裁决可依法向新加坡高等法院或其他有管辖权的法院申请执行。",
+        "individualEntity": {
+          "title": "个人实体诉讼提示",
+          "content": "鉴于本服务由个人实体运营，在法律程序中，运营方将以个人名义参与诉讼或仲裁。这意味着任何法律判决或仲裁裁决将直接对运营方个人产生约束力和执行效力。用户在选择法律程序时应考虑这一特殊情况。"
+        }
+      },
+      "general": {
+        "title": "一般条款",
+        "severability": "如果这些条款中的某项规定无法按书面规定执行，但可以通过修改使其可以执行，则应在必要的最低范围内修改该规定，使其可以执行。否则，应删除该规定。",
+        "assignment": "您不得转让您与我们签订的协议。鉴于我们是个人实体运营，协议的转让需要满足以下条件：（1）我们可以在提前30天书面通知的情况下，将协议转让给接管本平台运营的其他个人或实体；（2）转让后的实体必须同意承担本协议下的所有义务；（3）转让不得实质性改变用户的权利或增加用户的义务。任何不符合上述条件的转让均不具有法律效力。",
+        "waiver": "行使本协议项下的任何权利和对任何违反本协议的行为不予追究均不表示对违反本协议的任何其他行为不予追究。",
+        "entireAgreement": "这些条款包含了您与我们之间就您对本平台使用达成的所有协议条款。这些条款完全取代关于您的本平台使用的任何其他协议，无论是否为书面协议。"
+      },
+      "contact": {
+        "title": "联系方式",
+        "email": {
+          "title": "联系邮箱",
+          "content": "您可以通过以下方式根据这些条款通知我们，以及将问题发送给我们：",
+          "address": "service@shuzimumin.com"
+        },
+        "notifications": "我们可能会根据这些条款，使用您在本平台上为您的帐户提供的电子邮件地址，或通过在本平台首页或您的帐户页面上发布消息来通知您。"
+      },
+      "changes": {
+        "title": "变更",
+        "lastUpdate": "我们上次更新这些条款的日期为",
+        "date": "2025-07-27",
+        "updates": "，并可能再次更新这些条款。我们将在本平台上发布所有更新。对于包含重大变更的更新，如果您创建了帐户并提供了有效的电子邮件地址，我们同意向您发送电子邮件。我们还可能在本平台上通过特殊消息或提醒来宣布更新。",
+        "acceptance": "当您注意到这些条款的更新后，您必须同意这些新条款才能继续使用本平台。"
+      }
+    },
+    "backToTop": "返回顶部"
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "effectiveDate": "生效日期：2025年7月27日",
+    "lastUpdated": "最后更新：2025年7月27日",
+    "introduction": {
+      "operator": "Shuzimumin社区运营商",
+      "welcome": "（\"我们\"、\"运营商\"、\"数据控制者\"）作为新加坡的个体实体运营此服务，我们深知个人信息对您的重要性，并将尽最大努力保护您个人信息的安全性和可靠性。本隐私政策详细说明了当您使用Shuzimumin Connect平台（\"本服务\"）时，我们如何收集、使用、存储、共享和保护您的个人信息，以及您的权利。",
+      "important": {
+        "title": "重要通知",
+        "content": "本隐私政策严格遵循新加坡个人数据保护法（PDPA）、新加坡网络安全法以及其他适用的新加坡数据保护和隐私法律法规。作为由个体实体运营的服务，我们作为数据控制者承担个人责任。"
+      },
+      "readCarefully": "请仔细阅读本隐私政策。使用我们的服务即表示您已充分理解并同意我们按照本隐私政策处理您的个人信息。如果您不同意本隐私政策的任何内容，请立即停止使用我们的服务。"
+    },
+    "tableOfContents": {
+      "title": "目录",
+      "sections": {
+        "interpretation": "定义和解释",
+        "collecting": "个人信息的收集与使用",
+        "children": "未成年人隐私保护",
+        "links": "第三方网站链接",
+        "changes": "隐私政策变更",
+        "contact": "联系我们"
+      }
+    },
+    "sections": {
+      "interpretation": {
+        "title": "定义和解释",
+        "termsExplanation": {
+          "title": "术语解释",
+          "content": "首字母大写的词汇具有以下条件下定义的含义。以下定义无论以单数还是复数形式出现都具有相同的含义。"
+        },
+        "definitions": {
+          "title": "定义说明",
+          "intro": "在本隐私政策中，以下术语具有以下含义：",
+          "terms": {
+            "account": {
+              "term": "账户",
+              "definition": "指为您访问我们的服务或服务部分而创建的唯一账户。"
+            },
+            "affiliate": {
+              "term": "关联公司",
+              "definition": "指控制、被控制或与一方共同控制的实体，其中\"控制\"指拥有50%或以上的股份、股权或其他有权选举董事或其他管理机构的证券。"
+            },
+            "dataController": {
+              "term": "数据控制者",
+              "definition": "（在本协议中称为\"我们\"、\"运营商\"或\"数据控制者\"）指Shuzimumin社区运营商，作为新加坡的个体实体运营。"
+            },
+            "cookie": {
+              "term": "Cookie",
+              "definition": "指网站放置在您的计算机、移动设备或任何其他设备上的小文件，包含您在该网站上的浏览历史详情和各种其他用途。"
+            },
+            "country": {
+              "term": "国家",
+              "definition": "指新加坡共和国（新加坡）"
+            },
+            "device": {
+              "term": "设备",
+              "definition": "指可以访问服务的任何设备，如计算机、手机或数字平板电脑。"
+            },
+            "personalData": {
+              "term": "个人数据",
+              "definition": "指与已识别或可识别的个人相关的任何信息。"
+            },
+            "service": {
+              "term": "服务",
+              "definition": "指Shuzimumin Connect平台网站。"
+            },
+            "serviceProvider": {
+              "term": "服务提供商",
+              "definition": "指代表我们团队处理数据的任何自然人或法人。它指我们雇用的第三方公司或个人，用于促进服务、代表我们提供服务、执行与服务相关的服务或协助我们分析服务的使用情况。"
+            },
+            "thirdPartySocialMedia": {
+              "term": "第三方社交媒体服务",
+              "definition": "指用户可以通过登录或创建账户来使用服务的任何网站或任何社交网络网站。"
+            },
+            "usageData": {
+              "term": "使用数据",
+              "definition": "指自动收集的数据，由使用服务或从服务基础设施本身生成（例如，页面访问的持续时间）。"
+            },
+            "website": {
+              "term": "网站",
+              "definition": "指Shuzimumin Connect平台，可通过以下地址访问"
+            },
+            "you": {
+              "term": "您",
+              "definition": "指访问或使用服务的个人，或代表该个人访问或使用服务的公司或其他法律实体（如适用）。"
+            }
+          }
+        }
+      },
+      "collecting": {
+        "dataTypes": {
+          "title": "收集的数据类型"
+        },
+        "personalData": {
+          "title": "个人数据",
+          "description": "在使用我们的服务时，我们可能会要求您提供某些可用于联系或识别您的个人身份信息。个人身份信息可能包括但不限于：",
+          "email": "电子邮件地址",
+          "usageData": "使用数据"
+        },
+        "usageData": {
+          "title": "使用数据",
+          "automaticCollection": "使用数据在使用服务时自动收集。",
+          "information": "使用数据可能包括诸如您设备的互联网协议地址（例如IP地址）、浏览器类型、浏览器版本、您访问的我们服务的页面、访问的时间和日期、在这些页面上花费的时间、唯一设备标识符和其他诊断数据等信息。",
+          "mobileAccess": "当您通过移动设备访问服务时，我们可能会自动收集某些信息，包括但不限于您使用的移动设备类型、您的移动设备唯一ID、您的移动设备IP地址、您的移动操作系统、您使用的移动互联网浏览器类型、唯一设备标识符和其他诊断数据。",
+          "browserInfo": "我们还可能收集您的浏览器在访问我们的服务或通过移动设备访问服务时发送的信息。"
+        },
+        "thirdPartySocialMedia": {
+          "title": "第三方社交媒体服务信息",
+          "description": "我们允许您通过以下第三方社交媒体服务创建账户并登录使用服务：",
+          "providers": {
+            "google": "Google",
+            "facebook": "Facebook",
+            "instagram": "Instagram",
+            "twitter": "Twitter",
+            "linkedin": "LinkedIn"
+          },
+          "additionalInfo": {
+            "description": "如果您决定通过第三方社交媒体服务注册或以其他方式授予我们访问权限，我们可能会收集已经与您的第三方社交媒体服务账户关联的个人数据，例如您的姓名、电子邮件地址、您的活动或与该账户关联的联系人列表。",
+            "consent": "您还可以选择通过您的第三方社交媒体服务账户与我们分享其他信息。如果您选择在注册时或其他时间提供此类信息和个人数据，您即表示同意我们按照本隐私政策使用、共享和存储这些信息。"
+          }
+        }
+      },
+      "tracking": {
+        "title": "跟踪技术和Cookie",
+        "description": "我们使用cookie和类似的跟踪技术来跟踪我们服务上的活动并存储某些信息。我们使用的跟踪技术包括信标、标签和脚本来收集和跟踪信息，并改进和分析我们的服务。",
+        "cookies": {
+          "title": "Cookie或浏览器Cookie",
+          "description": "Cookie是放置在您设备上的小文件。您可以指示浏览器拒绝所有cookie或在发送cookie时发出指示。但是，如果您不接受cookie，您可能无法使用我们服务的某些部分。"
+        },
+        "webBeacons": {
+          "title": "网络信标",
+          "description": "我们服务的某些部分和我们的电子邮件可能包含称为网络信标的小型电子文件（也称为清晰gif、像素标签和单像素gif），它们允许我们，例如，计算访问过这些页面或打开过电子邮件的用户，以及其他相关的网站统计信息。"
+        },
+        "cookieTypes": "Cookie可以是\"持久性\"或\"会话\"cookie。持久性cookie在您离线时保留在您的个人计算机或移动设备上，而会话cookie在您关闭网络浏览器时立即删除。",
+        "purposes": "我们使用会话和持久性cookie来实现以下目的：",
+        "essential": "必要/基本Cookie",
+        "cookiePolicy": "Cookie政策/通知接受Cookie",
+        "functional": "功能性Cookie",
+        "type": "类型",
+        "manager": "管理者",
+        "purpose": "目的",
+        "session": "会话Cookie",
+        "persistent": "持久性Cookie",
+        "we": "我们",
+        "provideService": "这些cookie对于向您提供通过我们网站提供的服务以及使您能够使用其某些功能至关重要。",
+        "acceptCookiePolicy": "这些cookie用于识别用户是否已接受在我们网站上使用cookie。",
+        "rememberPreferences": "这些cookie允许我们记住您在使用我们网站时做出的选择，例如记住您的登录详情或语言偏好。",
+        "cookiePolicyLink": "有关我们使用的cookie的更多信息，请参阅我们的Cookie政策。"
+      },
+      "usage": {
+        "title": "个人数据的使用",
+        "description": "我们可能将个人数据用于以下目的：",
+        "purposes": {
+          "provideAndMaintain": "提供和维护我们的服务",
+          "monitorUsage": "包括监控我们服务的使用情况。",
+          "manageAccount": "管理您的账户",
+          "manageAccountDescription": "管理您作为服务用户的注册。您提供的个人数据可以让您访问注册用户可用的服务的不同功能。",
+          "fulfillContract": "履行合同",
+          "fulfillContractDescription": "开发、遵守和执行您通过服务购买的产品、物品或服务的购买合同或与我们签订的任何其他合同。",
+          "contactYou": "联系您",
+          "contactYouDescription": "通过电子邮件、电话、短信或其他等效的电子通信形式（如移动应用程序推送通知）联系您，了解与功能、产品或合同服务相关的更新或信息性通信，包括在必要时或合理时进行安全更新。",
+          "provideNewsAndPromotions": "为您提供新闻和优惠",
+          "provideNewsAndPromotionsDescription": "为您提供新闻、特别优惠以及我们提供的与您已经购买或询问过的商品、服务和活动类似的其他商品、服务和活动的一般信息，除非您选择不接收此类信息。",
+          "manageRequests": "管理您的请求",
+          "manageRequestsDescription": "处理和管理您对我们的请求。",
+          "businessTransfers": "业务转让",
+          "businessTransfersDescription": "我们可能使用您的信息来评估或进行合并、剥离、重组、重组、解散或我们部分或全部资产的其他出售或转让，无论是作为持续经营还是作为破产、清算或类似程序的一部分，其中我们持有的关于我们服务用户的个人数据属于转让的资产。",
+          "otherPurposes": "其他目的",
+          "otherPurposesDescription": "我们可能将您的信息用于其他目的，如数据分析、识别使用趋势、确定我们促销活动的有效性以及评估和改进我们的服务、产品、服务、营销和您的体验。"
+        }
+      },
+      "sharing": {
+        "title": "信息共享",
+        "serviceProviders": "与服务提供商",
+        "serviceProvidersDescription": "我们可能与第三方公司和个人共享您的信息，以促进我们的服务、代表我们提供服务、执行与服务相关的服务或协助我们分析服务的使用情况。",
+        "businessTransfers": "业务转让",
+        "businessTransfersDescription": "如果我们参与合并、收购或资产出售，您的个人数据可能会被转让。",
+        "partners": "与合作伙伴",
+        "partnersDescription": "我们可能与我们的可信任合作伙伴分享您的信息，在这种情况下，我们将要求这些合作伙伴遵守本隐私政策。",
+        "commercialPartners": "与商业合作伙伴",
+        "commercialPartnersDescription": "我们可能与我们的商业合作伙伴分享您的信息，以向您提供某些产品、服务或促销活动。",
+        "otherUsers": "与其他用户",
+        "otherUsersDescription": "当您与其他用户分享个人信息或在公共区域互动时，此类信息可能被所有用户查看，并可能在外部公开分发。",
+        "consent": "经您同意",
+        "consentDescription": "经您同意，我们可能为任何其他目的披露您的个人信息。"
+      },
+      "retention": {
+        "title": "个人数据的保留",
+        "content": "我们将仅在本隐私政策规定的目的所需的时间内保留您的个人数据。我们将在必要的范围内保留和使用您的个人数据，以遵守我们的法律义务、解决争议并执行我们的法律协议和政策。",
+        "additionalRetention": "我们还将保留使用数据用于内部分析目的。使用数据通常保留较短的时间，除非这些数据用于加强我们服务的安全性改进功能，或者我们法律上有义务将这些数据保留更长时间。"
+      },
+      "transmission": {
+        "title": "个人数据的传输",
+        "description": "您的信息（包括个人数据）在我们的运营办公室以及参与处理的各方所在的任何其他地方进行处理。这意味着这些信息可能被传输到——并维护在——位于您的州、省、国家或其他政府管辖区以外的计算机上，这些地方的数据保护法律可能与您所在管辖区的法律不同。",
+        "consent": "您对本隐私政策的同意及您随后提交此类信息代表您对该传输的同意。",
+        "security": "我们将采取所有合理必要的步骤，确保您的数据得到安全处理并符合本隐私政策，并且不会向组织或国家转让您的个人数据，除非在适当的控制下（包括您数据和其他个人信息的安全性）。"
+      },
+      "deletion": {
+        "title": "删除您的个人数据",
+        "yourRights": "您的权利",
+        "deleteRequest": "您有权删除或请求我们协助删除我们收集的关于您的个人数据。",
+        "serviceAbility": "我们的服务可能会给您提供从服务内删除有关您的某些信息的能力。",
+        "updateInformation": "您可以随时通过登录您的账户（如果您有账户）并访问允许您管理个人信息的账户设置部分来更新、修改或删除您的信息。您也可以联系我们，请求访问、更正或删除您向我们提供的任何个人信息。",
+        "legalRequirements": "但请注意，当我们有法律义务或合法依据时，我们可能需要保留某些信息。"
+      },
+      "disclosure": {
+        "title": "个人数据的披露",
+        "businessTransactions": {
+          "title": "业务交易",
+          "content": "如果我们参与合并、收购或资产出售，您的个人数据可能会被转让。在您的个人数据被转让并适用不同的隐私政策之前，我们将提供通知。"
+        },
+        "legalExecution": {
+          "title": "法律执行",
+          "content": "在某些情况下，如果法律要求或为响应公共当局（例如法院或政府机构）的有效请求，我们可能需要披露您的个人数据。"
+        },
+        "otherLegalRequirements": {
+          "title": "其他法律要求",
+          "intro": "我们可能本着善意披露您的个人数据，认为此类行动对以下情况必要：",
+          "reasons": [
+            "遵守法律义务",
+            "保护和维护我们的权利或财产",
+            "防止或调查与服务相关的可能不当行为",
+            "保护服务用户或公众的人身安全",
+            "防止法律责任"
+          ]
+        }
+      },
+      "security": {
+        "title": "个人数据的安全",
+        "securityTipsTitle": "安全提示",
+        "securityTipsDescription": "您的个人数据安全对我们很重要，但请记住，通过互联网传输或电子存储的方法都不是100%安全的。虽然我们努力使用商业上可接受的方式来保护您的个人数据，但我们无法保证其绝对安全。"
+      },
+      "children": {
+        "title": "未成年人隐私保护",
+        "ageLimitNotice": {
+          "title": "年龄限制通知",
+          "description": "我们的服务不面向13岁以下的任何人。我们不会故意收集任何13岁以下人员的个人身份信息。如果您是父母或监护人，并且您知道您的孩子已向我们提供了个人数据，请联系我们。",
+          "parentConsent": "如果我们发现在未经父母同意验证的情况下从13岁以下的任何人那里收集了个人数据，我们会采取措施从我们的服务器中删除该信息。"
+        }
+      },
+      "links": {
+        "title": "第三方网站链接",
+        "thirdPartyLinks": {
+          "description": "我们的服务可能包含指向不由我们运营的其他网站的链接。如果您点击第三方链接，您将被定向到该第三方的网站。我们强烈建议您查看您访问的每个网站的隐私政策。",
+          "disclaimer": "我们无法控制第三方网站或服务的内容、隐私政策或做法，也不承担任何责任。"
+        }
+      },
+      "contact": {
+        "title": "联系我们",
+        "contactEmailTitle": "联系邮箱",
+        "contactEmailDescription": "如果您对本隐私政策有任何疑问，您可以通过以下方式联系我们："
+      },
+      "changes": {
+        "title": "隐私政策变更",
+        "lastUpdated": "我们上次更新本隐私政策的日期为",
+        "updates": "，并可能再次更新本隐私政策。我们将在本平台上发布所有更新。对于包含重大变更的更新，如果您创建了帐户并提供了有效的电子邮件地址，我们同意向您发送电子邮件。",
+        "continueUsing": "当您注意到本隐私政策的更新后，继续使用我们的服务即表示您接受更新后的隐私政策。"
+      }
+    },
+    "backToTop": "返回顶部"
+  }
+}
