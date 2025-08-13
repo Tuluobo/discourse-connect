@@ -1,0 +1,230 @@
+{
+  "termsOfService": {
+    "header": {
+      "title": "Terms of Service",
+      "effectiveDate": "Effective Date: July 27, 2025",
+      "lastUpdated": "Last Updated: July 27, 2025"
+    },
+    "introduction": {
+      "welcome": "Welcome to the Shuzimumin Connect Platform (the \"Service\" or \"Platform\"). This service is operated by the Shuzimumin Community Operator (\"we\", \"operator\", or \"service provider\") as an individual entity in Singapore, accessible at",
+      "websiteUrl": "https://connect.shuzimumin.com",
+      "agreement": ". By using our service, you agree to comply with these Terms of Service.",
+      "legalNotice": {
+        "title": "Important Legal Notice",
+        "text": "This service is operated by an individual entity, not a corporate legal person. The operator assumes personal liability under Singapore law. Certain liability limitations in these terms may be subject to legal restrictions due to the individual entity nature."
+      },
+      "readCarefully": "Please read these terms carefully. If you do not agree with these terms, please do not use this service. We reserve the right to modify these terms at any time, and the modified terms will take effect immediately upon publication."
+    },
+    "tableOfContents": {
+      "title": "Table of Contents",
+      "items": {
+        "importantTerms": "Important Terms",
+        "permission": "Your Permission to Use This Platform",
+        "conditions": "Platform Usage Conditions",
+        "acceptableUse": "Acceptable Use",
+        "contentStandards": "Content Standards",
+        "enforcement": "Enforcement",
+        "yourAccount": "Your Account",
+        "yourContent": "Your Content",
+        "responsibility": "Your Responsibility",
+        "disclaimers": "Disclaimers",
+        "liability": "Limitation of Liability",
+        "feedback": "Feedback",
+        "termination": "Termination",
+        "disputes": "Disputes",
+        "general": "General Terms",
+        "contact": "Contact Information",
+        "changes": "Changes"
+      }
+    },
+    "sections": {
+      "importantTerms": {
+        "title": "Important Terms",
+        "content": "These terms contain many important provisions that affect your rights and responsibilities, such as the",
+        "disclaimer": "disclaimers",
+        "disclaimerText": " in the Disclaimers section, our",
+        "liabilityLimit": "liability limitations",
+        "liabilityText": " to you in the Limitation of Liability section, your agreement to",
+        "responsibility": "indemnify us under Your Responsibility",
+        "responsibilityText": " for losses caused by your misuse of this platform, and your agreement to resolve disputes under the",
+        "disputes": "Disputes",
+        "disputesText": " section."
+      },
+      "permission": {
+        "title": "Your Permission to Use This Platform",
+        "content": "We grant you permission to use this platform under these terms. Everyone must agree to these terms to use this platform."
+      },
+      "conditions": {
+        "title": "Platform Usage Conditions",
+        "intro": "Your use of this service must meet the following basic conditions:",
+        "condition1": "You must be at least 13 years old, or use this service with parental/guardian consent.",
+        "condition2": "You must comply with applicable laws and regulations and community guidelines.",
+        "condition3": "You agree to provide true and accurate registration information and update it promptly."
+      },
+      "acceptableUse": {
+        "title": "Acceptable Use",
+        "rule1": "You must not violate laws when using this platform.",
+        "rule2": "You must not use or attempt to use others' accounts on this platform without their express permission.",
+        "rule3": "You must not buy, sell, or otherwise trade usernames or other unique identifiers on this platform.",
+        "rule4": "You must not send advertisements, chain letters, or other solicitations through this platform, nor use this platform to collect addresses or other personal data for commercial mailing lists or databases.",
+        "rule5": "You must not automatically access this platform or monitor this platform through web crawlers, browser plugins or extensions, or other non-web browser computer programs. If you operate a public search engine, you may crawl this platform to index it for that search engine.",
+        "rule6": "You must not use this platform to send emails to distribution lists, newsgroups, or group mail aliases.",
+        "rule7": "You must not falsely imply that you are affiliated with us or endorsed by us.",
+        "rule8": "You must not create hyperlinks to images or other non-hypertext content on this platform from other web pages.",
+        "rule9": "You must not remove any marks indicating proprietary ownership from materials downloaded from this platform.",
+        "rule10": "You must not use frames or other techniques to",
+        "rule10Cont": "display any part of this platform on other websites.",
+        "rule11": "You must not disable, avoid, or circumvent any security or access restrictions of this platform.",
+        "rule12": "You must not strain this platform's infrastructure through unreasonable request volumes or requests designed to impose unreasonable loads on the platform's underlying information systems.",
+        "rule13": "You must not impersonate others through this platform.",
+        "rule14": "You must not encourage or assist anyone to violate these terms."
+      },
+      "contentStandards": {
+        "title": "Content Standards",
+        "standard1": "You must not submit illegal, offensive, or harmful content to this platform. This includes content involving harassment, inappropriate, abusive, or hateful behavior.",
+        "standard2": "You must not submit content to this platform that violates laws, infringes anyone's intellectual property, violates anyone's privacy, or breaches agreements you have with others.",
+        "standard3": "You must not submit content containing malicious computer code (such as computer viruses or spyware) to this platform.",
+        "standard4": "You must not submit placeholder content to this platform to reserve specific addresses, usernames, or other unique identifiers.",
+        "standard5": "You must not use this platform to disclose information you have no right to disclose, such as others' confidential or personal information."
+      },
+      "enforcement": {
+        "title": "Enforcement",
+        "investigation": "We may investigate and prosecute violations of these terms to the fullest extent of the law. We may notify and cooperate with law enforcement authorities to prosecute violations of law and these terms.",
+        "moderation": "We reserve the right to change, edit, and delete content on this platform for any reason. If you believe someone has violated these terms when submitting content to this platform, please",
+        "contactUs": "contact us immediately",
+        "period": "."
+      },
+      "yourAccount": {
+        "title": "Your Account",
+        "required": "You must create and log into an account to use certain features of this platform.",
+        "createAccount": "To create an account, you must provide some information about yourself. If you create an account, you agree to provide at least a valid email address and keep that address current. You can close your account at any time by sending an email to",
+        "email": "service@shuzimumin.com",
+        "closeAccount": ".",
+        "responsibility": "You agree to be responsible for all actions performed using your account, whether or not authorized by you, until you close your account or notify us that your account has been compromised. If you suspect your account has been compromised, you agree to notify us immediately. You agree to choose a secure password for your account and keep it confidential.",
+        "suspension": "Under applicable policies, or if we reasonably believe you have violated any rule in these terms, we may restrict, suspend, or close your account on this platform."
+      },
+      "yourContent": {
+        "title": "Your Content",
+        "ownership": "Nothing in these terms grants us any ownership of the intellectual property you share on this platform, such as your account information, posts, or other content you submit to this platform. Nothing in these terms grants you any ownership of our intellectual property either.",
+        "responsibility": "Between you and us, you remain solely responsible for content you submit to this platform. You agree not to falsely imply that content you submit to this platform is sponsored by us or approved by us. These terms do not require us to store, maintain, or provide copies of content you submit under these terms, nor do they require us to make changes to it.",
+        "permissions": "Content you submit to this platform belongs to you, and you can decide what permissions to grant to others. However, you must at least allow us to provide content you submit to this platform to other users of this platform. This special license allows us to copy, publish, and analyze content you submit to this platform.",
+        "termination": "When content you submit is removed from this platform, whether by you or by us, our special license terminates when the last copy disappears from our backups, caches, and other systems. Other licenses you apply to submitted content, such as",
+        "creativeCommons": "Creative Commons",
+        "terminationCont": " licenses, may continue after your content is deleted. These licenses may grant others or us the right to share your content again through this platform.",
+        "violations": "Others who receive content you submit to this platform may violate the terms of your content license. You agree that we are not responsible to you for these violations or their consequences."
+      },
+      "responsibility": {
+        "title": "Your Responsibility",
+        "indemnity": "You agree to indemnify us against legal claims by others due to your breach of these terms, or due to others using your account on this platform in breach of these terms. You and we both agree to notify each other promptly about any legal claims you may need to indemnify us for. If we fail to notify you promptly about a legal claim, you need not indemnify us for losses that you could have defended against or mitigated with timely notice. You agree to allow us to control investigation, defense, and resolution of legal claims you must indemnify us for, and to cooperate in those efforts. We agree not to agree to any settlement that admits fault on your behalf or imposes obligations on you without your prior consent."
+      },
+      "disclaimers": {
+        "title": "Disclaimers",
+        "asIs": {
+          "title": "Service Provided As-Is",
+          "text": "You expressly understand and agree that your use of this service is at your sole risk. To the maximum extent permitted by applicable law, this service is provided \"as is\" and \"as available\" without warranties of any kind, either express or implied.",
+          "noWarranty": "We and our affiliates, employees, agents, and suppliers hereby disclaim all warranties, including but not limited to:"
+        },
+        "warranties": {
+          "merchantability": {
+            "title": "Merchantability Warranty",
+            "text": "No warranty as to merchantability, fitness for a particular purpose, or meeting specific requirements of the service"
+          },
+          "continuity": {
+            "title": "Continuity Warranty",
+            "text": "No warranty that services will be uninterrupted, timely, secure, or error-free"
+          },
+          "accuracy": {
+            "title": "Content Accuracy",
+            "text": "No warranty as to the accuracy, reliability, or completeness of user-posted content"
+          },
+          "thirdParty": {
+            "title": "Third-Party Services",
+            "text": "No warranty as to the quality or security of third-party websites, services, or content"
+          }
+        },
+        "thirdPartyServices": {
+          "title": "Third-Party Services Declaration",
+          "text": "This service may contain links to or access to third-party websites, applications, or services. We do not assume responsibility or liability for the availability, content, services, products, or other materials of any third-party websites or services. Your use of third-party services must comply with the applicable third-party service terms."
+        }
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "indirectDamages": {
+          "title": "Exclusion of Indirect Damages",
+          "text": "To the maximum extent permitted by law, whether under contract, tort, or other legal theory, we and our affiliates, employees, agents, and suppliers shall not be liable for any indirect, special, incidental, or punitive damages, including but not limited to loss of profits, data loss, business interruption, or other economic losses."
+        },
+        "limitation": {
+          "title": "Liability Cap",
+          "text": "To the maximum extent permitted by law, regardless of the cause or under any theory of liability, our aggregate liability to you shall not exceed: (a) the fees you actually paid to us in the 12 months preceding the event (if any); or (b) SGD 1,000. However, this limitation does not apply to liability that cannot be limited by law, including intentional misconduct, gross negligence, or personal injury."
+        },
+        "important": {
+          "title": "Important Notice",
+          "text": "The above limitations are only effective to the extent permitted by applicable law. If you reside in a jurisdiction that does not allow the limitation or exclusion of certain damages, some of the above limitations may not apply to you."
+        },
+        "personalEntity": {
+          "title": "Individual Entity Special Declaration",
+          "text": "Since this service is operated by an individual entity, the operator assumes personal liability rather than corporate limited liability. Under the Singapore legal framework, liability limitation clauses for individual entities may be subject to stricter legal scrutiny. The operator will limit liability to the maximum extent permitted by law, but may assume personal unlimited liability in certain circumstances."
+        }
+      },
+      "feedback": {
+        "title": "Feedback",
+        "welcome": "We welcome your feedback and suggestions for this platform. Please refer to the following",
+        "contact": "Contact",
+        "section": " section for information on how to contact us.",
+        "rights": "You agree that we may freely act on the feedback and suggestions you provide, and we are not required to notify you that the relevant feedback has been used, nor do we need to obtain your permission to use it or pay you. You agree not to submit to us or others any feedback or suggestions that you consider may be confidential or proprietary."
+      },
+      "termination": {
+        "title": "Termination",
+        "termination": "You or we may terminate the agreement described in these terms at any time. When our agreement terminates, your permission to use this platform ends.",
+        "survivingTerms": "The following terms remain effective after our agreement terminates:",
+        "yourContent": "Your Content",
+        "feedback": "Feedback",
+        "responsibility": "Your Responsibility",
+        "disclaimers": "Disclaimers",
+        "liability": "Limitation of Liability",
+        "general": "General Terms",
+        "and": " and ",
+        "period": "。"
+      },
+      "disputes": {
+        "title": "Disputes",
+        "governingLaw": "Singapore law",
+        "governingText": " shall govern any disputes relating to these terms or your use of this platform. Our agreement shall be governed by Singapore law, without regard to conflict of law principles.",
+        "jurisdiction": "You and we agree that all disputes arising from or relating to these terms should be resolved primarily through amicable negotiation. If negotiation fails, either party may bring proceedings before the",
+        "court": "Singapore High Court",
+        "courtText": ". Both parties expressly agree to the exclusive jurisdiction of that court.",
+        "arbitration": "If the dispute amount exceeds SGD 50,000, both parties may negotiate to choose arbitration by the",
+        "siac": "Singapore International Arbitration Centre (SIAC)",
+        "arbitrationText": " to conduct arbitration. The arbitration shall be conducted in accordance with the Singapore International Arbitration Centre Arbitration Rules, with the seat of arbitration in Singapore. The arbitral award shall be final and binding on both parties. Except for matters involving intellectual property infringement or urgent injunctive relief, the parties undertake to resolve disputes through arbitration rather than litigation.",
+        "costs": "Arbitration costs shall in principle be borne by the losing party, but the arbitral tribunal has the right to determine cost allocation based on the specific circumstances of the case and the degree of fault of each party. Unless otherwise provided by law, each party shall bear its own legal fees. The arbitral award may be enforced by application to the Singapore High Court or other courts with jurisdiction.",
+        "personalEntity": {
+          "title": "Individual Entity Litigation Notice",
+          "text": "Given that this service is operated by an individual entity, in legal proceedings, the operator will participate in litigation or arbitration in a personal capacity. This means that any legal judgment or arbitral award will directly bind and be enforceable against the operator personally. Users should consider this special circumstance when choosing legal procedures."
+        }
+      },
+      "general": {
+        "title": "General Terms",
+        "enforceability": "If any provision of these terms cannot be enforced as written, but can be modified to make it enforceable, that provision should be modified to the minimum extent necessary to make it enforceable. Otherwise, that provision should be deleted.",
+        "assignment": "You may not assign your agreement with us. Given that we operate as an individual entity, assignment of the agreement must meet the following conditions: (1) We may assign the agreement to another individual or entity taking over the operation of this platform with 30 days' written notice; (2) The assignee entity must agree to assume all obligations under this agreement; (3) The assignment must not materially alter users' rights or increase users' obligations. Any assignment that does not meet the above conditions shall have no legal effect.",
+        "waiver": "Exercise of any right under this agreement and failure to pursue any breach of this agreement does not constitute a waiver of pursuit of any other breach of this agreement.",
+        "entireAgreement": "These terms contain the entire agreement between you and us regarding your use of this platform. These terms completely supersede any other agreements regarding your use of this platform, whether written or otherwise."
+      },
+      "contact": {
+        "title": "Contact Information",
+        "emailTitle": "Contact Email",
+        "email": "You may notify us under these terms and send questions to us via:",
+        "emailAddress": "service@shuzimumin.com",
+        "period": "。",
+        "notification": "We may notify you under these terms using the email address you provided for your account on this platform, or by posting messages on the platform homepage or your account page."
+      },
+      "changes": {
+        "title": "Changes",
+        "lastUpdate": "We last updated these terms on",
+        "date": "2025-07-27",
+        "updatePolicy": ", and may update these terms again. We will post all updates on this platform. For updates containing material changes, if you have created an account and provided a valid email address, we agree to send you an email. We may also announce updates through special messages or alerts on this platform.",
+        "agreement": "After you notice updates to these terms, you must agree to these new terms to continue using this platform."
+      }
+    },
+    "backToTop": "Back to Top"
+  }
+}

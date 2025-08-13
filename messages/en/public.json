@@ -143,7 +143,7 @@
   },
   "authPage": {
     "welcomeTo": "Welcome to",
-    "community": "数字牧民社区",
+    "community": "Shuzimumin Community",
     "agreement": "By clicking continue, you agree to our",
     "termsOfService": "Terms of Service",
     "and": "and",
@@ -152,63 +152,6 @@
   "userAuthorize": {
     "loginError": "Login failed, authorization failed!",
     "verifying": "Verifying account information, preparing to redirect, please wait..."
-  },
-  "legal": {
-    "privacyPolicy": {
-      "title": "Privacy Policy",
-      "effectiveDate": "Effective Date: July 27, 2025",
-      "lastUpdated": "Last Updated: July 27, 2025",
-      "introduction": {
-        "text": "**Shuzimumin Community Operator** (\"we\", \"operator\", \"data controller\") operates this service as an individual entity in Singapore, deeply understanding the importance of personal information to you, and will do our best to protect your personal information safely and reliably. This privacy policy details how we collect, use, store, share and protect your personal information when you use the Shuzimumin Connect platform (\"this service\"), as well as the rights you enjoy.",
-        "importantNotice": {
-          "title": "Important Notice",
-          "text": "This privacy policy strictly complies with the Singapore Personal Data Protection Act (Personal Data Protection Act, PDPA), Singapore Cybersecurity Act and other applicable Singapore data protection and privacy laws and regulations. As a service operated by an individual entity, we assume personal responsibility as data controllers."
-        },
-        "readCarefully": "**Please read this privacy policy carefully.** Using our service means that you have fully understood and agreed to our processing of your personal information in accordance with this privacy policy. If you do not agree with any content of this privacy policy, please stop using our service immediately."
-      },
-      "tableOfContents": {
-        "title": "Table of Contents",
-        "items": {
-          "infoWeCollect": "Information We Collect",
-          "howWeUse": "How We Use Your Information",
-          "infoSharing": "Information Sharing and Disclosure",
-          "dataRetention": "Data Retention",
-          "dataSecurity": "Data Security",
-          "yourRights": "Your Rights",
-          "changes": "Changes to This Policy",
-          "contact": "Contact Us"
-        }
-      }
-    },
-    "termsOfService": {
-      "title": "Terms of Service",
-      "effectiveDate": "Effective Date: July 27, 2025",
-      "lastUpdated": "Last Updated: July 27, 2025",
-      "introduction": {
-        "text": "Welcome to the Shuzimumin Connect platform (\"service\", \"platform\"). This service is operated by the Shuzimumin Community Operator (\"we\", \"operator\", \"service provider\") in their personal capacity in Singapore, with the website address at https://connect.shuzimumin.com. Using our service indicates your agreement to comply with these terms of service.",
-        "legalNotice": {
-          "title": "Important Legal Statement",
-          "text": "This service is operated by an individual entity, not a corporate legal person. The operator assumes personal responsibility under Singapore law. Certain liability limitations in these terms may be legally restricted due to the individual entity nature."
-        },
-        "readCarefully": "Please read these terms carefully. If you do not agree with these terms, please do not use this service. We reserve the right to modify these terms at any time, and the modified terms will take effect immediately upon publication."
-      },
-      "tableOfContents": {
-        "title": "Table of Contents",
-        "items": {
-          "serviceDescription": "Service Description",
-          "userAccounts": "User Accounts",
-          "acceptable": "Acceptable Use",
-          "prohibited": "Prohibited Activities",
-          "privacy": "Privacy and Data Protection",
-          "intellectual": "Intellectual Property",
-          "liability": "Limitation of Liability",
-          "termination": "Termination",
-          "governing": "Governing Law",
-          "changes": "Changes to Terms",
-          "contact": "Contact Information"
-        }
-      }
-    }
   },
   "metadata": {
     "title": "Shuzimumin Connect | OAuth 2.0 Authentication Platform Based on Discourse SSO",

@@ -153,63 +153,6 @@
     "loginError": "登录异常，授权失败！",
     "verifying": "账号信息验证中，准备跳转中，请稍等..."
   },
-  "legal": {
-    "privacyPolicy": {
-      "title": "隐私政策",
-      "effectiveDate": "生效日期：2025年7月27日",
-      "lastUpdated": "最后更新：2025年7月27日",
-      "introduction": {
-        "text": "**数字牧民社区运营方**（\"我们\"、\"运营方\"、\"数据控制者\"）以个人实体身份在新加坡运营本服务，深知个人信息对您的重要性，并会尽力保护您的个人信息安全可靠。本隐私政策详细说明了我们在您使用数字牧民连接平台（\"本服务\"）时如何收集、使用、存储、共享和保护您的个人信息，以及您享有的权利。",
-        "importantNotice": {
-          "title": "重要提示",
-          "text": "本隐私政策严格遵守《新加坡个人数据保护法》（个人数据 Protection Act, PDPA）、《新加坡网络安全法》以及其他适用的新加坡数据保护和隐私法律法规要求。作为个人实体运营的服务，我们作为数据控制者承担个人责任。"
-        },
-        "readCarefully": "**请您仔细阅读本隐私政策。** 使用我们的服务即表示您已充分理解并同意我们按照本隐私政策处理您的个人信息。如果您不同意本隐私政策的任何内容，请立即停止使用我们的服务。"
-      },
-      "tableOfContents": {
-        "title": "目录",
-        "items": {
-          "infoWeCollect": "我们收集的信息",
-          "howWeUse": "我们如何使用您的信息",
-          "infoSharing": "信息共享和披露",
-          "dataRetention": "数据保留",
-          "dataSecurity": "数据安全",
-          "yourRights": "您的权利",
-          "changes": "本政策的变更",
-          "contact": "联系我们"
-        }
-      }
-    },
-    "termsOfService": {
-      "title": "服务条款",
-      "effectiveDate": "生效日期：2025年7月27日",
-      "lastUpdated": "最后更新：2025年7月27日",
-      "introduction": {
-        "text": "欢迎使用数字牧民连接平台（\"服务\"、\"平台\"）。本服务由数字牧民社区运营方（\"我们\"、\"运营方\"、\"服务提供方\"）以个人名义在新加坡运营，网址为 https://connect.shuzimumin.com。使用我们的服务即表示您同意遵守这些服务条款。",
-        "legalNotice": {
-          "title": "重要法律声明",
-          "text": "本服务由个人实体运营，非公司法人。运营方依据新加坡法律承担个人责任。本条款的某些责任限制可能因个人实体性质而受到法律限制。"
-        },
-        "readCarefully": "请仔细阅读这些条款。如果您不同意这些条款，请不要使用本服务。我们保留随时修改这些条款的权利，修改后的条款将在发布后立即生效。"
-      },
-      "tableOfContents": {
-        "title": "目录",
-        "items": {
-          "serviceDescription": "服务描述",
-          "userAccounts": "用户账户",
-          "acceptable": "可接受使用",
-          "prohibited": "禁止活动",
-          "privacy": "隐私和数据保护",
-          "intellectual": "知识产权",
-          "liability": "责任限制",
-          "termination": "终止",
-          "governing": "适用法律",
-          "changes": "条款变更",
-          "contact": "联系信息"
-        }
-      }
-    }
-  },
   "metadata": {
     "title": "数字牧民 Connect | 基于 Discourse SSO 的 OAuth 2.0 认证平台",
     "description": "一个基于 Discourse SSO 的身份认证系统，支持 OAuth 2.0 协议，让用户使用已有的数字牧民账号登录到您的应用程序。",
