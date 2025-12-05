@@ -1,14 +1,10 @@
-import {
-  Authorization as InnerAuthorization,
-  Prisma as PrismaType,
-} from "@prisma/client";
+import { Authorization, Prisma } from "@/prisma/client";
+
+import prisma from "@/lib/prisma";
 
 import { logger } from "../logger";
-import { prisma } from "../prisma";
 
-export type Authorization = InnerAuthorization;
-
-export type AuthorizationWithRelations = PrismaType.AuthorizationGetPayload<{
+export type AuthorizationWithRelations = Prisma.AuthorizationGetPayload<{
   include: {
     user: true;
     application: true;
@@ -93,7 +89,7 @@ export const createAuthorization = async (
 
 export const updateAuthorization = async (
   id: string,
-  data: Partial<PrismaType.AuthorizationUpdateInput>,
+  data: Partial<Prisma.AuthorizationUpdateInput>,
 ): Promise<Authorization | null> => {
   try {
     const authorization = await prisma.authorization.update({

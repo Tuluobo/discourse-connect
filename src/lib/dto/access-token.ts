@@ -1,14 +1,9 @@
-import {
-  AccessToken as InnerAccessToken,
-  Prisma as PrismaType,
-} from "@prisma/client";
+import { AccessToken, Prisma } from "@/prisma/client";
 
-import { logger } from "../logger";
-import { prisma } from "../prisma";
+import { logger } from "@/lib/logger";
+import prisma from "@/lib/prisma";
 
-export type AccessToken = InnerAccessToken;
-
-export type AccessTokenWithRelations = PrismaType.AccessTokenGetPayload<{
+export type AccessTokenWithRelations = Prisma.AccessTokenGetPayload<{
   include: {
     user: true;
     application: true;
