@@ -1,9 +1,7 @@
-import { User as InnerUser, Prisma as PrismaType } from "@prisma/client";
+import { Prisma, User } from "@/prisma/client";
 
-import { logger } from "../logger";
-import { prisma } from "../prisma";
-
-export type User = InnerUser;
+import { logger } from "@/lib/logger";
+import prisma from "@/lib/prisma";
 
 export const getUserById = async (id: string): Promise<User | null> => {
   try {
@@ -39,7 +37,7 @@ export const getUserByUsername = async (
 
 export const updateUser = async (
   userId: string,
-  data: PrismaType.UserUpdateInput,
+  data: Prisma.UserUpdateInput,
 ): Promise<User | null> => {
   try {
     const user = await prisma.user.update({
@@ -56,7 +54,7 @@ export const updateUser = async (
 };
 
 export const createUser = async (
-  data: PrismaType.UserCreateInput,
+  data: Prisma.UserCreateInput,
 ): Promise<User | null> => {
   try {
     const user = await prisma.user.create({

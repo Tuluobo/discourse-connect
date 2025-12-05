@@ -1,11 +1,10 @@
-import { Code as InnerCode, Prisma as PrismaType } from "@prisma/client";
+import { Code, Prisma } from "@/prisma/client";
+
+import prisma from "@/lib/prisma";
 
 import { logger } from "../logger";
-import { prisma } from "../prisma";
 
-export type Code = InnerCode;
-
-export type CodeWithRelations = PrismaType.CodeGetPayload<{
+export type CodeWithRelations = Prisma.CodeGetPayload<{
   include: {
     user: true;
     application: true;

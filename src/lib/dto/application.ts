@@ -1,12 +1,8 @@
-import {
-  Application as InnerApplication,
-  Prisma as PrismaType,
-} from "@prisma/client";
+import { Application, Prisma } from "@/prisma/client";
+
+import prisma from "@/lib/prisma";
 
 import { logger } from "../logger";
-import { prisma } from "../prisma";
-
-export type Application = InnerApplication;
 
 export const getAllApplications = async (): Promise<Application[]> => {
   try {
@@ -47,7 +43,7 @@ export const findApplicationByClientId = async (
 };
 
 export const createApplication = async (
-  data: PrismaType.ApplicationCreateInput,
+  data: Prisma.ApplicationCreateInput,
 ): Promise<Application | null> => {
   try {
     const application = await prisma.application.create({
@@ -62,7 +58,7 @@ export const createApplication = async (
 
 export const updateApplication = async (
   id: string,
-  data: PrismaType.ApplicationUpdateInput,
+  data: Prisma.ApplicationUpdateInput,
 ): Promise<Application | null> => {
   try {
     const application = await prisma.application.update({
