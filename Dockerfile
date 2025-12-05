@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:22-alpine AS base
 
 # Accept build arguments for metadata
 ARG BUILDTIME
@@ -35,6 +35,7 @@ RUN corepack enable pnpm && pnpm build-docker
 FROM base AS runner
 WORKDIR /app
 
+ARG PRISMA_VERSION="6.12.0"
 ARG NODE_OPTIONS
 
 ENV NODE_ENV=production
@@ -47,7 +48,7 @@ RUN adduser --system --uid 1001 nextjs
 RUN set -x \
     && apk add --no-cache curl \
     && corepack enable pnpm \
-    && pnpm add prisma
+    && pnpm add prisma@${PRISMA_VERSION}
 
 # Permissions for prisma
 RUN chown -R nextjs:nodejs node_modules/.pnpm/
